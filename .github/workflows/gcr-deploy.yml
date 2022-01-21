@@ -11,40 +11,6 @@ env:
   SERVICE_NAME: archive-albums-frontend
 
 jobs:
-  build:
-    name: Build React App
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@master
-
-      - name: Setup Node.js (NPM)
-        uses: actions/setup-node@master
-        with:
-          node-version: '12.x'
-
-      - name: Use cached node_modules
-        uses: actions/cache@master
-        with:
-          path: node_modules
-          key: nodeModules-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            nodeModules-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-        env:
-          CI: true
-
-      - name: Build Development
-        run: yarn build
-
-      - name: Archive Production Artifact
-        uses: actions/upload-artifact@master
-        with:
-          name: build
-          path: build
-
   deploy-gcr:
     name: Deploy to GCR
     needs: build
@@ -53,12 +19,6 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
-
-      - name: Download Artifact
-        uses: actions/download-artifact@master
-        with:
-          name: build
-          path: .docker/build
 
       - name: Setup GCloud Auth
         id: auth
@@ -75,7 +35,7 @@ jobs:
           gcloud builds submit \
             --quiet \
             --tag "gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
-        working-directory: .docker
+        working-directory: .
 
       # Deploy image to Cloud Run
       - name: Deploy GCR
