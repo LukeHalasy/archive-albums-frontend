@@ -14,9 +14,13 @@ CMD ["npm", "start"]
 FROM base as build-deps
 RUN ["npm", "run" , "build"]
 
-FROM nginx:1.21.5-alpine as prod
+FROM macbre/nginx-brotli:latest as prod
+
+WORKDIR /etc/nginx
+ADD nginx.conf /etc/nginx/nginx.conf
+
 COPY --from=build-deps /usr/src/app/build /usr/share/nginx/html
-EXPOSE 80
+EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
 
 
