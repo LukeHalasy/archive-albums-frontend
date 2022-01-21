@@ -2,6 +2,7 @@
 /node_modules
 
 # misc
+.gcloud_instructions
 .DS_Store
 .env.local
 yarn.lock
