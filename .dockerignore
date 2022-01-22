@@ -4,3 +4,4 @@ build
 .dockerignore
 Dockerfile
 .gcloudignore
+gcp.secret.json
