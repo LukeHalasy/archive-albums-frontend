@@ -1,13 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Link } from 'react-router-dom';
 import './App.css';
 
-function App () {
+export const App: React.FC<{}> = (props) => {
   return (
-    <div className="App">
-      <p>Album Archives Test</p>
+    <div>
+      Test Test  
+      <Link to="/login">Login</Link>
+      <Link to="/signup">Sign Up</Link>
     </div>
   );
 }
-
-export default App;
