@@ -7,8 +7,13 @@ services:
     volumes:
       - ./:/usr/src/app
     ports:
-      - 4000:3000
-    
+      - 8080:3000
+    environment:
+      - NODE_ENV=development
+      - BACKEND_URL=http://localhost:3000
 
 
-      
+networks:
+  default:
+    external:
+      name: dev-network
