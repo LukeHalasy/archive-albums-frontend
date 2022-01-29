@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import './Login.css';
+import './SignUp.css';
 
 interface Props {
 
 }
 
 /*
-interface LoginResponse {
+interface SignUpResponse {
 
 
 }
@@ -16,25 +16,25 @@ interface Credentials {
   password: string;
 }
 
-async function loginUser(credentials: Credentials) {
-  return fetch('http://localhost:4000/api/v1/users/login', {
+async function signUpUser(credentials: Credentials) {
+  return fetch('http://localhost:4000/api/v1/users/signup', {
     method: 'POST',
     headers: {
      'Content-Type': 'application/json'
     },
     body: JSON.stringify(credentials)
   })
-   .then(data => data)
+   .then(data => data.json())
 }
 
-export const Login: React.FC<Props> = (props) => {
+export const SignUp: React.FC<Props> = (props) => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const handleclick = async (e: React.MouseEvent) => {
     e.preventDefault();
     
     // call API
-    const response = await loginUser({
+    const response = await signUpUser({
       username,
       password
     });
@@ -44,7 +44,7 @@ export const Login: React.FC<Props> = (props) => {
 
   return (
     <div>
-      <h1>Login: </h1>
+      <h1>Sign Up: </h1>
       <input type="text"  onChange={e =>setUsername(e.target.value)}/>
       <input type="text"  onChange={e =>setPassword(e.target.value)}/>
       <button  type="submit" onClick={handleclick}>submit</button>
