@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { App } from './App';
 import { Login } from './Login';
 import { SignUp } from './SignUp';
+import { AddAlbum } from './AddAlbum';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -14,6 +15,7 @@ ReactDOM.render(
         <Route path="/" element={<App />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
+        <Route path="addalbum" element={<AddAlbum />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
