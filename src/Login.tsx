@@ -41,12 +41,17 @@ export const Login: React.FC<Props> = (props) => {
   const handleLogin = async (e: React.MouseEvent) => {
     e.preventDefault();
     
-    await login({
+    const result = await login({
       username,
       password
     });
 
-    navigate("/");
+    if (result.status == 200) {
+      navigate("/");
+    } else {
+      // display failed login info
+      console.log(result);
+    }
   }
 
   const handleclicktwo = async (e: React.MouseEvent) => {

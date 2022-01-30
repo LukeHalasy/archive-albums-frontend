@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './AddAlbum.css';
 
 interface Props {
 
 }
-
-/*
-interface LoginResponse {
-
-
-}
-*/
 
 interface AlbumDetails {
   title: string
@@ -18,14 +12,13 @@ interface AlbumDetails {
 }
 
 async function addAlbum(albumDetails: AlbumDetails) {
-  return fetch('http://localhost:4000/api/v1/albums/addAlbum', {
-    method: 'POST',
+  return axios.post('http://localhost:4000/api/v1/albums/addAlbum', JSON.stringify(albumDetails), {
     headers: {
      'Content-Type': 'application/json'
     },
-    body: JSON.stringify(albumDetails)
+    withCredentials: true
   })
-   .then(data => data.json())
+   .then(data => data)
 }
 
 export const AddAlbum: React.FC<Props> = (props) => {
