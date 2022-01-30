@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from './useAuth'
 import axios from 'axios';
 import './Login.css';
 
@@ -12,19 +14,6 @@ interface LoginResponse {
 
 }
 */
-interface Credentials {
-  username: string;
-  password: string;
-}
-
-async function loginUser(credentials: Credentials) {
-  return axios.post('http://localhost:4000/api/v1/users/login', JSON.stringify(credentials), {
-    headers: {
-     'Content-Type': 'application/json'
-    },
-    withCredentials: true
-  }).then(data => data)
-}
 
 interface AlbumDetails {
   title: string
@@ -42,20 +31,22 @@ async function addAlbum(albumDetails: AlbumDetails) {
 }
 
 export const Login: React.FC<Props> = (props) => {
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [title, setTitle] = useState<string>('');
   const [artist, setArtist] = useState<string>('');
-  const handleclick = async (e: React.MouseEvent) => {
+  const handleLogin = async (e: React.MouseEvent) => {
     e.preventDefault();
     
-    // call API
-    const response = await loginUser({
+    await login({
       username,
       password
     });
 
-    console.log(response);
+    navigate("/");
   }
 
   const handleclicktwo = async (e: React.MouseEvent) => {
@@ -76,7 +67,7 @@ export const Login: React.FC<Props> = (props) => {
       <h1>Login: </h1>
       <input type="text"  onChange={e =>setUsername(e.target.value)}/>
       <input type="text"  onChange={e =>setPassword(e.target.value)}/>
-      <button  type="submit" onClick={handleclick}>submit</button>
+      <button  type="submit" onClick={handleLogin}>submit</button>
 
       <br />
 
