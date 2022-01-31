@@ -4,8 +4,10 @@ import './index.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { App } from './App';
 import { Login } from './Login';
+import { Logout } from './Logout';
 import { SignUp } from './SignUp';
 import { AddAlbum } from './AddAlbum';
+import { RequireAuth } from './RequireAuth';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -15,7 +17,8 @@ ReactDOM.render(
         <Route path="/" element={<App />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
-        <Route path="addalbum" element={<AddAlbum />} />
+        <Route path="addalbum" element={<RequireAuth><AddAlbum /></RequireAuth>} />
+        <Route path="logout" element={<RequireAuth><Logout /></RequireAuth>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

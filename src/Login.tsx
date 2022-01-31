@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from './useAuth'
 import axios from 'axios';
 import './Login.css';
 
@@ -6,84 +8,34 @@ interface Props {
 
 }
 
-/*
-interface LoginResponse {
-
-
-}
-*/
-interface Credentials {
-  username: string;
-  password: string;
-}
-
-async function loginUser(credentials: Credentials) {
-  return axios.post('http://localhost:4000/api/v1/users/login', JSON.stringify(credentials), {
-    headers: {
-     'Content-Type': 'application/json'
-    },
-    withCredentials: true
-  }).then(data => data)
-}
-
-interface AlbumDetails {
-  title: string
-  artist: string
-}
-
-async function addAlbum(albumDetails: AlbumDetails) {
-  return axios.post('http://localhost:4000/api/v1/albums/addAlbum', JSON.stringify(albumDetails), {
-    headers: {
-     'Content-Type': 'application/json'
-    },
-    withCredentials: true
-  })
-   .then(data => data)
-}
-
 export const Login: React.FC<Props> = (props) => {
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [title, setTitle] = useState<string>('');
-  const [artist, setArtist] = useState<string>('');
-  const handleclick = async (e: React.MouseEvent) => {
+  const handleLogin = async (e: React.MouseEvent) => {
     e.preventDefault();
     
-    // call API
-    const response = await loginUser({
+    const result = await login({
       username,
       password
     });
 
-    console.log(response);
-  }
-
-  const handleclicktwo = async (e: React.MouseEvent) => {
-    e.preventDefault();
-    
-    // call API
-    const response = await addAlbum({
-      title,
-      artist
-    });
-
-    console.log(response);
-  }
-
+    if (result.status == 200) {
+      navigate("/");
+    } else {
+      // display failed login info
+      console.log(result);
+    }
+  } 
 
   return (
     <div>
       <h1>Login: </h1>
       <input type="text"  onChange={e =>setUsername(e.target.value)}/>
       <input type="text"  onChange={e =>setPassword(e.target.value)}/>
-      <button  type="submit" onClick={handleclick}>submit</button>
-
-      <br />
-
-      <h1>Add Album: </h1>
-      <input type="text"  onChange={e =>setTitle(e.target.value)}/>
-      <input type="text"  onChange={e =>setArtist(e.target.value)}/>
-      <button  type="submit" onClick={handleclicktwo}>add</button>
+      <button  type="submit" onClick={handleLogin}>submit</button>
     </div>
   );
 }
