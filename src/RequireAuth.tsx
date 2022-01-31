@@ -20,6 +20,7 @@ export const RequireAuth = ({ children }: Props) => {
 
     async function checkIfUserHasCookie() {
       const result = await isAuthed();
+      console.log("Has cookie " + result);
       setHasCookie(result);
       setLoading(false);
     }

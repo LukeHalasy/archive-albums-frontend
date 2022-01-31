@@ -38,7 +38,7 @@ export const useAuth = () => {
 
       console.log(authed);
 
-      if (authed.status == 200 && authed.data.loggedIn == true) {
+      if (authed.status == 200 && authed.data.logged_in == true) {
         setAuthed(true)
         return true;
       } else {
