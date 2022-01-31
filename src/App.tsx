@@ -10,6 +10,7 @@ export const App: React.FC<{}> = (props) => {
       <Link to="/login">Login</Link> <br />
       <Link to="/signup">Sign Up</Link> <br />
       <Link to="/addalbum">Add Album</Link> <br />
+      <Link to="/logout">Logout</Link> <br />
     </div>
   );
 }

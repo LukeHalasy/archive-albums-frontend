@@ -31,7 +31,7 @@ export const RequireAuth = ({ children }: Props) => {
   if (loading) {
     return (<h1>Loading...</h1>)
   } else if (authed || hasCookie) {
-    return (children)
+    return (<div>{children}</div>)
   } else {
     return (<Navigate to="/login" replace />)
   }

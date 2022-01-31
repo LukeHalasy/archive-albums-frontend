@@ -46,8 +46,20 @@ export const useAuth = () => {
         return false;
       }
     },
-    logout() {
-      
+    async logout() {
+      const result = await axios.delete('http://localhost:4000/api/v1/users/logout', {
+        headers: {
+         'Content-Type': 'application/json'
+        },
+        withCredentials: true
+      }) 
+
+      if (result.status == 200) {
+        setAuthed(false);
+      }
+
+      console.log(result);
+      return result;
     }
   };
 }
