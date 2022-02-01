@@ -8,19 +8,22 @@ import { Logout } from './Logout';
 import { SignUp } from './SignUp';
 import { AddAlbum } from './AddAlbum';
 import { RequireAuth } from './RequireAuth';
+import { AuthProvider } from './useAuth';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="login" element={<Login />} />
-        <Route path="signup" element={<SignUp />} />
-        <Route path="addalbum" element={<RequireAuth><AddAlbum /></RequireAuth>} />
-        <Route path="logout" element={<RequireAuth><Logout /></RequireAuth>} />
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<RequireAuth><App /></RequireAuth>} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<SignUp />} />
+          <Route path="addalbum" element={<RequireAuth><AddAlbum /></RequireAuth>} />
+          <Route path="logout" element={<RequireAuth><Logout /></RequireAuth>} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
