@@ -38,6 +38,7 @@ export const AddAlbum: React.FC<Props> = (props) => {
 
   return (
     <div>
+      TEXT TETSTEST TETSETSET SETSTSETSET SETSTSETSE TSETSTSET SEtSET
       <h1>Add Album: </h1>
       <input type="text"  onChange={e =>setTitle(e.target.value)}/>
       <input type="text"  onChange={e =>setArtist(e.target.value)}/>
