@@ -8,12 +8,22 @@
   src: local('Fira Mono'),url(./fonts/Fira_Mono/FiraMono-Regular.ttf) format('truetype');
 }
 
+:root {
+  --bgcolor: #18181c;
+  --album-box-bg: #141417;
+  --color-white-main: #fefefe;
+  --font-gray: #acacac;
+  --color-white-brighter: #dcdbe9;
+}
+
+
 html, body {
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
   overflow: hidden;
+  background-color: var(--bgcolor);
   font-family: 'Fira Mono Bold', 'Fira Mono', 'Fira Sans', 'Helvetica Neue';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
