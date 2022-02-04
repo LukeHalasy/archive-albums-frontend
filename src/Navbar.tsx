@@ -21,7 +21,8 @@ export const Navbar: React.FC<Props> = (props) => {
       </div>
       <div className='logout'>
         <div className='topBar'>
-          Right
+        </div>
+        <div className='bottomBar'>
         </div>
       </div>
     </div>

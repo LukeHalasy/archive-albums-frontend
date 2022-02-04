@@ -2,15 +2,58 @@
   position: absolute;
   top: 0;
   width: 100%;
-  height: 10%;
+  height: 12%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  font-family: 'Fira Mono', 'Fira Sans', 'Helvetica Neue';
+  color: #CAD0D5;
+  font-size: 15px;
+}
+
+.home {
+  height: 58%;
+  margin-left: 45px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.home img {
+  height: 100%;
+  align-self: center;
 }
 
 .home p {
-  font-family: 'Fira Mono Bold', 'Fira Mono', 'Fira Sans', 'Helvetica Neue';
-  color: var(--color-white-main);
-} 
+  margin: 0px;
+  margin-left: 10px;
+  align-self: end;
+}
 
+
+.logout {
+  margin-right: 60px;
+  position: relative;
+  width: 60px;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logout .topBar {
+  position: relative;
+  background-color: var(--color-white-main);
+  width: 80%;
+  height: 5px;
+  margin-bottom: 5px;
+}
+
+.logout .bottomBar {
+  position: relative;
+  background-color: #DCDBE9;
+  width: 50%;
+  height: 5px;
+}
