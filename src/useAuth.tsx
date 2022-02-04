@@ -7,12 +7,15 @@ interface Credentials {
 }
 
 export const authContext = createContext({
-  authenticated: false,
-  setAuthenticated: (auth: boolean) => {}
+  auth: {
+    authenticated: false,
+    username: ''
+  },
+  setAuth: (auth: {authenticated: boolean, username: string}) => {}
 });
 
 export const useAuth = () => {
-  const { setAuthenticated } = useContext(authContext);
+  const { setAuth } = useContext(authContext);
 
   return {
     async login(credentials: Credentials) {
@@ -24,30 +27,42 @@ export const useAuth = () => {
       }) 
 
       if (result.status == 200) {
-        setAuthenticated(true);
+        setAuth({
+          authenticated: true,
+          username: result.data.username
+        });
       } else {
-        setAuthenticated(false);
+        setAuth({
+          authenticated: true,
+          username: ''
+        });
       }
 
       console.log(result);
       return result;
     },
-    async isAuthed() {
-      const authed = await axios.get('http://localhost:4000/api/v1/users/currentUser',  {
+    async currentUser() {
+      const userReq = await axios.get('http://localhost:4000/api/v1/users/currentUser',  {
         headers: {
          'Content-Type': 'application/json'
         },
         withCredentials: true
       }) 
 
-      console.log(authed);
+      console.log(userReq);
 
-      if (authed.status == 200 && authed.data.logged_in == true) {
-        setAuthenticated(true)
-        return true;
+      if (userReq.status == 200 && userReq.data.logged_in == true) {
+        setAuth({
+          authenticated: true,
+          username: userReq.data.username
+        })
+        return userReq;
       } else {
-        setAuthenticated(false)
-        return false;
+        setAuth({
+          authenticated: false,
+          username: ''
+        })
+        return userReq;
       }
     },
     async logout() {
@@ -59,7 +74,10 @@ export const useAuth = () => {
       }) 
 
       if (result.status == 200) {
-        setAuthenticated(false);
+        setAuth({
+          authenticated: false,
+          username: ''
+        });
       }
 
       console.log(result);
@@ -73,10 +91,13 @@ interface Props {
 }
 
 export const AuthProvider = ({ children }: Props) => {
-  const [authenticated, setAuthenticated] = useState(false);
+  const [auth, setAuth] = useState({
+    authenticated: false,
+    username: ''
+  });
 
   return (
-    <authContext.Provider value={{ authenticated, setAuthenticated }}>
+    <authContext.Provider value={{ auth, setAuth }}>
       {children}
     </authContext.Provider>
   );

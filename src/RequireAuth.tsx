@@ -10,9 +10,9 @@ export const RequireAuth = ({ children }: Props) => {
   const route = useLocation().pathname;
   console.log(route);
 
-  const { authenticated } = useContext(authContext);
+  const { auth } = useContext(authContext);
 
-  const { isAuthed } = useAuth();
+  const { currentUser } = useAuth();
   const [loading, setLoading] = useState(true);
   const [hasCookie, setHasCookie] = useState(false);
 
@@ -20,15 +20,19 @@ export const RequireAuth = ({ children }: Props) => {
 
   useEffect(() => {
     // TODO: Fix authed, it's not working rn
-    if (authenticated) {
+    if (auth.authenticated) {
       setLoading(false);
       return;
     }
 
     async function checkIfUserHasCookie() {
-      const result = await isAuthed();
-      console.log("Has cookie " + result);
-      setHasCookie(result);
+      const result = await currentUser();
+      if (!result) {
+        setHasCookie(false);
+      } else {
+        setHasCookie(true);
+      }
+
       setLoading(false);
     }
 
@@ -37,7 +41,7 @@ export const RequireAuth = ({ children }: Props) => {
 
   if (loading) {
     return (<h1>Loading...</h1>)
-  } else if (authenticated || hasCookie == true || route == "/") {
+  } else if (auth.authenticated || hasCookie == true || route == "/") {
     return (<div>{children}</div>)
   } else {
     return (<Navigate to="/login" replace />)
