@@ -35,6 +35,7 @@ const filterOptions = ['add date', 'publish date']
 export const AddAlbum: React.FC<Props> = (props) => {
   const [listenStatus, setListenStatus] = useState('listened')
   const [filterStatus, setFilterStatus] = useState('none');
+  const [searching, setSearching] = useState(false);
   /*
   const handleclick = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -49,7 +50,11 @@ export const AddAlbum: React.FC<Props> = (props) => {
   }
   */
 
+  const handleAdd  = async (e: React.MouseEvent) => {
+    e.preventDefault();
 
+    setSearching(!searching);
+  }
 
   return (
     <div>
@@ -57,12 +62,15 @@ export const AddAlbum: React.FC<Props> = (props) => {
       <div className="container">
         <div className="buttonRow">
           <Dropdown controlClassName="dropdownControl" arrowClassName='arrowStyle' menuClassName='menuStyle' options={listenOptions} value={listenOptions[0]} placeholder="Listen Status" />
-          <div className="addAlbum">
+          <div className="addAlbum" onClick={handleAdd}>
             <img src={ add } className="add"/>
             <img src={ record } className="record"/>
           </div>
           <Dropdown controlClassName="dropdownControl" arrowClassName='arrowStyle' menuClassName='menuStyle' options={filterOptions} value={filterOptions[0]} placeholder="Sort By" />
         </div>
+
+        {searching  && <div><input type='text' /></div>}
+        <div className="albumsContainer"></div>
       </div>
     </div>
   );
