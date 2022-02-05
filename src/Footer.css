@@ -1,0 +1,21 @@
+.barArea {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 0.8em;
+  bottom: 1em;
+}
+
+.topBar {
+  width: calc(90% - 2px);
+  height: 33%;
+  border: 1px solid #c9c7d5
+}
+
+.bottomBar {
+  width: 90%;
+  height: 67%;
+  background-color: #c9c7d5;
+}
