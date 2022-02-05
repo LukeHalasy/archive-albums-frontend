@@ -2,7 +2,7 @@
   position: absolute;
   top: 0;
   width: 100%;
-  height: 12%;
+  height: var(--navbar-height);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -45,7 +45,7 @@
 
 .logout .topBar {
   position: relative;
-  background-color: var(--color-white-main);
+  background-color: #DCDBE9;
   width: 80%;
   height: 5px;
   margin-bottom: 5px;

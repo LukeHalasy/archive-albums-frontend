@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Navbar } from './Navbar';
 import { App } from './App';
 import { Login } from './Login';
 import { Logout } from './Logout';
@@ -16,12 +15,11 @@ ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
       <BrowserRouter>
-        <Navbar></Navbar>
         <Routes>
           <Route path="/" element={<RequireAuth><App /></RequireAuth>} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
-          <Route path="addalbum" element={<RequireAuth><AddAlbum /></RequireAuth>} />
+          <Route path="addalbum" element={<AddAlbum />} />
           <Route path="logout" element={<RequireAuth><Logout /></RequireAuth>} />
         </Routes>
       </BrowserRouter>

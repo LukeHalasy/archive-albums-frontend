@@ -10,7 +10,6 @@ export const App: React.FC<{}> = () => {
   if (auth.authenticated) {
     return (
       <div>
-        <Navbar />
         Logged in as: TODO add
         <Link to="/addalbum">add album</Link> <br />
         <Link to="/logout">logout</Link> <br />
@@ -19,7 +18,6 @@ export const App: React.FC<{}> = () => {
   } else {
     return (
       <div>
-        <Navbar />
         Archive Albums <br /> 
         { /* todo: if user is logged in and goes to login page, redirect to add album */ }
         <Link to="/login">login</Link> <br />

@@ -1,1 +1,67 @@
+.container {
+  position: absolute;
+  top: var(--navbar-height);
+  height: calc(100% - var(--navbar-height));
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.buttonRow {
+  position: relative;
+  height: 15%;
+  width: 600px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.buttonRow .dropdownControl {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--album-box-bg);
+  font-family: 'Fira Mono';
+  font-size: 0.85em;
+  border-radius: 0.9em;
+  color:  #dcdbe9;
+  height: 5em;
+  border: 0px;
+}
+
+.buttonRow .arrowStyle {
+  color:  #dcdbe9;
+  display: box;
+  margin-top: 0.8em;
+}
+
+.buttonRow .Dropdown-option {
+  background-color: var(--album-box-bg);
+  color:  #dcdbe9;
+  border: 5px;
+}
+
+.buttonRow .addAlbum {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  width: 130px;
+  height: 50%;
+
+  border: 2px solid var(--color-white-brighter);
+  background-color: var(--album-box-bg);
+}
+
+.buttonRow .addAlbum .add {
+  height: 35%;  
+  margin-right: 10px;
+}
+
+.buttonRow .addAlbum .record {
+  height: 60%;  
+}
