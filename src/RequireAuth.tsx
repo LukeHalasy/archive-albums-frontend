@@ -1,27 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom'
-import { useAuth } from './useAuth'
+import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate, useLocation, Navigate } from 'react-router-dom'
+import { useAuth, authContext } from './useAuth'
 
 interface Props {
   children: React.ReactNode;
 }
 
 export const RequireAuth = ({ children }: Props) => {
-  const navigate = useNavigate();
-  const { authed, isAuthed } = useAuth();
+  const route = useLocation().pathname;
+  console.log(route);
+
+  const { auth } = useContext(authContext);
+
+  const { currentUser } = useAuth();
   const [loading, setLoading] = useState(true);
   const [hasCookie, setHasCookie] = useState(false);
 
+  console.log(children);
+
   useEffect(() => {
-    if (authed) {
+    // TODO: Fix authed, it's not working rn
+    if (auth.authenticated) {
       setLoading(false);
       return;
     }
 
     async function checkIfUserHasCookie() {
-      const result = await isAuthed();
-      console.log("Has cookie " + result);
-      setHasCookie(result);
+      const result = await currentUser();
+      if (!result) {
+        setHasCookie(false);
+      } else {
+        setHasCookie(true);
+      }
+
       setLoading(false);
     }
 
@@ -30,11 +41,9 @@ export const RequireAuth = ({ children }: Props) => {
 
   if (loading) {
     return (<h1>Loading...</h1>)
-  } else if (authed || hasCookie) {
+  } else if (auth.authenticated || hasCookie == true || route == "/") {
     return (<div>{children}</div>)
   } else {
     return (<Navigate to="/login" replace />)
   }
-
-  
 }
