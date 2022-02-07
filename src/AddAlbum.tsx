@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 import { Navbar } from './Navbar';
+import { SearchInput } from './SearchInput';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 
@@ -69,7 +70,7 @@ export const AddAlbum: React.FC<Props> = (props) => {
           <Dropdown controlClassName="dropdownControl" arrowClassName='arrowStyle' menuClassName='menuStyle' options={filterOptions} value={filterOptions[0]} placeholder="Sort By" />
         </div>
 
-        {searching  && <div><input type='text' /></div>}
+        {searching  && <div><SearchInput /></div>}
         <div className="albumsContainer"></div>
       </div>
     </div>
