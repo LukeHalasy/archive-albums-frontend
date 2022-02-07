@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import { Navbar } from './Navbar';
@@ -28,6 +28,7 @@ export const AddAlbum: React.FC<Props> = (props) => {
   const [listenStatus, setListenStatus] = useState('listened')
   const [filterStatus, setFilterStatus] = useState('none');
   const [searching, setSearching] = useState(false);
+  const [albums, setAlbums] = useState<AlbumDetails[]>([]);
   /*
   const handleclick = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -58,6 +59,7 @@ export const AddAlbum: React.FC<Props> = (props) => {
     });
 
     console.log(result);
+    setAlbums((albums) => [...albums, albumDetails] );
     setSearching(false);
   }
 
@@ -75,7 +77,17 @@ export const AddAlbum: React.FC<Props> = (props) => {
         </div>
 
         {searching  && <SearchInput addAlbum={addAlbum}/>}
-        <div className="albumsContainer"></div>
+        <div className="albumsContainer">
+          {(albums.length > 0) ? albums.map((album, index) => (
+            <div key={index} className="album">
+              <img src={album.image} />
+              <div className="description">
+                <p>{album.name}</p>
+                <p>{album.artist}</p>
+              </div>
+            </div>
+          )) : <p>No albums</p>}
+        </div>
       </div>
     </div>
   );

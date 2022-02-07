@@ -26,12 +26,7 @@
   align-items: center;
 }
 
-.albumsContainer {
-  flex: 7 1 0;
-  position: relative;
-  background-color: var(--album-box-bg);
-  width: 1200px;
-}
+
 
 .buttonRow .dropdownControl {
   display: flex;
@@ -83,4 +78,45 @@
 
 .buttonRow .addAlbum .record {
   height: 60%;  
+}
+
+.albumsContainer {
+  flex: 7 1 0;
+  position: relative;
+  background-color: var(--album-box-bg);
+  width: 900px;
+  overflow-y: scroll;
+  display: flex;
+}
+
+@media only screen and (max-width: 1199px) { 
+  .albumsContainer {
+    width: 80%;
+  } 
+}
+
+@media only screen and (min-width: 1200px) { 
+  .albumsContainer {
+    width: 900px;
+  } 
+}
+
+.albumsContainer .album {
+  width: 33%;
+  height: 20%;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.albumsContainer img {
+  height: 100%;
+}
+
+.albumsContainer .description {
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
