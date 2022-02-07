@@ -10,3 +10,14 @@
   color: var(--color-white-main);
   font-family: 'Fira Mono';
 }
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li:hover {
+  cursor: pointer;
+  background-color: var(--color-white-main);
+  color: var(--album-box-bg);
+}

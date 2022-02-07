@@ -1,9 +1,5 @@
 import axios from 'axios';
 
-const url = axios.create({
-  baseURL: 'localhost:4000/api/v1/albums/searchAlbums',
-});
-
 export const getAlbumResults = async (title: string) => {
   const result = await axios.get(`http://localhost:4000/api/v1/albums/searchAlbums/${title}`,  {
     headers: {

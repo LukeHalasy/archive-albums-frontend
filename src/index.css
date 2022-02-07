@@ -27,6 +27,7 @@ html, body, .vsc-initialized  {
   overflow: hidden;
   background-color: var(--bgcolor);
   font-family: 'Fira Mono Bold', 'Fira Mono', 'Fira Sans', 'Helvetica Neue';
+  color: var(--color-white-main);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

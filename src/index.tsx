@@ -20,7 +20,7 @@ ReactDOM.render(
           <Route path="/" element={<RequireAuth><App /></RequireAuth>} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
-          <Route path="addalbum" element={<AddAlbum />} />
+          <Route path="addalbum" element={<RequireAuth><AddAlbum /></RequireAuth>} />
           <Route path="logout" element={<RequireAuth><Logout /></RequireAuth>} />
         </Routes>
       </BrowserRouter>

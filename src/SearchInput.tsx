@@ -5,21 +5,22 @@ import { getAlbumResults } from './useAPI';
 import './SearchInput.css';
 
 interface Props {
-
+  addAlbum: any
 }
 
 interface Album {
-  name: string
   artist: string
+  name: string
+  image: string
 }
 
-export const SearchInput: React.FC<Props> = () => {
+export const SearchInput: React.FC<Props> = ({ addAlbum }) => {
   const [inputValue, setInputValue] = useState('');
   const [loading, setLoading] = useState(false);
   const [options, setOptions] = useState<Album[]>();
 
   const debouncedSave = useCallback(
-    debounce((newValue) => getSuggestions(newValue), 600),
+    debounce((newValue) => getSuggestions(newValue), 380),
     []
   );
 
@@ -52,7 +53,7 @@ export const SearchInput: React.FC<Props> = () => {
           {(options && options.length > 0) &&
              !loading &&
               options?.map((value: Album, index: number) => (
-                <li key={`${index}`}>{value.name}</li>
+                <li key={`${index}`} onClick={() => addAlbum(value)}>{`${value.artist} - ${value.name}`}</li>
           ))}
         </ul>
       </div>
