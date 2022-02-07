@@ -9,9 +9,11 @@ RUN npm install
 COPY . .
 
 FROM base as dev
+ENV REACT_APP_BACKEND_URL http://localhost:4000
 CMD ["npm", "start"]
 
 FROM base as build-deps
+ENV REACT_APP_BACKEND_URL https://backend-rbnkjl6y4q-uc.a.run.app
 RUN ["npm", "run" , "build"]
 
 FROM macbre/nginx-brotli:latest as prod

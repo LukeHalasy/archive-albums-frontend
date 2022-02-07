@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import { Navbar } from './Navbar';
@@ -28,6 +28,7 @@ export const AddAlbum: React.FC<Props> = (props) => {
   const [listenStatus, setListenStatus] = useState('listened')
   const [filterStatus, setFilterStatus] = useState('none');
   const [searching, setSearching] = useState(false);
+  const [albums, setAlbums] = useState<AlbumDetails[]>([]);
   /*
   const handleclick = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -42,15 +43,41 @@ export const AddAlbum: React.FC<Props> = (props) => {
   }
   */
 
+  useEffect(() => {
+    async function fetchUsersAlbums() {
+      const result = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/getAlbums`, {
+        headers: {
+         'Content-Type': 'application/json'
+        },
+        withCredentials: true
+      });  
+
+      if (result.status == 200) {
+        for (let i = 0; i < result.data.albums.length; i++) {
+          setAlbums((albums) => [...albums, result.data.albums[i]] );
+        }
+      } else {
+        // TODO handle
+      }
+      console.log(result);
+
+      // setAlbums((albums) => [...albums, albumDetails] );
+    }
+
+    fetchUsersAlbums();
+  }, [])
+
   const handleSearchStart  = async (e: React.MouseEvent) => {
     e.preventDefault();
 
     setSearching(!searching);
   }
 
+
+
   
   const addAlbum = async (albumDetails: AlbumDetails) => {
-    const result = await axios.post('http://localhost:4000/api/v1/albums/addAlbum', JSON.stringify(albumDetails), {
+    const result = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/addAlbum`, JSON.stringify(albumDetails), {
       headers: {
        'Content-Type': 'application/json'
       },
@@ -58,6 +85,7 @@ export const AddAlbum: React.FC<Props> = (props) => {
     });
 
     console.log(result);
+    setAlbums((albums) => [...albums, albumDetails] );
     setSearching(false);
   }
 
@@ -75,7 +103,17 @@ export const AddAlbum: React.FC<Props> = (props) => {
         </div>
 
         {searching  && <SearchInput addAlbum={addAlbum}/>}
-        <div className="albumsContainer"></div>
+        <div className="albumsContainer">
+          {(albums.length > 0) ? albums.map((album, index) => (
+            <div key={index} className="album">
+              <img src={album.image} />
+              <div className="description">
+                <p>{album.name}</p>
+                <p>{album.artist}</p>
+              </div>
+            </div>
+          )) : <p>No albums</p>}
+        </div>
       </div>
     </div>
   );

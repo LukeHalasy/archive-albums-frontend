@@ -19,7 +19,7 @@ export const useAuth = () => {
 
   return {
     async login(credentials: Credentials) {
-      const result = await axios.post('http://localhost:4000/api/v1/users/login', JSON.stringify(credentials), {
+      const result = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/login`, JSON.stringify(credentials), {
         headers: {
          'Content-Type': 'application/json'
         },
@@ -44,7 +44,7 @@ export const useAuth = () => {
       return result;
     },
     async currentUser() {
-      const userReq = await axios.get('http://localhost:4000/api/v1/users/currentUser',  {
+      const userReq = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/currentUser`,  {
         headers: {
          'Content-Type': 'application/json'
         },
@@ -68,7 +68,7 @@ export const useAuth = () => {
       }
     },
     async logout() {
-      const result = await axios.delete('http://localhost:4000/api/v1/users/logout', {
+      const result = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/logout`, {
         headers: {
          'Content-Type': 'application/json'
         },

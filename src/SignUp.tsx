@@ -17,7 +17,7 @@ interface Credentials {
 }
 
 async function signUpUser(credentials: Credentials) {
-  return fetch('http://localhost:4000/api/v1/users/signup', {
+  return fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/signup`, {
     method: 'POST',
     headers: {
      'Content-Type': 'application/json'
