@@ -43,15 +43,41 @@ export const AddAlbum: React.FC<Props> = (props) => {
   }
   */
 
+  useEffect(() => {
+    async function fetchUsersAlbums() {
+      const result = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/getAlbums`, {
+        headers: {
+         'Content-Type': 'application/json'
+        },
+        withCredentials: true
+      });  
+
+      if (result.status == 200) {
+        for (let i = 0; i < result.data.albums.length; i++) {
+          setAlbums((albums) => [...albums, result.data.albums[i]] );
+        }
+      } else {
+        // TODO handle
+      }
+      console.log(result);
+
+      // setAlbums((albums) => [...albums, albumDetails] );
+    }
+
+    fetchUsersAlbums();
+  }, [])
+
   const handleSearchStart  = async (e: React.MouseEvent) => {
     e.preventDefault();
 
     setSearching(!searching);
   }
 
+
+
   
   const addAlbum = async (albumDetails: AlbumDetails) => {
-    const result = await axios.post('http://localhost:4000/api/v1/albums/addAlbum', JSON.stringify(albumDetails), {
+    const result = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/addAlbum`, JSON.stringify(albumDetails), {
       headers: {
        'Content-Type': 'application/json'
       },

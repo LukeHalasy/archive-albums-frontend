@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const getAlbumResults = async (title: string) => {
-  const result = await axios.get(`http://localhost:4000/api/v1/albums/searchAlbums/${title}`,  {
+  const result = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/searchAlbums/${title}`,  {
     headers: {
      'Content-Type': 'application/json'
     },
