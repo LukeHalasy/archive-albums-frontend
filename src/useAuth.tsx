@@ -26,6 +26,8 @@ export const useAuth = () => {
         withCredentials: true
       }) 
 
+      console.log(result);
+
       if (result.status == 200) {
         setAuth({
           authenticated: true,
