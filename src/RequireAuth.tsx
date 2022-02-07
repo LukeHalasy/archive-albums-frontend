@@ -20,6 +20,7 @@ export const RequireAuth = ({ children }: Props) => {
 
   useEffect(() => {
     // TODO: Fix authed, it's not working rn
+    console.log("CALLLLED")
     if (auth.authenticated) {
       setLoading(false);
       return;
@@ -27,17 +28,17 @@ export const RequireAuth = ({ children }: Props) => {
 
     async function checkIfUserHasCookie() {
       const result = await currentUser();
-      if (!result) {
-        setHasCookie(false);
-      } else {
+      if (result && result.data.logged_in) {
         setHasCookie(true);
+      } else {
+        setHasCookie(false);
       }
 
       setLoading(false);
     }
 
     checkIfUserHasCookie();
-  }, [])
+  }, [children])
 
   if (loading) {
     return (<h1>Loading...</h1>)

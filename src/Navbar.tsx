@@ -11,7 +11,7 @@ interface Props {
 export const Navbar: React.FC<Props> = (props) => {
   const navigate = useNavigate();
   const { auth } = useContext(authContext);
-  const logoTagLine = (auth.authenticated) ? auth.username : "archivealbums.com";
+  const logoTagLine = (auth.authenticated) ? auth.email : "archivealbums.com";
 
   return (
     <div className='bar'>

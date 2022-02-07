@@ -12,7 +12,7 @@ interface SignUpResponse {
 }
 */
 interface Credentials {
-  username: string;
+  email: string;
   password: string;
 }
 
@@ -28,14 +28,14 @@ async function signUpUser(credentials: Credentials) {
 }
 
 export const SignUp: React.FC<Props> = (props) => {
-  const [username, setUsername] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const handleclick = async (e: React.MouseEvent) => {
     e.preventDefault();
     
     // call API
     const response = await signUpUser({
-      username,
+      email,
       password
     });
 
@@ -45,7 +45,7 @@ export const SignUp: React.FC<Props> = (props) => {
   return (
     <div>
       <h1>Sign Up: </h1>
-      <input type="text"  onChange={e =>setUsername(e.target.value)}/>
+      <input type="text"  onChange={e =>setEmail(e.target.value)}/>
       <input type="text"  onChange={e =>setPassword(e.target.value)}/>
       <button  type="submit" onClick={handleclick}>submit</button>
     </div>

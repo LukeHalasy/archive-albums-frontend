@@ -12,13 +12,13 @@ export const Login: React.FC<Props> = (props) => {
   const navigate = useNavigate();
   const { login } = useAuth();
 
-  const [username, setUsername] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const handleLogin = async (e: React.MouseEvent) => {
     e.preventDefault();
     
     const result = await login({
-      username,
+      email,
       password
     });
 
@@ -33,7 +33,7 @@ export const Login: React.FC<Props> = (props) => {
   return (
     <div>
       <h1>Login: </h1>
-      <input type="text"  onChange={e =>setUsername(e.target.value)}/>
+      <input type="text"  onChange={e =>setEmail(e.target.value)}/>
       <input type="text"  onChange={e =>setPassword(e.target.value)}/>
       <button  type="submit" onClick={handleLogin}>submit</button>
     </div>

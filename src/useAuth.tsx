@@ -2,16 +2,16 @@ import React, { useState, useContext, createContext } from 'react';
 import axios from 'axios';
 
 interface Credentials {
-  username: string;
+  email: string;
   password: string;
 }
 
 export const authContext = createContext({
   auth: {
     authenticated: false,
-    username: ''
+    email: ''
   },
-  setAuth: (auth: {authenticated: boolean, username: string}) => {}
+  setAuth: (auth: {authenticated: boolean, email: string}) => {}
 });
 
 export const useAuth = () => {
@@ -31,12 +31,12 @@ export const useAuth = () => {
       if (result.status == 200) {
         setAuth({
           authenticated: true,
-          username: result.data.username
+          email: result.data.email
         });
       } else {
         setAuth({
           authenticated: true,
-          username: ''
+          email: ''
         });
       }
 
@@ -56,13 +56,13 @@ export const useAuth = () => {
       if (userReq.status == 200 && userReq.data.logged_in == true) {
         setAuth({
           authenticated: true,
-          username: userReq.data.username
+          email: userReq.data.email
         })
         return userReq;
       } else {
         setAuth({
           authenticated: false,
-          username: ''
+          email: ''
         })
         return userReq;
       }
@@ -78,7 +78,7 @@ export const useAuth = () => {
       if (result.status == 200) {
         setAuth({
           authenticated: false,
-          username: ''
+          email: ''
         });
       }
 
@@ -95,7 +95,7 @@ interface Props {
 export const AuthProvider = ({ children }: Props) => {
   const [auth, setAuth] = useState({
     authenticated: false,
-    username: ''
+    email: ''
   });
 
   return (
