@@ -70,7 +70,7 @@ export const AddAlbum: React.FC<Props> = (props) => {
           <Dropdown controlClassName="dropdownControl" arrowClassName='arrowStyle' menuClassName='menuStyle' options={filterOptions} value={filterOptions[0]} placeholder="Sort By" />
         </div>
 
-        {searching  && <div><SearchInput /></div>}
+        {searching  && <SearchInput />}
         <div className="albumsContainer"></div>
       </div>
     </div>

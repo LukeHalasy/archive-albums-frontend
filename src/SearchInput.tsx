@@ -2,6 +2,8 @@ import React, { useState, useCallback } from 'react';
 import debounce from 'lodash.debounce';
 import { getAlbumResults } from './useAPI';
 
+import './SearchInput.css';
+
 interface Props {
 
 }

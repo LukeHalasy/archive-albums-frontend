@@ -1,0 +1,12 @@
+.container input {
+  flex: 1 1 0;
+  width: 600px;
+  background-color: var(--album-box-bg);
+  color: var(--color-white-main);
+  font-family: 'Fira Mono';
+}
+
+.results {
+  color: var(--color-white-main);
+  font-family: 'Fira Mono';
+}
