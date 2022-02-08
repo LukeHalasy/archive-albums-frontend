@@ -13,7 +13,7 @@ ENV REACT_APP_BACKEND_URL http://localhost:4000
 CMD ["npm", "start"]
 
 FROM base as build-deps
-ENV REACT_APP_BACKEND_URL https://backend-rbnkjl6y4q-uc.a.run.app
+ENV REACT_APP_BACKEND_URL https://server.archivealbums.com
 RUN ["npm", "run" , "build"]
 
 FROM macbre/nginx-brotli:latest as prod
