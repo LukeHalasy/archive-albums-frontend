@@ -29,14 +29,14 @@ export const useAuth = () => {
 
       console.log(result);
 
-      if (result.status == 200) {
+      if (result.status == 201) {
         setAuth({
           authenticated: true,
           email: result.data.email
         });
       } else {
         setAuth({
-          authenticated: true,
+          authenticated: false,
           email: ''
         });
       }
@@ -61,7 +61,7 @@ export const useAuth = () => {
         });
       } else {
         setAuth({
-          authenticated: true,
+          authenticated: false,
           email: ''
         });
       }
@@ -69,7 +69,7 @@ export const useAuth = () => {
       return result;
     },
     async currentUser() {
-      const userReq = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/currentUser`,  {
+      const userReq = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/currentUser`, {},{
         headers: {
          'Content-Type': 'application/json'
         },

@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar } from './Navbar';
-import { useAuth, authContext } from './useAuth';
+import { authContext } from './useAuth';
 import './App.css';
 
 export const App: React.FC<{}> = () => {
@@ -10,7 +9,7 @@ export const App: React.FC<{}> = () => {
   if (auth.authenticated) {
     return (
       <div>
-        Logged in as: TODO add
+        {`Logged in as: ${auth.email}`}<br />
         <Link to="/addalbum">add album</Link> <br />
         <Link to="/logout">logout</Link> <br />
       </div>

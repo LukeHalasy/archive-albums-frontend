@@ -29,7 +29,7 @@ export const SignUp: React.FC<Props> = (props) => {
       password
     });
 
-    if (result.status == 200) {
+    if (result.status == 201) {
       navigate("/");
     } else {
       // display failed login info
