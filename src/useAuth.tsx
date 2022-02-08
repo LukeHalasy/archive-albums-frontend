@@ -19,6 +19,7 @@ export const useAuth = () => {
 
   return {
     async login(credentials: Credentials) {
+      console.log(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/login`);
       const result = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/login`, JSON.stringify(credentials), {
         headers: {
          'Content-Type': 'application/json'

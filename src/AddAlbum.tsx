@@ -57,6 +57,7 @@ export const AddAlbum: React.FC<Props> = (props) => {
           setAlbums((albums) => [...albums, result.data.albums[i]] );
         }
       } else {
+        console.log("ERROR fetching")
         // TODO handle
       }
       console.log(result);
