@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './SignUp.css';
+import { useAuth } from './useAuth'
+import { useNavigate } from 'react-router-dom'
 
 interface Props {
 
@@ -11,35 +13,28 @@ interface SignUpResponse {
 
 }
 */
-interface Credentials {
-  email: string;
-  password: string;
-}
-
-async function signUpUser(credentials: Credentials) {
-  return fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/signup`, {
-    method: 'POST',
-    headers: {
-     'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(credentials)
-  })
-   .then(data => data.json())
-}
 
 export const SignUp: React.FC<Props> = (props) => {
+  const navigate = useNavigate();
+  const { signup } = useAuth();
+
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const handleclick = async (e: React.MouseEvent) => {
+
+  const handleSignup = async (e: React.MouseEvent) => {
     e.preventDefault();
     
-    // call API
-    const response = await signUpUser({
+    const result = await signup({
       email,
       password
     });
 
-    console.log(response);
+    if (result.status == 200) {
+      navigate("/");
+    } else {
+      // display failed login info
+      console.log(result);
+    }
   }
 
   return (
@@ -47,7 +42,7 @@ export const SignUp: React.FC<Props> = (props) => {
       <h1>Sign Up: </h1>
       <input type="text"  onChange={e =>setEmail(e.target.value)}/>
       <input type="text"  onChange={e =>setPassword(e.target.value)}/>
-      <button  type="submit" onClick={handleclick}>submit</button>
+      <button  type="submit" onClick={handleSignup}>submit</button>
     </div>
   );
 }
