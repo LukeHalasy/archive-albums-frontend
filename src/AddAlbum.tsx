@@ -107,7 +107,7 @@ export const AddAlbum: React.FC<Props> = (props) => {
         <div className="albumsContainer">
           {(albums.length > 0) ? albums.map((album, index) => (
             <div key={index} className="album">
-              <img src={album.image} />
+              {(album.image) ? <img src={album.image} /> : <img />}
               <div className="description">
                 <p>{album.name}</p>
                 <p>{album.artist}</p>
