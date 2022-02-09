@@ -25,6 +25,10 @@
   align-self: center;
 }
 
+.home img:hover {
+  cursor: pointer;
+}
+
 .home p {
   margin: 0px;
   margin-left: 10px;

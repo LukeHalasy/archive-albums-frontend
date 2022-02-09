@@ -33,7 +33,7 @@ export const Navbar: React.FC<Props> = (props) => {
   return (
     <div className='bar'>
       <div className='home'>
-        <img src={ logo }/>
+        <img src={ logo } onClick={() => navigate("/")}/>
         <p>{logoTagLine}</p>
       </div>
       <div className='logout' onClick={() => setSettingsScreen(!settingsScreen)}>
