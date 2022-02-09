@@ -42,12 +42,12 @@ export const Navbar: React.FC<Props> = (props) => {
             <div className='logout' onClick={handleLogout}>Logout fair maiden</div> 
           </div>
         :
-          <div>
+          <React.Fragment>
             <div className='topBar'>
             </div>
             <div className='bottomBar'>
             </div>
-          </div>
+          </React.Fragment>
         }
         
       </div>

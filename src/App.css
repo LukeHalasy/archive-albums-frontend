@@ -1,0 +1,9 @@
+.container {
+  position: absolute;
+  top: var(--navbar-height);
+  height: calc(100% - var(--navbar-height) - var(--footer-height));
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
