@@ -43,6 +43,10 @@
   align-items: center;
 }
 
+.logout:hover {
+  cursor: pointer;
+}
+
 .logout .topBar {
   position: relative;
   background-color: #DCDBE9;

@@ -2,17 +2,14 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { authContext } from './useAuth';
 import './App.css';
+import { AddAlbum } from './AddAlbum';
 
 export const App: React.FC<{}> = () => {
   const { auth } = useContext(authContext);
 
   if (auth.authenticated) {
     return (
-      <div>
-        {`Logged in as: ${auth.email}`}<br />
-        <Link to="/addalbum">add album</Link> <br />
-        <Link to="/logout">logout</Link> <br />
-      </div>
+      <AddAlbum />
     )  
   } else {
     return (
