@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from './useAuth'
 import './Login.css';
 
@@ -30,11 +30,13 @@ export const Login: React.FC<Props> = (props) => {
   } 
 
   return (
-    <div>
-      <h1>Login: </h1>
-      <input type="text"  onChange={e =>setEmail(e.target.value)}/>
-      <input type="text"  onChange={e =>setPassword(e.target.value)}/>
-      <button  type="submit" onClick={handleLogin}>submit</button>
+    <div className='signInContainer'>
+      <div className="signIn">Sign in </div>
+      <div className="loginDescription">Enter your email and password to sign in</div>
+      <input className='loginButton' type="email" placeholder='Email' onChange={e =>setEmail(e.target.value)}/>
+      <input className='loginButton' type="password" placeholder='Password' onChange={e =>setPassword(e.target.value)}/>
+      <button className='loginSubmit' type="submit" onClick={handleLogin}>Sign In</button>
+      <div className='dontHaveContainer'><div className='dontHave'>Don't have an account?</div> <Link className="signUpText" to='/signup'>Sign Up</Link></div>
     </div>
   );
 }
