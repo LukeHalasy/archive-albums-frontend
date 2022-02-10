@@ -150,7 +150,7 @@
   font-size: 12px;
 }
 
-.loginButton:focus {
+.formInput:focus {
   outline-color: var(--color-white-main);
   outline-width: 0.7em;
 }
