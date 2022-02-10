@@ -4,6 +4,114 @@
   height: calc(100% - var(--navbar-height) - var(--footer-height));
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
 }
+
+.content {
+  position: relative;
+  display: flex;
+  height: 80%;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.leftArea {
+  color: #dddddd;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+.previewArea {
+  border: 1px solid white;
+  height: 94%;
+}
+
+@media only screen and (max-width: 899px) { 
+  .content {
+    width: 80%;
+  } 
+
+  .leftArea {
+    width: 100%;
+  }
+
+  .previewArea {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 900px) { 
+  .leftArea {
+    width: 35%;
+    height: 85%;
+  }
+
+  .previewArea {
+    width: 65%;
+    display: "";
+  }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1500px ) { 
+  .content {
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 1501px) { 
+  .content {
+    width: 1200px;
+  } 
+}
+
+.leftArea .title {
+  font-size: 27px; 
+  font-family: 'Fira Mono Bold';
+  margin-top: 0em;
+  margin-bottom: 0.4em;
+}
+
+.leftArea .description {
+  font-size: 22px; 
+  word-spacing: 0.1em;
+  font-family: 'Fira Mono';
+  margin-top: 0.4em;
+  margin-bottom: 0em;
+}
+
+.leftArea .buttonsContainer {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  background: #dddddd;
+  color: var(--bgcolor);
+  border-radius: 0.2em;
+  height: 1.90em;
+  width: 100%;
+
+  font-family: 'Fira Mono Bold';
+  font-size: 22px;
+}
+
+.button:nth-child(1) {
+  margin-bottom: 1.2em;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+

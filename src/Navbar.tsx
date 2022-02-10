@@ -31,25 +31,27 @@ export const Navbar: React.FC<Props> = (props) => {
   }
 
   return (
-    <div className='bar'>
-      <div className='home'>
-        <img src={ logo } onClick={() => navigate("/")}/>
-        <p>{logoTagLine}</p>
-      </div>
-      <div className='logout' onClick={() => setSettingsScreen(!settingsScreen)}>
-        {(settingsScreen) ? 
-          <div className='settingsScreen'>
-            <div className='logout' onClick={handleLogout}>Logout fair maiden</div> 
-          </div>
-        :
-          <React.Fragment>
-            <div className='topBar'>
+    <div className='barContainer'>
+      <div className='bar'>
+        <div className='home'>
+          <img src={ logo } onClick={() => navigate("/")}/>
+          <p>{logoTagLine}</p>
+        </div>
+        <div className='logout' onClick={() => setSettingsScreen(!settingsScreen)}>
+          {(settingsScreen) ? 
+            <div className='settingsScreen'>
+              <div className='logout' onClick={handleLogout}>Logout fair maiden</div> 
             </div>
-            <div className='bottomBar'>
-            </div>
-          </React.Fragment>
-        }
-        
+          :
+            <React.Fragment>
+              <div className='topBar'>
+              </div>
+              <div className='bottomBar'>
+              </div>
+            </React.Fragment>
+          }
+          
+        </div>
       </div>
     </div>
   );

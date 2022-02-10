@@ -1,8 +1,16 @@
-.bar {
+.barContainer {
   position: absolute;
   top: 0;
   width: 100%;
   height: var(--navbar-height);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.bar {
+  width: var(--navbar-width);
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -13,8 +21,7 @@
 }
 
 .home {
-  height: 58%;
-  margin-left: 45px;
+  height: 54%;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -37,7 +44,6 @@
 
 
 .logout {
-  margin-right: 60px;
   position: relative;
   width: 60px;
   height: 60%;
@@ -56,6 +62,7 @@
   background-color: #DCDBE9;
   width: 80%;
   height: 5px;
+  border: 0px;
   margin-bottom: 5px;
 }
 
