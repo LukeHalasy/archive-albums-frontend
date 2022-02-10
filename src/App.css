@@ -14,20 +14,20 @@
   display: flex;
   height: 80%;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .leftArea {
   color: #dddddd;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-around;
 }
 
 .previewArea {
   border: 1px solid white;
-  height: 80%;
+  height: 94%;
 }
 
 @media only screen and (max-width: 899px) { 
@@ -45,13 +45,9 @@
 }
 
 @media only screen and (min-width: 900px) { 
-  .content {
-    width: 1250px;
-  } 
-
   .leftArea {
     width: 35%;
-    height: 90%;
+    height: 85%;
   }
 
   .previewArea {
@@ -60,21 +56,35 @@
   }
 }
 
+@media only screen and (min-width: 900px) and (max-width: 1500px ) { 
+  .content {
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 1501px) { 
+  .content {
+    width: 1200px;
+  } 
+}
+
 .leftArea .title {
-  font-size: 30px; 
+  font-size: 27px; 
   font-family: 'Fira Mono Bold';
+  margin-top: 0em;
   margin-bottom: 0.4em;
 }
 
 .leftArea .description {
-  font-size: 24px; 
+  font-size: 22px; 
   word-spacing: 0.1em;
   font-family: 'Fira Mono';
   margin-top: 0.4em;
+  margin-bottom: 0em;
 }
 
 .leftArea .buttonsContainer {
-  width: 79%;
+  width: 65%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -87,12 +97,18 @@
   justify-content: center;
   align-items: center;
 
-  background: var(--color-white-main);
+  background: #dddddd;
   color: var(--bgcolor);
-  border-radius: 0.6em;
-  height: 3.5em;
+  border-radius: 0.4em;
+  height: 2.5em;
   width: 100%;
-  margin-bottom: 1em;
+
+  font-family: 'Fira Mono Bold';
+  font-size: 25px;
+}
+
+.button:nth-child(1) {
+  margin-bottom: 1.2em;
 }
 
 .button:hover {
