@@ -1,7 +1,7 @@
 .container {
   position: absolute;
   top: var(--navbar-height);
-  height: calc(100% - var(--navbar-height) - var(--footer-height));
+  height: calc(100% - var(--navbar-height));
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -30,7 +30,7 @@
 }
 
 .previewArea {
-  border: 1px solid white;
+  border-bottom: 1px solid white;
   height: 94%;
 }
 

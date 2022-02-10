@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from './useAuth';
 
 import { Navbar } from './Navbar';
-import { Footer } from './Footer';
 import { Login }  from './Login';
 import { SignUp }  from './SignUp';
 
@@ -40,7 +39,6 @@ export const App: React.FC<{}> = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </React.Fragment>
   );
 };
