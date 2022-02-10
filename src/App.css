@@ -99,12 +99,12 @@
 
   background: #dddddd;
   color: var(--bgcolor);
-  border-radius: 0.4em;
-  height: 2.5em;
+  border-radius: 0.2em;
+  height: 1.90em;
   width: 100%;
 
   font-family: 'Fira Mono Bold';
-  font-size: 25px;
+  font-size: 22px;
 }
 
 .button:nth-child(1) {

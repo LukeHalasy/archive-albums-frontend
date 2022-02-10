@@ -10,13 +10,13 @@
 }
 
 .topBar {
-  width: calc(92% - 2px);
-  height: 8%;
+  width: calc(var(--navbar-width) - 2px);
+  height: 6%;
   border: 1px solid #c9c7d5
 }
 
 .bottomBar {
-  width: 92%;
-  height: 8%;
+  width: var(--navbar-width);
+  height: 6%;
   background-color: #c9c7d5;
 }
