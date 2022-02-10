@@ -27,16 +27,21 @@
   font-size: 12px;
 }
 
+.loginButton:focus {
+  outline-color: var(--color-white-main);
+  outline-width: 0.7em;
+}
+
 .loginSubmit {
-  width: 17.3em;
+  width: 22.3em;
   line-height: 0.3em;
   flex: 0;
   background-color: #fdfdfd;
   border-radius: 0.2em;
   border: 0px solid var(--album-box-bg);
-  font-family: 'Fira Mons';
+  font-family: 'Fira Mono';
   padding: 1em;
-  font-size: 17px;
+  font-size: 14px;
 }
 
 .dontHave {
