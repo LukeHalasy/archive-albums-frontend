@@ -2,8 +2,102 @@
   position: absolute;
   top: var(--navbar-height);
   height: calc(100% - var(--navbar-height) - var(--footer-height));
+  border: 2px solid white;
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  height: 80%;
+  flex-direction: row;
+  align-items: center;
+}
+
+.leftArea {
+  border: 1px solid white;
+  color: #dddddd;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
 }
+
+.previewArea {
+  border: 1px solid white;
+  height: 100%;
+}
+
+@media only screen and (max-width: 899px) { 
+  .content {
+    width: 80%;
+  } 
+
+  .leftArea {
+    width: 100%;
+  }
+
+  .previewArea {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 900px) { 
+  .content {
+    width: 1250px;
+  } 
+
+  .leftArea {
+    width: 35%;
+    height: 90%;
+  }
+
+  .previewArea {
+    width: 65%;
+    display: "";
+  }
+}
+
+.leftArea .title {
+  font-size: 30px; 
+  font-family: 'Fira Mono Bold';
+  margin-bottom: 0.4em;
+}
+
+.leftArea .description {
+  font-size: 24px; 
+  word-spacing: 0.1em;
+  font-family: 'Fira Mono';
+  margin-top: 0.4em;
+}
+
+.leftArea .buttonsContainer {
+  width: 79%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  background: var(--color-white-main);
+  color: var(--bgcolor);
+  border-radius: 0.6em;
+  height: 3.5em;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+

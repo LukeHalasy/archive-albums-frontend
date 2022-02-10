@@ -3,11 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { App } from './App';
-import { Login } from './Login';
-import { SignUp } from './SignUp';
-import { AddAlbum } from './AddAlbum';
 import { RequireAuth } from './RequireAuth';
 import { AuthProvider } from './useAuth';
+import { AddAlbum } from './AddAlbum';
+
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -16,9 +15,7 @@ ReactDOM.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<RequireAuth><App /></RequireAuth>} />
-          <Route path="login" element={<Login />} />
-          <Route path="signup" element={<SignUp />} />
-          <Route path="addalbum" element={<RequireAuth><AddAlbum /></RequireAuth>} />
+          <Route path="/albums" element={<RequireAuth><AddAlbum /></RequireAuth>} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
