@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { authContext } from './useAuth';
+import { useAuth, authContext } from './useAuth';
 
 import { Navbar } from './Navbar';
 import { Login }  from './Login';
@@ -13,6 +13,43 @@ import './App.css';
 export const App: React.FC<{}> = () => {
   const navigate = useNavigate();
   const { auth } = useContext(authContext);
+  const { login, signup } = useAuth();
+  const [ signingUp, setSigningUp ] = useState(false);
+  
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+
+  const handleLogin = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    const result = await login({
+      email,
+      password
+    });
+
+    if (result.status == 200) {
+      navigate("/");
+    } else {
+      // display failed login info
+      console.log(result);
+    }
+  }
+  
+  const handleSignup = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    const result = await signup({
+      email,
+      password
+    });
+
+    if (result.status == 201) {
+      navigate("/");
+    } else {
+      // display failed login info
+      console.log(result);
+    }
+  }
 
   return (
     <React.Fragment>
@@ -31,7 +68,14 @@ export const App: React.FC<{}> = () => {
             </div>
             :
             <div className='buttonsContainer'>
-              <Login />
+              <div className='userContainer'>
+                <div className="title">{(signingUp) ? 'Sign Up' : 'Sign In'}</div>
+                <div className="accountDescription">Enter your email and password to sign in</div>
+                <input className='formInput' type="email" placeholder='Email' onChange={e =>setEmail(e.target.value)}/>
+                <input className='formInput' type="password" placeholder='Password' onChange={e =>setPassword(e.target.value)}/>
+                <button className='submitButton' type="submit" onClick={(signingUp) ? handleSignup : handleLogin}>{(signingUp) ? "Sign Up" : "Sign In"}</button>
+                <div className='reverseContainer'><div className='reverse'>Don't have an account?</div> <div className="reverseText" onClick={() => {setSigningUp(!signingUp)}}>{(signingUp) ? "Sign In" : "Sign Up"}</div></div>
+              </div>
             </div>
           }
           </div>

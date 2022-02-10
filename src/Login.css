@@ -1,22 +1,23 @@
-.signInContainer {
+.userContainer {
   height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
 }
-.signIn {
+
+.title {
   font-family: 'Fira Mono Bold';
   color: var(--color-white-main);
   font-size: 23px;
 }
 
-.loginDescription {
+.accountDescription {
   font-family: 'Fira Mono';
   font-size: 12px;
 }
 
-.loginButton {
+.formInput {
   width: 24em;
   line-height: 3em;
   flex: 0;
@@ -32,7 +33,7 @@
   outline-width: 0.7em;
 }
 
-.loginSubmit {
+.submitButton {
   width: 22.3em;
   line-height: 0.3em;
   flex: 0;
@@ -44,7 +45,7 @@
   font-size: 14px;
 }
 
-.dontHave {
+.reverse {
   font-family: 'Fira Mono';
   font-size: 13px;
 }
@@ -55,7 +56,7 @@
   align-items: center;
 }
 
-.signUpText {
+.reverseText {
   text-decoration: none;
   font-size: 13px;
   margin-left: 1em;
@@ -63,7 +64,7 @@
   color: #dddddd 
 }
 
-.dontHaveContainer {
+.reverseContainer {
   display: flex;
   flex-direction: row;
   align-items: center;

@@ -4,10 +4,10 @@ import { useAuth } from './useAuth'
 import './Login.css';
 
 interface Props {
-
+  setSigningUp: any;
 }
 
-export const Login: React.FC<Props> = (props) => {
+export const Login: React.FC<Props> = ({ setSigningUp }: Props) => {
   const navigate = useNavigate();
   const { login } = useAuth();
 
@@ -36,7 +36,7 @@ export const Login: React.FC<Props> = (props) => {
       <input className='loginButton' type="email" placeholder='Email' onChange={e =>setEmail(e.target.value)}/>
       <input className='loginButton' type="password" placeholder='Password' onChange={e =>setPassword(e.target.value)}/>
       <button className='loginSubmit' type="submit" onClick={handleLogin}>Sign In</button>
-      <div className='dontHaveContainer'><div className='dontHave'>Don't have an account?</div> <Link className="signUpText" to='/signup'>Sign Up</Link></div>
+      <div className='dontHaveContainer'><div className='dontHave'>Don't have an account?</div> <div className="signUpText" onClick={() => {setSigningUp(true)}}>Sign Up</div></div>
     </div>
   );
 }
