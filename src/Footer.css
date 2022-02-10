@@ -3,19 +3,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
   height: var(--footer-height);
-  bottom: 0em;
+  bottom: 0px;
 }
 
 .topBar {
-  width: calc(90% - 2px);
-  height: 33%;
+  width: calc(92% - 2px);
+  height: 8%;
   border: 1px solid #c9c7d5
 }
 
 .bottomBar {
-  width: 90%;
-  height: 67%;
+  width: 92%;
+  height: 8%;
   background-color: #c9c7d5;
 }

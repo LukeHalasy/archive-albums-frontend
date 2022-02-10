@@ -2,7 +2,6 @@
   position: absolute;
   top: var(--navbar-height);
   height: calc(100% - var(--navbar-height) - var(--footer-height));
-  border: 2px solid white;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -19,7 +18,6 @@
 }
 
 .leftArea {
-  border: 1px solid white;
   color: #dddddd;
   display: flex;
   flex-direction: column;
@@ -29,7 +27,7 @@
 
 .previewArea {
   border: 1px solid white;
-  height: 100%;
+  height: 80%;
 }
 
 @media only screen and (max-width: 899px) { 
