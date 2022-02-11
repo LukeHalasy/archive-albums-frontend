@@ -22,7 +22,6 @@
 
 .home {
   align-self: flex-end;
-  margin-bottom: 0.6em;
   height: 56%;
   position: relative;
   display: flex;
@@ -31,6 +30,7 @@
 
 .home img {
   height: 100%;
+  margin-bottom: 1em;
   align-self: center;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .home p {
-  margin: 0px;
+  margin-bottom: 0.2em;
   margin-left: 10px;
   align-self: end;
 }
