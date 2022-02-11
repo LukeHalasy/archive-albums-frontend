@@ -27,7 +27,6 @@
 
 .recordLoadIcon {
   width: 6em;
-  margin-right: 3em;
   opacity: 0.45;
   -webkit-animation: rotateRecord 3.2s linear infinite;
   animation: rotateRecord 3.2s linear infinite;
