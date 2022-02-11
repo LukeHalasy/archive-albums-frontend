@@ -43,7 +43,7 @@ export const Navbar: React.FC<Props> = (props) => {
         </div>
         {
           (auth.authenticated) ?
-            <div><p>{auth.email}</p>{<React.Fragment><p>&nbsp;*&nbsp;</p><a className="signOutText" onClick={handleLogout}>Sign Out</a></React.Fragment>}</div>
+            <div><p>{auth.email}</p>{<React.Fragment><p>&nbsp;*&nbsp;</p><a className="signOutText" onClick={handleLogout}>sign out</a></React.Fragment>}</div>
           : ""
         }
       </div>

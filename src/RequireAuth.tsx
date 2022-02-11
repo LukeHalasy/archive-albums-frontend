@@ -2,6 +2,9 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate, useLocation, Navigate } from 'react-router-dom'
 import { useAuth, authContext } from './useAuth'
 
+import { Loading } from './Loading'
+import { Navbar } from './Navbar'
+
 interface Props {
   children: React.ReactNode;
 }
@@ -41,7 +44,12 @@ export const RequireAuth = ({ children }: Props) => {
   }, [children])
 
   if (loading) {
-    return (<h1>Loading...</h1>)
+    return (
+      <React.Fragment>
+        <Navbar />
+        <Loading />
+      </React.Fragment>
+    )
   } else if (auth.authenticated || hasCookie == true || route == "/") {
     return (<div>{children}</div>)
   } else {
