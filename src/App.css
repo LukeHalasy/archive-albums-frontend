@@ -156,6 +156,12 @@
   align-items: center;
 }
 
+.serverMessage {
+  font-size: 0.82em;
+  font-family: 'Fira Mono Bold';
+  color: #fdfdfd;
+}
+
 @media only screen and (max-width: 649px) { 
   .content {
     justify-content: center;

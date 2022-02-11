@@ -12,6 +12,7 @@ export const App: React.FC<{}> = () => {
   const { auth } = useContext(authContext);
   const { login, signup } = useAuth();
   const [ signingUp, setSigningUp ] = useState(false);
+  const [ serverMessage, setServerMessage ] = useState("");
   
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -24,11 +25,13 @@ export const App: React.FC<{}> = () => {
       password
     });
 
-    if (result.status == 200) {
+    if (result && result.status == 200) {
       navigate("/albums");
-    } else {
+    } else if (result && (result.status == 404 || (result.status == 400 && result.data.message == 'incorrect email or password'))) {
       // display failed login info
-      console.log(result);
+      setServerMessage("Incorrect email or password")
+    } else {
+      setServerMessage("Failed to login")
     }
   }
   
@@ -72,6 +75,7 @@ export const App: React.FC<{}> = () => {
                 <input className='formInput' type="password" placeholder='Password' onChange={e =>setPassword(e.target.value)}/>
                 <button className='submitButton' type="submit" onClick={(signingUp) ? handleSignup : handleLogin}>{(signingUp) ? "Sign Up" : "Sign In"}</button>
                 <div className='reverseContainer'><div className='reverse'>{(signingUp) ? 'Already have an account?' : 'Don\'t have an account?'}</div> <div className="reverseText" onClick={() => {setSigningUp(!signingUp)}}>{(signingUp) ? "Sign In" : "Sign Up"}</div></div>
+                <div className='serverMessage'>{serverMessage}</div>
               </div>
             </div>
           }
