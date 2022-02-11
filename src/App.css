@@ -15,6 +15,7 @@
   height: 80%;
   flex-direction: row;
   align-items: flex-start;
+  justify-content: space-around;
 }
 
 .leftArea {
@@ -34,13 +35,14 @@
   height: 94%;
 }
 
-@media only screen and (max-width: 899px) { 
+@media only screen and (max-width: 1199px) { 
   .content {
     width: 80%;
   } 
 
   .leftArea {
     width: 100%;
+    align-items: center;
   }
 
   .previewArea {
@@ -48,13 +50,13 @@
   }
 }
 
-@media only screen and (min-width: 900px) { 
+@media only screen and (min-width: 1200px) { 
   .leftArea {
     width: 35%;
   }
 
   .previewArea {
-    width: 65%;
+    width: 55%;
     display: "";
   }
 }
@@ -69,6 +71,10 @@
   .content {
     width: 1200px;
   } 
+
+  .previewArea {
+    width: 900px;
+  }
 }
 
 .leftArea .title {
@@ -88,7 +94,6 @@
 }
 
 .leftArea .buttonsContainer {
-  width: 100%;
   flex: 2 1 0;
   display: flex;
   flex-direction: column;

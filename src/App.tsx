@@ -70,11 +70,11 @@ export const App: React.FC<{}> = () => {
             <div className='buttonsContainer'>
               <div className='userContainer'>
                 <div className="title">{(signingUp) ? 'Sign Up' : 'Sign In'}</div>
-                <div className="accountDescription">Enter your email and password to sign in</div>
+                <div className="accountDescription">{(signingUp) ? 'Enter a valid email and password to sign up': 'Enter your email and password to sign in'}</div>
                 <input className='formInput' type="email" placeholder='Email' onChange={e =>setEmail(e.target.value)}/>
                 <input className='formInput' type="password" placeholder='Password' onChange={e =>setPassword(e.target.value)}/>
                 <button className='submitButton' type="submit" onClick={(signingUp) ? handleSignup : handleLogin}>{(signingUp) ? "Sign Up" : "Sign In"}</button>
-                <div className='reverseContainer'><div className='reverse'>Don't have an account?</div> <div className="reverseText" onClick={() => {setSigningUp(!signingUp)}}>{(signingUp) ? "Sign In" : "Sign Up"}</div></div>
+                <div className='reverseContainer'><div className='reverse'>{(signingUp) ? 'Already have an account?' : 'Don\'t have an account?'}</div> <div className="reverseText" onClick={() => {setSigningUp(!signingUp)}}>{(signingUp) ? "Sign In" : "Sign Up"}</div></div>
               </div>
             </div>
           }
