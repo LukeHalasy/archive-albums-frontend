@@ -3,9 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth, authContext } from './useAuth';
 
 import { Navbar } from './Navbar';
-import { Login }  from './Login';
-import { SignUp }  from './SignUp';
-
 import { AddAlbum } from './AddAlbum';
 
 import './App.css';
@@ -28,7 +25,7 @@ export const App: React.FC<{}> = () => {
     });
 
     if (result.status == 200) {
-      navigate("/");
+      navigate("/albums");
     } else {
       // display failed login info
       console.log(result);

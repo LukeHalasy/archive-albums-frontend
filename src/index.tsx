@@ -6,7 +6,6 @@ import { App } from './App';
 import { RequireAuth } from './RequireAuth';
 import { AuthProvider } from './useAuth';
 import { AddAlbum } from './AddAlbum';
-import { SignUp } from './SignUp';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -17,7 +16,6 @@ ReactDOM.render(
         <Routes>
           <Route path="/" element={<RequireAuth><App /></RequireAuth>} />
           <Route path="/albums" element={<RequireAuth><AddAlbum /></RequireAuth>} />
-          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

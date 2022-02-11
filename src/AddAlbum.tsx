@@ -92,26 +92,29 @@ export const AddAlbum: React.FC<Props> = (props) => {
 
   return (
     <React.Fragment>
-      <div className="buttonRow">
-        <Dropdown controlClassName="dropdownControl" arrowClassName='arrowStyle' menuClassName='menuStyle' options={listenOptions} value={listenOptions[0]} placeholder="Listen Status" />
-        <div className="addAlbum" onClick={handleSearchStart}>
-          <img src={ add } className="add"/>
-          <img src={ record } className="record"/>
-        </div>
-        <Dropdown controlClassName="dropdownControl" arrowClassName='arrowStyle' menuClassName='menuStyle' options={filterOptions} value={filterOptions[0]} placeholder="Sort By" />
-      </div>
-
-      {searching  && <SearchInput addAlbum={addAlbum}/>}
-      <div className="albumsContainer">
-        {(albums.length > 0) ? albums.map((album, index) => (
-          <div key={index} className="album">
-            {(album.image) ? <img src={album.image} /> : <img />}
-            <div className="description">
-              <p>{album.name}</p>
-              <p>{album.artist}</p>
-            </div>
+      <Navbar />
+      <div className='albumsPageContainer'>
+        <div className="buttonRow">
+          <Dropdown controlClassName="dropdownControl" arrowClassName='arrowStyle' menuClassName='menuStyle' options={listenOptions} value={listenOptions[0]} placeholder="Listen Status" />
+          <div className="addAlbum" onClick={handleSearchStart}>
+            <img src={ add } className="add"/>
+            <img src={ record } className="record"/>
           </div>
-        )) : <p>No albums</p>}
+          <Dropdown controlClassName="dropdownControl" arrowClassName='arrowStyle' menuClassName='menuStyle' options={filterOptions} value={filterOptions[0]} placeholder="Sort By" />
+        </div>
+
+        {searching  && <SearchInput addAlbum={addAlbum}/>}
+        <div className="albumsContainer">
+          {(albums.length > 0) ? albums.map((album, index) => (
+            <div key={index} className="album">
+              {(album.image) ? <img src={album.image} /> : <img />}
+              <div className="description">
+                <p>{album.name}</p>
+                <p>{album.artist}</p>
+              </div>
+            </div>
+          )) : <p>No albums</p>}
+        </div>
       </div>
     </React.Fragment>
   );
