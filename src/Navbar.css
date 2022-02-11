@@ -21,7 +21,9 @@
 }
 
 .home {
-  height: 60%;
+  align-self: flex-end;
+  margin-bottom: 0.6em;
+  height: 56%;
   position: relative;
   display: flex;
   flex-direction: row;
