@@ -24,6 +24,7 @@
   color: #dddddd;
   display: flex;
   height: 100%;
+  font-size: 1em;
   flex-direction: column;
   align-items: flex-start;
 }
@@ -37,65 +38,19 @@
   height: 94%;
 }
 
-@media only screen and (max-width: 899px) { 
-  .leftArea {
-    width: 100%;
-    align-items: center;
-  }
-
-  .previewArea {
-    display: none;
-  }
-}
-
-@media only screen and (min-width: 900px) and (max-width: 1299px) { 
-  .leftArea {
-    width: 38%;
-  }
-
-  .previewArea {
-    width: 62%;
-    display: "";
-  }
-}
-
-@media only screen and (min-width: 1300px) and (max-width: 1799px) { 
-  .leftArea {
-    width: 30%;
-  }
-
-  .previewArea {
-    width: 70%;
-    display: "";
-  }
-}
-
-@media only screen and (min-width: 1800px) { 
-  .content {
-    width: calc(1800px * .85);
-  } 
-
-  .leftArea {
-    width: calc(1800px * .30);
-  }
-  .previewArea {
-    width: calc(1800px * .70);
-  }
-}
-
 .leftArea .title {
-  font-size: 27px; 
+  font-size: 1.7em; 
   font-family: 'Fira Mono Bold';
-  color: --var(color-white-main);
+  color: var(--color-white-main);
   margin-top: 0em;
-  margin-bottom: 0.4em;
+  margin-bottom: 0.4rem;
 }
 
 .leftArea .description {
-  font-size: 22px; 
-  word-spacing: 0.1em;
+  font-size: 1.32em; 
+  word-spacing: 0.1rem;
   font-family: 'Fira Mono';
-  margin-top: 0.4em;
+  margin-top: 0.4rem;
   margin-bottom: 0em;
 }
 
@@ -116,11 +71,11 @@
   background: #dddddd;
   color: var(--bgcolor);
   border-radius: 0.2em;
-  height: 1.90em;
+  height: 1.90rem;
   width: 100%;
 
   font-family: 'Fira Mono Bold';
-  font-size: 22px;
+  font-size: 1.32em;
 }
 
 .button:nth-child(1) {
@@ -139,26 +94,20 @@
   align-items: flex-start;
 }
 
-.title {
-  font-family: 'Fira Mono Bold';
-  color: var(--color-white-main);
-  font-size: 23px;
-}
-
 .accountDescription {
   font-family: 'Fira Mono';
-  font-size: 13px;
+  font-size: 0.80em;
 }
 
 .formInput {
-  width: 23.6em;
-  line-height: 3em;
+  width: 13.6rem;
+  line-height: 1rem;
   flex: 0;
   background-color: var(--album-box-bg);
-  border-radius: 0.2em;
-  border: 0.2em solid var(--album-box-bg);
-  padding: 1em;
-  font-size: 12px;
+  border-radius: 0.2rem;
+  border: 0.2rem solid var(--album-box-bg);
+  padding: 1rem;
+  font-size: 0.7em;
   transition: 0.1s;
 }
 
@@ -168,21 +117,21 @@
 }
 
 .submitButton {
-  width: 22.3em;
-  line-height: 0.3em;
+  width: 16.0rem;
+  line-height: 0.3rem;
   flex: 0;
   background-color: #fdfdfd;
-  border-radius: 0.2em;
+  border-radius: 0.2rem;
   border: 0px solid var(--album-box-bg);
   font-family: 'Fira Mono';
-  padding: 1em;
-  font-size: 14px;
+  padding: 1rem;
+  font-size: 0.81em;
   cursor: pointer;
 }
 
 .reverse {
   font-family: 'Fira Mono';
-  font-size: 13px;
+  font-size: 0.82em;
 }
 .signUpLinkContainer {
   background-color: #fdfdfd;
@@ -193,7 +142,7 @@
 
 .reverseText {
   text-decoration: none;
-  font-size: 13px;
+  font-size: 0.82em;
   margin-left: 1em;
   font-family: 'Fira Mono Bold';
   color: #dddddd;
@@ -205,3 +154,67 @@
   flex-direction: row;
   align-items: center;
 }
+
+@media only screen and (max-width: 649px) { 
+  .leftArea {
+    width: 100%;
+    font-size: 0.7em;
+    align-items: center;
+  }
+
+  .previewArea {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 650px) and (max-width: 899px) { 
+  .leftArea {
+    width: 45%;
+    font-size: 0.78em;
+  }
+
+  .previewArea {
+    width: 55%;
+    display: "";
+  }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1299px) { 
+  .leftArea {
+    width: 38%;
+    font-size: 0.85em;
+  }
+
+  .previewArea {
+    width: 62%;
+    display: "";
+  }
+}
+
+@media only screen and (min-width: 1300px) and (max-width: 1799px) { 
+  .leftArea {
+    width: 30%;
+    font-size: 0.93em;
+  }
+
+  .previewArea {
+    width: 70%;
+    display: "";
+  }
+}
+
+@media only screen and (min-width: 1800px) { 
+  .content {
+    width: calc(1800px * .85);
+    font-size: 1em;
+  } 
+
+  .leftArea {
+    width: calc(1800px * .30);
+  }
+  .previewArea {
+    width: calc(1800px * .70);
+  }
+}
+
+
