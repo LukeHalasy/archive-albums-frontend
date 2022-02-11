@@ -22,16 +22,15 @@
 
 .home {
   align-self: flex-end;
-  height: 56%;
+  height: 100%;
   position: relative;
   display: flex;
   flex-direction: row;
 }
 
 .home img {
-  height: 100%;
-  margin-bottom: 1em;
-  align-self: center;
+  height: 3.75em;
+  align-self: flex-end;
 }
 
 .home:hover {
@@ -42,7 +41,6 @@
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  align-self: end;
 }
 
 .bar div p {
@@ -61,6 +59,24 @@
   cursor: pointer;
   color: var(--color-white-main);
 } 
+
+@media only screen and (max-width: 649px) {
+  .barContainer {
+    height: var(--navbar-height-mobile);
+    min-width: 300px;
+  }
+  .bar {
+    width: 16rem;
+  }   
+  .home {
+    align-self: center;
+  }
+
+  .home img {
+    margin-bottom: 0em;
+    align-self: center;
+  }
+}
 
 @media only screen and (max-width: 900px) {
   .bar .tagLine  {
