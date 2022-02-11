@@ -1,5 +1,5 @@
 .barContainer {
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
   height: var(--navbar-height);
@@ -38,14 +38,33 @@
   cursor: pointer;
 }
 
-.home p {
-  margin-bottom: 0.2em;
+.bar div {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
   margin-left: 10px;
   align-self: end;
 }
 
-@media only screen and (max-width: 500px) {
-  .home p {
+.bar div p {
+  margin: 0px;
+}
+
+.bar .tagLine {
+  margin-left: 5px;
+}
+
+.bar .signOutText {
+  transition: 0.3s;
+}
+
+.bar .signOutText:hover {
+  cursor: pointer;
+  color: var(--color-white-main);
+} 
+
+@media only screen and (max-width: 900px) {
+  .bar .tagLine  {
     display: none;
   } 
 }
@@ -60,6 +79,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  display: none;
 }
 
 .logout:hover {

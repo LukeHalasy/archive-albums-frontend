@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useAuth, authContext } from './useAuth'
 import logo from './images/logo.svg'
 import './Navbar.css';
@@ -10,6 +10,10 @@ interface Props {
 
 export const Navbar: React.FC<Props> = (props) => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  console.log(location.pathname);
+
   const { auth } = useContext(authContext);
   const logoTagLine = (auth.authenticated) ? auth.email : "archivealbums.com";
 
@@ -35,23 +39,13 @@ export const Navbar: React.FC<Props> = (props) => {
       <div className='bar'>
         <div className='home'>
           <img src={ logo } onClick={() => navigate("/")}/>
-          <p>{logoTagLine}</p>
+          <p className='tagLine'>archivealbums.com</p>
         </div>
-        <div className='logout' onClick={() => setSettingsScreen(!settingsScreen)}>
-          {(settingsScreen) ? 
-            <div className='settingsScreen'>
-              <div className='logout' onClick={handleLogout}>Logout fair maiden</div> 
-            </div>
-          :
-            <React.Fragment>
-              <div className='topBar'>
-              </div>
-              <div className='bottomBar'>
-              </div>
-            </React.Fragment>
-          }
-          
-        </div>
+        {
+          (auth.authenticated) ?
+            <div><p>{auth.email}</p>{<React.Fragment><p>&nbsp;*&nbsp;</p><a className="signOutText" onClick={handleLogout}>Sign Out</a></React.Fragment>}</div>
+          : ""
+        }
       </div>
     </div>
   );
