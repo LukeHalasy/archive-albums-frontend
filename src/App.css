@@ -13,9 +13,10 @@
   position: relative;
   display: flex;
   height: 80%;
+  width: 85%;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: space-around;
+  gap: 4em;
 }
 
 .leftArea {
@@ -35,11 +36,7 @@
   height: 94%;
 }
 
-@media only screen and (max-width: 1199px) { 
-  .content {
-    width: 80%;
-  } 
-
+@media only screen and (max-width: 899px) { 
   .leftArea {
     width: 100%;
     align-items: center;
@@ -50,30 +47,38 @@
   }
 }
 
-@media only screen and (min-width: 1200px) { 
+@media only screen and (min-width: 900px) and (max-width: 1299px) { 
   .leftArea {
-    width: 35%;
+    width: 38%;
   }
 
   .previewArea {
-    width: 55%;
+    width: 62%;
     display: "";
   }
 }
 
-@media only screen and (min-width: 900px) and (max-width: 1500px ) { 
-  .content {
-    width: 90%;
+@media only screen and (min-width: 1300px) and (max-width: 1799px) { 
+  .leftArea {
+    width: 30%;
+  }
+
+  .previewArea {
+    width: 70%;
+    display: "";
   }
 }
 
-@media only screen and (min-width: 1501px) { 
+@media only screen and (min-width: 1800px) { 
   .content {
-    width: 1200px;
+    width: calc(1800px * .85);
   } 
 
+  .leftArea {
+    width: calc(1800px * .30);
+  }
   .previewArea {
-    width: 900px;
+    width: calc(1800px * .70);
   }
 }
 
@@ -141,23 +146,24 @@
 
 .accountDescription {
   font-family: 'Fira Mono';
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .formInput {
-  width: 24em;
+  width: 23.6em;
   line-height: 3em;
   flex: 0;
   background-color: var(--album-box-bg);
   border-radius: 0.2em;
-  border: 0px solid var(--color-white-main);
+  border: 0.2em solid var(--album-box-bg);
   padding: 1em;
   font-size: 12px;
+  transition: 0.1s;
 }
 
 .formInput:focus {
   outline-color: var(--color-white-main);
-  outline-width: 0.7em;
+  outline-width: 0.6em;
 }
 
 .submitButton {

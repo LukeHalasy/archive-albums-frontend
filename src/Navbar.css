@@ -34,7 +34,7 @@
   align-self: center;
 }
 
-.home img:hover {
+.home:hover {
   cursor: pointer;
 }
 
@@ -44,8 +44,15 @@
   align-self: end;
 }
 
+@media only screen and (max-width: 500px) {
+  .home p {
+    display: none;
+  } 
+}
 
 .logout {
+  align-self: flex-end;
+  margin-bottom: 0.4em;
   position: relative;
   width: 60px;
   height: 60%;
