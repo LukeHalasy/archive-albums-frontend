@@ -3,6 +3,7 @@
   top: var(--navbar-height);
   height: calc(100% - var(--navbar-height));
   width: 100%;
+  min-width: 300px;
   display: flex;
   flex-direction: row;
   justify-content: center;
