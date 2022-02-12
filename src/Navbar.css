@@ -3,6 +3,7 @@
   top: 0;
   width: 100%;
   height: var(--navbar-height);
+  background-color: var(--bgcolor);
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -66,14 +67,20 @@
     min-width: 300px;
   }
   .bar {
-    width: 18rem;
+    width: 20rem;
   }   
   .home {
     align-self: center;
   }
 
   .home img {
+    align-self: center;
     margin-bottom: 0em;
+  }
+
+  .barContainer {
+    position: absolute;
+    z-index: 1;
   }
 }
 

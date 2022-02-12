@@ -34,8 +34,19 @@ html, body, .vsc-initialized  {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+* {
+  border: 1px solid red;
+  opacity: 1;
+  visibility: visible;
+}
+
 @media only screen and (max-width: 649px) { 
   html, body, .vsc-initialized  {
+    width: 100vw;
+    max-width: 100%;
     overflow-y: scroll;
+    overflow-x: hidden;
   }
+
 }
