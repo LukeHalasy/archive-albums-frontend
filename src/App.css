@@ -1,7 +1,8 @@
 .container {
   position: absolute;
   top: var(--navbar-height);
-  height: calc(100% - var(--navbar-height));
+  margin-top: 3.5rem;
+  height: 35rem;
   min-height: 500px;
   width: 100%;
   min-width: 300px;
@@ -14,7 +15,7 @@
 .content {
   position: relative;
   display: flex;
-  height: 80%;
+  height: 100%;
   width: 85%;
   flex-direction: row;
   align-items: flex-start;
@@ -166,6 +167,7 @@
   .content {
     width: 100%;
     justify-content: flex-start;
+    margin-top: 2rem; 
   }
 
   .leftArea {
