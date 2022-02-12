@@ -43,12 +43,14 @@ export const App: React.FC<{}> = () => {
       password
     });
 
-    if (result.status == 201) {
+    
+    console.log("result");
+    console.log(result);
+    if (result && result.status == 201) {
       navigate("/");
-    } else {
-      // display failed login info
-      console.log(result);
-    }
+    } else if (result && result.data.message) {
+      setServerMessage(result.data.message);
+    } 
   }
 
   return (

@@ -20,28 +20,36 @@ export const useAuth = () => {
   return {
     async signup(credentials: Credentials) {
       console.log(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/signup`);
-      const result = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/signup`, JSON.stringify(credentials), {
-        headers: {
-         'Content-Type': 'application/json'
-        },
-        withCredentials: true
-      });
-
-      console.log(result);
-
-      if (result.status == 201) {
-        setAuth({
-          authenticated: true,
-          email: result.data.email
+      try {
+        const result = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/signup`, JSON.stringify(credentials), {
+          headers: {
+           'Content-Type': 'application/json'
+          },
+          validateStatus: () => true,
+          withCredentials: true
         });
-      } else {
+
+        console.log(result);
+
+        if (result.status == 201) {
+          setAuth({
+            authenticated: true,
+            email: result.data.email
+          });
+        } else {
+          setAuth({
+            authenticated: false,
+            email: ''
+          });
+        }
+
+        return result;
+      } catch(e) {
         setAuth({
           authenticated: false,
           email: ''
         });
       }
-
-      return result;
     },
     async login(credentials: Credentials) {
       console.log(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/login`);
