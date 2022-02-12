@@ -14,8 +14,8 @@
   --color-white-main: #fefefe;
   --font-gray: #acacac;
   --color-white-brighter: #dcdbe9;
-  --navbar-height: 5.5rem;
-  --navbar-height-mobile: 10em;
+  --navbar-height: 7rem;
+  --navbar-height-mobile: 7rem;
   --navbar-width: 85%; 
   --footer-height: 4em;
 }
@@ -36,7 +36,6 @@ html, body, .vsc-initialized  {
 
 @media only screen and (max-width: 649px) { 
   html, body, .vsc-initialized  {
-    position: fixed;
-    height: 100%;
+    overflow-y: scroll;
   }
 }
