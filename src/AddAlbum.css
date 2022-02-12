@@ -1,12 +1,23 @@
 .albumsPageContainer {
   position: absolute;
   top: var(--navbar-height);
+  background-color: var(--album-box-bg);
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 1.3rem;
+  min-height: 100%;
+}
 
+.albumsPageContainer::after {
+  content: '';
+  position: fixed;
+  top: var(--navbar-height);
+  background-color: var(--album-box-bg);
+  height: 1.3rem;
+  width: 100%;
 }
 
 .buttonRow {
@@ -52,7 +63,6 @@
 }
 
 .albumsContainer {
-  flex: 7 1 0;
   position: relative;
   background-color: var(--album-box-bg);
   width: 20rem;
@@ -61,10 +71,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-}
-  
-.albumsContainer::-webkit-scrollbar {
-  display: none;
+  gap: 0.7em;
 }
 
 @media only screen and (max-width: 1199px) { 
@@ -82,10 +89,18 @@
 
 .albumsContainer .album {
   width: 100%;
-  height: 75px;
+  height: calc(75px + 0.2em);
   display: flex;
   flex-direction: row;
+  overflow-x: scroll;
+  overflow-y: hidden;
   justify-content: flex-start;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.album::-webkit-scrollbar {
+  display: none;
 
 }
 
@@ -103,7 +118,7 @@
 
 .albumsContainer .description {
   height: 100%;
-  margin-left: 0.3em;
+  margin-left: 0.9em;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
