@@ -125,10 +125,16 @@
   background-color: #fdfdfd;
   border-radius: 0.2rem;
   border: 0px solid var(--album-box-bg);
+  color: var(--album-box-bg);
   font-family: 'Fira Mono';
   padding: 1rem;
   font-size: 0.81em;
   cursor: pointer;
+  -webkit-user-select: initial;
+  -khtml-user-select: initial;
+  -moz-user-select: initial;
+  -ms-user-select: initial;
+  user-select: initial;
 }
 
 .reverse {
