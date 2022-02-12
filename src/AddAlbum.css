@@ -1,7 +1,7 @@
 .albumsPageContainer {
   position: absolute;
   top: var(--navbar-height);
-  height: calc(95% - var(--navbar-height));
+  height: calc(100% - var(--navbar-height));
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -11,51 +11,28 @@
 }
 
 .buttonRow {
-  position: relative;
+  height: var(--navbar-height);
+  width: 20rem;
+  z-index: 2;
+  position: fixed;
+  top: 0;
   flex: 1 1 0;
-  width: 600px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: flex-end;
   align-items: center;
-}
-
-.buttonRow .dropdownControl {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--album-box-bg);
-  font-family: 'Fira Mono';
-  font-size: 0.85em;
-  border-radius: 0.9em;
-  color:  #dcdbe9;
-  height: 5em;
-  border: 0px;
-}
-
-.buttonRow .arrowStyle {
-  color:  #dcdbe9;
-  display: box;
-  margin-top: 0.8em;
-}
-
-.buttonRow .Dropdown-option {
-  background-color: var(--album-box-bg);
-  color:  #dcdbe9;
-  border: 5px;
 }
 
 .buttonRow .addAlbum {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+  padding-right: 1em;
 
   width: 130px;
-  height: 50%;
+  height: 3.75em;
 
-  border: 2px solid var(--color-white-brighter);
   background-color: var(--album-box-bg);
 }
 
@@ -65,25 +42,29 @@
 
 .buttonRow .addAlbum .add {
   height: 35%;  
-  margin-right: 10px;
+  bottom: 35%;
+  margin-right: 0.5em;
 }
 
 .buttonRow .addAlbum .record {
-  height: 60%;  
+  height: 70%;  
 }
 
 .albumsContainer {
   flex: 7 1 0;
   position: relative;
   background-color: var(--album-box-bg);
-  width: 900px;
+  width: 20rem;
+  font-size: 1em;
   overflow-y: scroll;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 @media only screen and (max-width: 1199px) { 
   .albumsContainer {
-    width: 80%;
   } 
 }
 
@@ -94,21 +75,45 @@
 }
 
 .albumsContainer .album {
-  width: 33%;
-  height: 20%;
-
+  width: 100%;
+  height: 75px;
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+
 }
 
 .albumsContainer img {
   height: 100%;
 }
 
+.albumsContainer .imageNotFound {
+  width: 75px;
+  min-width: 75px;
+  min-height: 75px;
+  height: 75px;
+  border: 0.2em solid white;
+}
+
 .albumsContainer .description {
   height: 100%;
-  flex-grow: 1;
+  margin-left: 0.3em;
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.albumsContainer .albumName {
+  display: flex;
+  font-size: 0.8em;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.albumsContainer .artistName {
+  display: flex;
+  font-size: 0.7em;
+  color: #dddddd;
   flex-direction: column;
   justify-content: flex-start;
 }
