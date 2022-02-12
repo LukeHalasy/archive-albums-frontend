@@ -9,6 +9,9 @@ import 'react-dropdown/style.css';
 import add from './images/add.svg'
 import record from './images/record.svg'
 
+// TODO: DELETE
+import { uniqueNamesGenerator, adjectives, colors, animals } from 'unique-names-generator';
+
 import './AddAlbum.css';
 
 interface Props {
@@ -44,6 +47,7 @@ export const AddAlbum: React.FC<Props> = (props) => {
   */
 
   useEffect(() => {
+    /*
     async function fetchUsersAlbums() {
       const result = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/getAlbums`, {
         headers: {
@@ -66,6 +70,30 @@ export const AddAlbum: React.FC<Props> = (props) => {
     }
 
     fetchUsersAlbums();
+    */
+
+    // Testing positioning and stuff
+    
+    // generate fake albums
+    // 
+    const random_albums = [];
+    for (var i  = 0; i < 30; i++) {
+      const randomTitle: string = uniqueNamesGenerator({
+        dictionaries: [adjectives, colors, animals]
+      });
+      
+      const randomArtist: string = uniqueNamesGenerator({
+        dictionaries: [adjectives, colors, animals]
+      });
+
+      random_albums.push({
+        name: randomTitle,
+        artist: randomArtist,
+        image: ''
+      })
+    }
+
+    setAlbums(random_albums);
   }, [])
 
   const handleSearchStart  = async (e: React.MouseEvent) => {
@@ -95,22 +123,20 @@ export const AddAlbum: React.FC<Props> = (props) => {
       <Navbar />
       <div className='albumsPageContainer'>
         <div className="buttonRow">
-          <Dropdown controlClassName="dropdownControl" arrowClassName='arrowStyle' menuClassName='menuStyle' options={listenOptions} value={listenOptions[0]} placeholder="Listen Status" />
           <div className="addAlbum" onClick={handleSearchStart}>
             <img src={ add } className="add"/>
             <img src={ record } className="record"/>
           </div>
-          <Dropdown controlClassName="dropdownControl" arrowClassName='arrowStyle' menuClassName='menuStyle' options={filterOptions} value={filterOptions[0]} placeholder="Sort By" />
         </div>
 
         {searching  && <SearchInput addAlbum={addAlbum}/>}
         <div className="albumsContainer">
           {(albums.length > 0) ? albums.map((album, index) => (
             <div key={index} className="album">
-              {(album.image) ? <img src={album.image} /> : <img />}
+              {(album.image) ? <img src={album.image} /> : <div className="imageNotFound"></div>}
               <div className="description">
-                <p>{album.name}</p>
-                <p>{album.artist}</p>
+                <div className="albumName">{album.name}</div>
+                <div className="artistName">{album.artist}</div>
               </div>
             </div>
           )) : <p>No albums</p>}
