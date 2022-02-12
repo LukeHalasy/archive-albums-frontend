@@ -61,7 +61,7 @@ export const App: React.FC<{}> = () => {
           <div className="leftArea">
           <div className="header">
             <p className="title">Archive albums</p>
-            <p className='description'>you want to listen to.</p>
+            <p className='description'>Keep track of albums <br /> you want to listen to.</p>
           </div>
           
           {(auth.authenticated) ?
@@ -72,7 +72,7 @@ export const App: React.FC<{}> = () => {
             <div className='buttonsContainer'>
               <div className='userContainer'>
                 <div className="title">{(signingUp) ? 'Sign Up' : 'Sign In'}</div>
-                <div className="accountDescription">{(signingUp) ? 'Enter a valid email and password to sign up': 'Enter your email and password to sign in'}</div>
+                <div className="accountDescription">{(signingUp) ? 'Enter a valid email and password': 'Enter your email and password'}</div>
                 <input className='formInput' type="email" placeholder='Email' onChange={e =>setEmail(e.target.value)}/>
                 <input className='formInput' type="password" placeholder='Password' onChange={e =>setPassword(e.target.value)}/>
                 <button className='submitButton' type="submit" onClick={(signingUp) ? handleSignup : handleLogin}>{(signingUp) ? "Sign Up" : "Sign In"}</button>
