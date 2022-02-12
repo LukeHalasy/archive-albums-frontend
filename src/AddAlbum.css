@@ -1,7 +1,6 @@
 .albumsPageContainer {
   position: absolute;
   top: var(--navbar-height);
-  height: calc(100% - var(--navbar-height));
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -24,14 +23,16 @@
 }
 
 .buttonRow .addAlbum {
+  align-self: center;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  padding-right: 1em;
 
-  width: 130px;
-  height: 3.75em;
+  width: 4.5em;
+  border: 0.1em solid var(--color-white-main);
+  height: 3.25em;
+  margin-top: 0.25em; /* 3.75 - 3.25 / 2*/
 
   background-color: var(--album-box-bg);
 }
@@ -43,10 +44,10 @@
 .buttonRow .addAlbum .add {
   height: 35%;  
   bottom: 35%;
-  margin-right: 0.5em;
 }
 
 .buttonRow .addAlbum .record {
+  display: none;
   height: 70%;  
 }
 
@@ -56,22 +57,27 @@
   background-color: var(--album-box-bg);
   width: 20rem;
   font-size: 1em;
-  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
 }
+  
+.albumsContainer::-webkit-scrollbar {
+  display: none;
+}
 
 @media only screen and (max-width: 1199px) { 
-  .albumsContainer {
-  } 
 }
 
 @media only screen and (min-width: 1200px) { 
   .albumsContainer {
     width: 900px;
   } 
+
+  .record {
+    display: "";
+  }
 }
 
 .albumsContainer .album {
@@ -92,7 +98,7 @@
   min-width: 75px;
   min-height: 75px;
   height: 75px;
-  border: 0.2em solid white;
+  border: 0.1em solid white;
 }
 
 .albumsContainer .description {
@@ -105,7 +111,9 @@
 
 .albumsContainer .albumName {
   display: flex;
-  font-size: 0.8em;
+  font-size: 0.92em;
+  font-family: 'Fira Mono';
+  color: var(--color-white-main-brighter);
   flex-direction: column;
   justify-content: flex-start;
 }
@@ -113,6 +121,7 @@
 .albumsContainer .artistName {
   display: flex;
   font-size: 0.7em;
+  font-family: 'Fira Mono';
   color: #dddddd;
   flex-direction: column;
   justify-content: flex-start;

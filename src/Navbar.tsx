@@ -17,7 +17,6 @@ export const Navbar: React.FC<Props> = (props) => {
   const { auth } = useContext(authContext);
   const logoTagLine = (auth.authenticated) ? auth.email : "archivealbums.com";
 
-  const [settingsScreen, setSettingsScreen] = useState(false);
 
   const { logout } = useAuth();
 
@@ -35,7 +34,7 @@ export const Navbar: React.FC<Props> = (props) => {
   }
 
   return (
-    <div className='barContainer'>
+    <div className='barContainer' style={(location.pathname == "/") ? { 'position': 'absolute' } : {}}>
       <div className='bar'>
         <div className='home'>
           <img src={ logo } onClick={() => navigate("/")}/>
