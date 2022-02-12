@@ -74,8 +74,8 @@ export const App: React.FC<{}> = () => {
                 <input className='formInput' type="email" placeholder='Email' onChange={e =>setEmail(e.target.value)}/>
                 <input className='formInput' type="password" placeholder='Password' onChange={e =>setPassword(e.target.value)}/>
                 <button className='submitButton' type="submit" onClick={(signingUp) ? handleSignup : handleLogin}>{(signingUp) ? "Sign Up" : "Sign In"}</button>
+                {(serverMessage == '') ? <div className='serverMessage' style={{ 'display': 'none' }}>{serverMessage}</div> : <div className='serverMessage'>{serverMessage}</div>}
                 <div className='reverseContainer'><div className='reverse'>{(signingUp) ? 'Already have an account?' : 'Don\'t have an account?'}</div> <div className="reverseText" onClick={() => {setSigningUp(!signingUp)}}>{(signingUp) ? "Sign In" : "Sign Up"}</div></div>
-                <div className='serverMessage'>{serverMessage}</div>
               </div>
             </div>
           }

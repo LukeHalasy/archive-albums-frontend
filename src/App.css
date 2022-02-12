@@ -44,7 +44,6 @@
   font-family: 'Fira Mono Bold';
   color: var(--color-white-main);
   margin-top: 0em;
-  margin-bottom: 0.4rem;
 }
 
 .leftArea .description {
@@ -159,7 +158,7 @@
 .serverMessage {
   font-size: 0.82em;
   font-family: 'Fira Mono Bold';
-  color: #fdfdfd;
+  color: #ff053f;
 }
 
 @media only screen and (max-width: 649px) { 
