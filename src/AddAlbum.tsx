@@ -133,11 +133,16 @@ export const AddAlbum: React.FC<Props> = (props) => {
 
         <div className={(searching) ? "shiftForSearch albumsContainer" : "regular albumsContainer"}>
           {(albums.length > 0) ? albums.map((album, index) => (
-            <div key={index} className="album">
-              {(album.image) ? <img src={album.image} /> : <div className="imageNotFound"></div>}
-              <div className="description">
-                <div className="albumName">{album.name}</div>
-                <div className="artistName">{album.artist}</div>
+            <div key={index} className='albumContainer'>
+              <div className="album">
+                {(album.image) ? <img src={album.image} /> : <div className="imageNotFound"></div>}
+                <div className="description">
+                  <div className="albumName">{album.name}</div>
+                  <div className="artistName">{album.artist}</div>
+                </div>
+              </div>
+              <div className='delete'>
+              -
               </div>
             </div>
           )) : <p>No albums</p>}
