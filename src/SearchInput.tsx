@@ -32,9 +32,7 @@ export const SearchInput: React.FC<Props> = ({ addAlbum }) => {
   };
 
   const getSuggestions = async (title: string) => {
-    //TODO UNDO
-    
-
+    /*
     const random_albums = [];
     for (var i  = 0; i < 6; i++) {
       const randomTitle: string = uniqueNamesGenerator({
@@ -53,8 +51,8 @@ export const SearchInput: React.FC<Props> = ({ addAlbum }) => {
     }
 
     setOptions(random_albums);
+    */
 
-    /*
     if (title) {
       setLoading(true);
       let response = await getAlbumResults(title);
@@ -64,7 +62,6 @@ export const SearchInput: React.FC<Props> = ({ addAlbum }) => {
     } else {
       setOptions([]);
     }
-    */
   };
 
   return (

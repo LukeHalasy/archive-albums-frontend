@@ -47,7 +47,6 @@ export const AddAlbum: React.FC<Props> = (props) => {
   */
 
   useEffect(() => {
-    /*
     async function fetchUsersAlbums() {
       const result = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/getAlbums`, {
         headers: {
@@ -57,6 +56,7 @@ export const AddAlbum: React.FC<Props> = (props) => {
       });  
 
       if (result.status == 200) {
+        console.log(result.data.albums);
         for (let i = 0; i < result.data.albums.length; i++) {
           setAlbums((albums) => [...albums, result.data.albums[i]] );
         }
@@ -70,14 +70,13 @@ export const AddAlbum: React.FC<Props> = (props) => {
     }
 
     fetchUsersAlbums();
-    */
 
     // Testing positioning and stuff
     
     // generate fake albums
-    // 
+    /*
     const random_albums = [];
-    for (var i  = 0; i < 30; i++) {
+    for (var i  = 0; i < 13; i++) {
       const randomTitle: string = uniqueNamesGenerator({
         dictionaries: [adjectives, colors, animals]
       });
@@ -92,8 +91,9 @@ export const AddAlbum: React.FC<Props> = (props) => {
         image: ''
       })
     }
-
     setAlbums(random_albums);
+
+    */
   }, [])
 
   const handleSearchStart  = async (e: React.MouseEvent) => {
@@ -101,11 +101,9 @@ export const AddAlbum: React.FC<Props> = (props) => {
 
     setSearching(!searching);
   }
-
-
-
   
   const addAlbum = async (albumDetails: AlbumDetails) => {
+    console.log("Added album");
     const result = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/addAlbum`, JSON.stringify(albumDetails), {
       headers: {
        'Content-Type': 'application/json'

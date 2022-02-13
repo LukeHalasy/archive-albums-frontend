@@ -39,12 +39,16 @@ export const Navbar: React.FC<Props> = (props) => {
         <div className='home'>
           <img src={ logo } onClick={() => navigate("/")}/>
           <p className='tagLine'>archivealbums.com</p>
+          {
+            (auth.authenticated) ?
+              <div className='menu'>
+                <div className="emailName">{auth.email}</div>
+                <div className="signOutText" onClick={handleLogout}>Sign Out</div>
+              </div>
+            : ""
+          }
         </div>
-        {
-          (auth.authenticated) ?
-            <div><p>{auth.email}</p>{<React.Fragment><p>&nbsp;*&nbsp;</p><a className="signOutText" onClick={handleLogout}>sign out</a></React.Fragment>}</div>
-          : ""
-        }
+        
       </div>
     </div>
   );

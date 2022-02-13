@@ -34,16 +34,6 @@
   align-self: flex-end;
 }
 
-.home:hover {
-  cursor: pointer;
-}
-
-.bar div {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-}
-
 .bar div p {
   margin: 0px;
 }
@@ -80,7 +70,7 @@
 
   .barContainer {
     position: fixed;
-    z-index: 1;
+    z-index: 3;
   }
 }
 
@@ -121,4 +111,15 @@
   background-color: #DCDBE9;
   width: 50%;
   height: 5px;
+}
+
+.menu {
+  font-size: 0.65em;
+  align-self: center;
+  height: 3.75em;
+  margin-left: 1.5em;
+  display: flex;
+  gap: 0.5em;
+  flex-direction: column;
+  justify-content: center;
 }

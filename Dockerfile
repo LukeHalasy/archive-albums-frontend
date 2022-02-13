@@ -10,6 +10,7 @@ COPY . .
 
 FROM base as dev
 ENV REACT_APP_BACKEND_URL http://localhost:4000
+ENV GENERATE_SOURCEMAP false
 CMD ["npm", "start"]
 
 FROM base as build-deps
