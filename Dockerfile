@@ -15,6 +15,7 @@ CMD ["npm", "start"]
 
 FROM base as build-deps
 ENV REACT_APP_BACKEND_URL https://server.archivealbums.com
+ENV GENERATE_SOURCEMAP false
 RUN ["npm", "run" , "build"]
 
 FROM macbre/nginx-brotli:latest as prod
