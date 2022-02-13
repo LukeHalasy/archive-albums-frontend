@@ -1,10 +1,8 @@
-import React, { useState, useCallback } from 'react';
+import React, { useRef, useState, useCallback, useEffect } from 'react';
 import debounce from 'lodash.debounce';
 import { getAlbumResults } from './useAPI';
 
 import './SearchInput.css';
-
-import { uniqueNamesGenerator, adjectives, colors, animals } from 'unique-names-generator';
 
 interface Props {
   addAlbum: any
@@ -21,6 +19,8 @@ export const SearchInput: React.FC<Props> = ({ addAlbum }) => {
   const [loading, setLoading] = useState(false);
   const [options, setOptions] = useState<Album[]>();
 
+  const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+
   const debouncedSave = useCallback(
     debounce((newValue) => getSuggestions(newValue), 380),
     []
@@ -30,6 +30,10 @@ export const SearchInput: React.FC<Props> = ({ addAlbum }) => {
     setInputValue(newValue);
     debouncedSave(newValue);
   };
+
+  useEffect(() => {
+    inputRef.current.focus();
+  })
 
   const getSuggestions = async (title: string) => {
     /*
@@ -64,6 +68,12 @@ export const SearchInput: React.FC<Props> = ({ addAlbum }) => {
     }
   };
 
+  const handleAddAlbum = async (value: Album) => {
+    await addAlbum(value);
+    setInputValue('');
+    setOptions([]);
+  }
+
   return (
     <div className="searchContainer">
       <div className="results">
@@ -71,11 +81,12 @@ export const SearchInput: React.FC<Props> = ({ addAlbum }) => {
         {(options && options.length > 0) &&
            !loading &&
             options?.map((value: Album, index: number) => (
-              <div key={`${index}`} className="searchResult" onClick={() => addAlbum(value)}>{`${value.artist} - ${value.name}`}</div>
+              <div key={`${index}`} className="searchResult" onClick={() => {handleAddAlbum(value)}}>{`${value.artist} - ${value.name}`}</div>
         ))}
       </div>
       <input
         value={inputValue}
+        ref={inputRef}
         placeholder="Search for album.."
         onChange={(input) => updateValue(input.target.value)}
       />
