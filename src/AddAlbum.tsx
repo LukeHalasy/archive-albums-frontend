@@ -22,6 +22,7 @@ interface AlbumDetails {
   name: string
   artist: string
   image: string
+  _id: string
 }
 
 const listenOptions = ['listened', 'want to listen', 'all']
@@ -54,6 +55,7 @@ export const AddAlbum: React.FC<Props> = (props) => {
         },
         withCredentials: true
       });  
+
 
       if (result.status == 200) {
         console.log(result.data.albums);
@@ -112,7 +114,22 @@ export const AddAlbum: React.FC<Props> = (props) => {
     });
 
     console.log(result);
-    setAlbums((albums) => [...albums, albumDetails] );
+    setAlbums((albums) => [...albums, result.data.album] );
+    setSearching(false);
+  }
+
+
+  const deleteAlbum = async (index: number, _id: string) => {
+    console.log("Deleting album");
+    const result = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/deleteAlbum/${_id}`, {
+      headers: {
+       'Content-Type': 'application/json'
+      },
+      withCredentials: true
+    });
+
+    console.log(result);
+    setAlbums([...albums.slice(0, index), ...albums.slice(index + 1)] );
     setSearching(false);
   }
 
@@ -139,7 +156,7 @@ export const AddAlbum: React.FC<Props> = (props) => {
                   <div className="artistName">{album.artist}</div>
                 </div>
               </div>
-              <div className='delete'>
+              <div className='delete' onClick={() => {deleteAlbum(index, album._id)}}>
               -
               </div>
             </div>

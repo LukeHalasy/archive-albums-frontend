@@ -158,7 +158,7 @@
 
 .delete {
   visibility: hidden;
-  align-self: flex-end;  
+  align-self: flex-start;  
   justify-self: end;
   display: flex;
   flex-direction: row;
