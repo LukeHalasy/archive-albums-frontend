@@ -28,13 +28,13 @@
 }
 
 .shiftForSearch {
-  top: 22.5rem;
+  top: 21.5rem;
 }
 
 .shiftForSearch::after {
   content: '';
   position: fixed;
-  top: var(--navbar-height) + 22.5rem;
+  top: var(--navbar-height) + 21.5rem;
   height: 1.3rem;
   width: 100%;
   background-color: var(--album-box-bg);

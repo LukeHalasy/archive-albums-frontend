@@ -79,6 +79,7 @@ export const SearchInput: React.FC<Props> = ({ addAlbum }) => {
       </div>
       <input
         value={inputValue}
+        placeholder="Search for album.."
         onChange={(input) => updateValue(input.target.value)}
       />
     </div>
