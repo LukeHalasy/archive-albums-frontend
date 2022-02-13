@@ -67,7 +67,9 @@ export const SearchInput: React.FC<Props> = ({ addAlbum }) => {
 
       setOptions(response);
       setLoading(false);
-      keyRef.current.focus();
+      if (options && options.length > 0) {
+        keyRef.current.focus();
+      }
     } else {
       setLoading(false);
       setOptions([]);
