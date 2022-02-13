@@ -40,6 +40,7 @@
 
 .bar .tagLine {
   margin-left: 5px;
+  align-self: flex-end;
 }
 
 .bar .signOutText {

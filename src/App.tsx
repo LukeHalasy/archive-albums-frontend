@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth, authContext } from './useAuth';
 
 import { Navbar } from './Navbar';
-import { AddAlbum } from './AddAlbum';
 
 import './App.css';
 

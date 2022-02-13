@@ -3,14 +3,9 @@ import axios from 'axios';
 
 import { Navbar } from './Navbar';
 import { SearchInput } from './SearchInput';
-import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';
 
 import add from './images/add.svg'
 import record from './images/record.svg'
-
-// TODO: DELETE
-import { uniqueNamesGenerator, adjectives, colors, animals } from 'unique-names-generator';
 
 import './AddAlbum.css';
 
@@ -25,27 +20,9 @@ interface AlbumDetails {
   _id: string
 }
 
-const listenOptions = ['listened', 'want to listen', 'all']
-const filterOptions = ['add date', 'publish date']
-
 export const AddAlbum: React.FC<Props> = (props) => {
-  const [listenStatus, setListenStatus] = useState('listened')
-  const [filterStatus, setFilterStatus] = useState('none');
-  const [searching, setSearching] = useState(false);
+  const [searching, setSearching]= useState(false);
   const [albums, setAlbums] = useState<AlbumDetails[]>([]);
-  /*
-  const handleclick = async (e: React.MouseEvent) => {
-    e.preventDefault();
-    
-    // call API
-    const response = await addAlbum({
-      title,
-      artist
-    });
-
-    console.log(response);
-  }
-  */
 
   useEffect(() => {
     async function fetchUsersAlbums() {
@@ -72,30 +49,6 @@ export const AddAlbum: React.FC<Props> = (props) => {
     }
 
     fetchUsersAlbums();
-
-    // Testing positioning and stuff
-    
-    // generate fake albums
-    /*
-    const random_albums = [];
-    for (var i  = 0; i < 13; i++) {
-      const randomTitle: string = uniqueNamesGenerator({
-        dictionaries: [adjectives, colors, animals]
-      });
-      
-      const randomArtist: string = uniqueNamesGenerator({
-        dictionaries: [adjectives, colors, animals]
-      });
-
-      random_albums.push({
-        name: randomTitle,
-        artist: randomArtist,
-        image: ''
-      })
-    }
-    setAlbums(random_albums);
-
-    */
   }, [])
 
   const handleSearchStart  = async (e: React.MouseEvent) => {
@@ -115,7 +68,6 @@ export const AddAlbum: React.FC<Props> = (props) => {
 
     console.log(result);
     setAlbums((albums) => [...albums, result.data.album] );
-    setSearching(false);
   }
 
 
@@ -130,7 +82,6 @@ export const AddAlbum: React.FC<Props> = (props) => {
 
     console.log(result);
     setAlbums([...albums.slice(0, index), ...albums.slice(index + 1)] );
-    setSearching(false);
   }
 
   return (
