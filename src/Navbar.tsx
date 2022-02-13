@@ -42,7 +42,7 @@ export const Navbar: React.FC<Props> = (props) => {
           {
             (auth.authenticated) ?
               <div className='menu'>
-                <div className="emailName">{auth.email}</div>
+                <div className="emailName">archive@albums.com</div>
                 <div className="signOutText" onClick={handleLogout}>Sign Out</div>
               </div>
             : ""

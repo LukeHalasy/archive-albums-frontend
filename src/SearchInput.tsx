@@ -81,6 +81,7 @@ export const SearchInput: React.FC<Props> = ({ addAlbum }) => {
     await addAlbum(value);
     setInputValue('');
     setOptions([]);
+    setIndexKeySelected(0);
   }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
