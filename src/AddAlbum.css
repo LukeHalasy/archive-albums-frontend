@@ -1,22 +1,44 @@
 .albumsPageContainer {
   position: absolute;
-  top: var(--navbar-height);
   background-color: var(--album-box-bg);
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 1.3rem;
+  padding-bottom: 1.3rem;
   min-height: 100%;
 }
 
-.albumsPageContainer::after {
+.regular {
+  top: var(--navbar-height);
+  width: 100%;
+  margin-top: 1.3rem;
+}
+
+.regular::after {
   content: '';
   position: fixed;
   top: var(--navbar-height);
-  background-color: var(--album-box-bg);
   height: 1.3rem;
+  width: 100%;
+  background-color: var(--album-box-bg);
+  top: var(--navbar-height);
+  width: 100%;
+}
+
+.shiftForSearch {
+  top: 22.5rem;
+}
+
+.shiftForSearch::after {
+  content: '';
+  position: fixed;
+  top: var(--navbar-height) + 22.5rem;
+  height: 1.3rem;
+  width: 100%;
+  background-color: var(--album-box-bg);
+  top: var(--navbar-height);
   width: 100%;
 }
 
@@ -41,7 +63,7 @@
   align-items: center;
 
   width: 4.5em;
-  border: 0.1em solid var(--color-white-main);
+  border: 0.060em solid var(--color-white-main);
   height: 3.25em;
   margin-top: 0.25em; /* 3.75 - 3.25 / 2*/
 
@@ -64,15 +86,26 @@
 
 .albumsContainer {
   position: relative;
-  background-color: var(--album-box-bg);
-  width: 20rem;
+  width: 100%;
   font-size: 1em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.7em;
 }
+
+.albumsContainer::after {
+  content: '';
+  position: fixed;
+  top: var(--navbar-height);
+  height: 1.3rem;
+  width: 100%;
+  background-color: var(--album-box-bg);
+  top: var(--navbar-height);
+  width: 100%;
+}
+  
 
 @media only screen and (max-width: 1199px) { 
 }
@@ -88,7 +121,7 @@
 }
 
 .albumsContainer .album {
-  width: 100%;
+  width: 20rem;
   height: calc(75px + 0.2em);
   display: flex;
   flex-direction: row;

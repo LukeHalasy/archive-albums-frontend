@@ -1,14 +1,46 @@
-input {
-  flex: 1 1 0;
-  width: 600px;
+.searchContainer {
+  position: fixed;
+  top: var(--navbar-height);
   background-color: var(--album-box-bg);
+  height: 14rem;
+  z-index: 3;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 1.3em;
+}
+
+input {
+  line-height: 0.7rem;
+  width: calc(20rem - 0.2rem - 2rem);
+  background-color: var(--album-box-bg);
+  border-radius: 0.2rem;
+  border: 0.10rem solid var(--color-white-main);
+  outline-color: var(--color-white-main);
+  outline-width: 1em;
   color: var(--color-white-main);
   font-family: 'Fira Mono';
+  padding: 1rem;
+  font-size: 0.7em;
+  transition: 0.1s;
+}
+
+input:focus {
+  outline-width: 0.3em;
 }
 
 .results {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: var(--color-white-main);
   font-family: 'Fira Mono';
+  font-size: 0.80em;
+  width: 20rem;
 }
 
 ul {
@@ -20,4 +52,37 @@ ul li:hover {
   cursor: pointer;
   background-color: var(--color-white-main);
   color: var(--album-box-bg);
+  overflow-x: scroll;
 }
+
+.searchResult {
+  display: flex;
+  height: 1.2em;
+  
+  flex-direction: row;
+  margin: 0.3em;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 1em;
+  background-color: var(--album-box-bg);
+  width: 100%;
+  color: var(--color-white-main);
+  overflow-x: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  white-space: nowrap;
+}
+
+.searchResult::-webkit-scrollbar, body::-webkit-scrollbar, .vsc-initialized::-webkit-scrollbar {
+  display: none;
+}
+
+
+.searchResult:hover {
+  cursor: pointer;
+  background-color: var(--color-white-main);
+  color: var(--album-box-bg);
+}
+
+
+

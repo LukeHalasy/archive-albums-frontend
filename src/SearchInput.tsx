@@ -4,6 +4,8 @@ import { getAlbumResults } from './useAPI';
 
 import './SearchInput.css';
 
+import { uniqueNamesGenerator, adjectives, colors, animals } from 'unique-names-generator';
+
 interface Props {
   addAlbum: any
 }
@@ -30,6 +32,29 @@ export const SearchInput: React.FC<Props> = ({ addAlbum }) => {
   };
 
   const getSuggestions = async (title: string) => {
+    //TODO UNDO
+    
+
+    const random_albums = [];
+    for (var i  = 0; i < 6; i++) {
+      const randomTitle: string = uniqueNamesGenerator({
+        dictionaries: [adjectives, colors, animals]
+      });
+      
+      const randomArtist: string = uniqueNamesGenerator({
+        dictionaries: [adjectives, colors, animals]
+      });
+
+      random_albums.push({
+        name: randomTitle,
+        artist: randomArtist,
+        image: ''
+      })
+    }
+
+    setOptions(random_albums);
+
+    /*
     if (title) {
       setLoading(true);
       let response = await getAlbumResults(title);
@@ -39,24 +64,23 @@ export const SearchInput: React.FC<Props> = ({ addAlbum }) => {
     } else {
       setOptions([]);
     }
+    */
   };
 
   return (
-    <div>
+    <div className="searchContainer">
+      <div className="results">
+        {loading && <li>Loading...</li>}
+        {(options && options.length > 0) &&
+           !loading &&
+            options?.map((value: Album, index: number) => (
+              <div key={`${index}`} className="searchResult" onClick={() => addAlbum(value)}>{`${value.artist} - ${value.name}`}</div>
+        ))}
+      </div>
       <input
         value={inputValue}
         onChange={(input) => updateValue(input.target.value)}
       />
-      <div className="results">
-        <ul>
-          {loading && <li>Loading...</li>}
-          {(options && options.length > 0) &&
-             !loading &&
-              options?.map((value: Album, index: number) => (
-                <li key={`${index}`} onClick={() => addAlbum(value)}>{`${value.artist} - ${value.name}`}</li>
-          ))}
-        </ul>
-      </div>
     </div>
   )
 }

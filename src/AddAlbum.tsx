@@ -121,16 +121,17 @@ export const AddAlbum: React.FC<Props> = (props) => {
   return (
     <React.Fragment>
       <Navbar />
+      
       <div className='albumsPageContainer'>
+        {searching  && <SearchInput addAlbum={addAlbum}/>}
         <div className="buttonRow">
           <div className="addAlbum" onClick={handleSearchStart}>
-            <img src={ add } className="add"/>
+            <img src={ add } style={(searching) ? {'transform': 'rotate(-45deg)'} : {}} className="add"/>
             <img src={ record } className="record"/>
           </div>
-        </div>
+        </div>  
 
-        {searching  && <SearchInput addAlbum={addAlbum}/>}
-        <div className="albumsContainer">
+        <div className={(searching) ? "shiftForSearch albumsContainer" : "regular albumsContainer"}>
           {(albums.length > 0) ? albums.map((album, index) => (
             <div key={index} className="album">
               {(album.image) ? <img src={album.image} /> : <div className="imageNotFound"></div>}
