@@ -18,8 +18,11 @@ export const SearchInput: React.FC<Props> = ({ addAlbum }) => {
   const [inputValue, setInputValue] = useState('');
   const [loading, setLoading] = useState(false);
   const [options, setOptions] = useState<Album[]>();
+  const [indexKeySelected, setIndexKeySelected] = useState<number>(0);
 
   const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const keyRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+  const blankRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
   const debouncedSave = useCallback(
     debounce((newValue) => getSuggestions(newValue), 380),
@@ -61,12 +64,16 @@ export const SearchInput: React.FC<Props> = ({ addAlbum }) => {
       setLoading(true);
       let response = await getAlbumResults(title);
       console.log(response);
+
       setOptions(response);
       setLoading(false);
+      keyRef.current.focus();
     } else {
+      setLoading(false);
       setOptions([]);
     }
   };
+
 
   const handleAddAlbum = async (value: Album) => {
     await addAlbum(value);
@@ -74,19 +81,38 @@ export const SearchInput: React.FC<Props> = ({ addAlbum }) => {
     setOptions([]);
   }
 
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setIndexKeySelected((options && indexKeySelected <= 0) ? options.length - 1 : indexKeySelected - 1)
+    } else if (e.key == 'ArrowDown') {
+      e.preventDefault();
+      setIndexKeySelected((!options || indexKeySelected >= options.length - 1) ? 0 : indexKeySelected + 1);
+    } else if (e.key == 'Enter') {
+      e.preventDefault();
+      if (options && options.length > 0 && indexKeySelected != -1) {
+        handleAddAlbum(options[indexKeySelected])
+      }
+    }
+  }
+
   return (
     <div className="searchContainer">
       <div className="results">
-        {loading && <li>Loading...</li>}
+        {loading && <div className="searchResult">Loading..</div>}
         {(options && options.length > 0) &&
            !loading &&
             options?.map((value: Album, index: number) => (
-              <div key={`${index}`} className="searchResult" onClick={() => {handleAddAlbum(value)}}>{`${value.artist} - ${value.name}`}</div>
+              (index == indexKeySelected) ?
+                <div ref={(index == 0) ? keyRef : blankRef} key={`${index}`} style={{'backgroundColor': 'var(--color-white-main)', 'color': 'var(--album-box-bg)'}} className="searchResult" onClick={() => {handleAddAlbum(value)}}>{`${value.artist} - ${value.name}`}</div>
+              :
+                <div ref={(index == 0) ? keyRef : blankRef} key={`${index}`} className="searchResult" onClick={() => {handleAddAlbum(value)}}>{`${value.artist} - ${value.name}`}</div>
         ))}
       </div>
       <input
         value={inputValue}
         ref={inputRef}
+        onKeyDown={handleKeyPress}
         placeholder="Search for album.."
         onChange={(input) => updateValue(input.target.value)}
       />

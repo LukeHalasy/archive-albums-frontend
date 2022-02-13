@@ -67,7 +67,7 @@ export const AddAlbum: React.FC<Props> = (props) => {
     });
 
     console.log(result);
-    setAlbums((albums) => [...albums, result.data.album] );
+    setAlbums((albums) => [result.data.album, ...albums ] );
   }
 
 
