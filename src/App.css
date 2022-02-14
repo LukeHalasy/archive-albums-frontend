@@ -13,14 +13,17 @@
 .mobileDemoView {
   width: 20rem; 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
+  
   position: relative;
 }
 .mobileDemoView img {
   width: 17rem;
-  margin-left: 3.5rem;
+  border-radius: 1em;
+  --b-color: rgba(55,55,55,0.12);
 }
+
 .content {
   position: relative;
   display: flex;
@@ -52,6 +55,13 @@
 
 .leftArea .title {
   font-size: 1.7em; 
+  font-family: 'Fira Mono Bold';
+  color: var(--color-white-main);
+  margin-top: 0em;
+}
+
+.leftArea .subTitle {
+  font-size: 1.32em; 
   font-family: 'Fira Mono Bold';
   color: var(--color-white-main);
   margin-top: 0em;
@@ -181,10 +191,6 @@
 }
 
 @media only screen and (max-width: 649px) { 
-  .mobileDemoView {
-    width: 100%;
-    height: 100%;
-  }
   .container {
     width: 100%;
     margin-top: 0.5rem; 

@@ -63,6 +63,7 @@ export const App: React.FC<{}> = () => {
             </div>
             
             <div className="mobileDemoView">
+              <p className="title">Demo</p>
               <img src={ mobileDemo } />
             </div>
 
