@@ -25,6 +25,7 @@ export const AddAlbum: React.FC<Props> = (props) => {
   const [albums, setAlbums] = useState<AlbumDetails[]>([]);
 
   useEffect(() => {
+
     async function fetchUsersAlbums() {
       const result = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/getAlbums`, {
         headers: {
@@ -47,7 +48,7 @@ export const AddAlbum: React.FC<Props> = (props) => {
     }
 
     fetchUsersAlbums();
-  }, [])
+  }, [props])
 
   const handleSearchStart  = async (e: React.MouseEvent) => {
     e.preventDefault();
