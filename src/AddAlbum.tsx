@@ -111,7 +111,7 @@ export const AddAlbum: React.FC<Props> = (props) => {
               -
               </div>
             </div>
-          )) : <p>No albums</p>}
+          )) : ""}
         </div>
       </div>
     </React.Fragment>

@@ -85,29 +85,20 @@
 }
 
 .albumsContainer {
-  position: relative;
+  position: absolute;
   background-color: var(--album-box-bg);
   padding-bottom: 1.3rem;
-  flex: 1 1 0;
   width: 100%;
   font-size: 1em;
   display: flex;
+  justify-self: start;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   gap: 0.7em;
 }
 
-.albumsContainer::after {
-  content: '';
-  position: fixed;
-  top: var(--navbar-height);
-  height: 1.3rem;
-  width: 100%;
-  background-color: var(--album-box-bg);
-  top: var(--navbar-height);
-  width: 100%;
-}
+
   
 
 @media only screen and (max-width: 1199px) { 
