@@ -35,7 +35,6 @@ export const AddAlbum: React.FC<Props> = (props) => {
 
 
       if (result.status == 200) {
-        console.log(result.data.albums);
         for (let i = 0; i < result.data.albums.length; i++) {
           setAlbums((albums) => [...albums, result.data.albums[i]] );
         }
@@ -43,7 +42,6 @@ export const AddAlbum: React.FC<Props> = (props) => {
         console.log("ERROR fetching")
         // TODO handle
       }
-      console.log(result);
 
       // setAlbums((albums) => [...albums, albumDetails] );
     }
@@ -58,7 +56,6 @@ export const AddAlbum: React.FC<Props> = (props) => {
   }
   
   const addAlbum = async (albumDetails: AlbumDetails) => {
-    console.log("Added album");
     const result = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/addAlbum`, JSON.stringify(albumDetails), {
       headers: {
        'Content-Type': 'application/json'
@@ -66,13 +63,11 @@ export const AddAlbum: React.FC<Props> = (props) => {
       withCredentials: true
     });
 
-    console.log(result);
     setAlbums((albums) => [result.data.album, ...albums ] );
   }
 
 
   const deleteAlbum = async (index: number, _id: string) => {
-    console.log("Deleting album");
     const result = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/deleteAlbum/${_id}`, {
       headers: {
        'Content-Type': 'application/json'
@@ -80,7 +75,6 @@ export const AddAlbum: React.FC<Props> = (props) => {
       withCredentials: true
     });
 
-    console.log(result);
     setAlbums([...albums.slice(0, index), ...albums.slice(index + 1)] );
   }
 

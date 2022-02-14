@@ -12,8 +12,6 @@ export const Navbar: React.FC<Props> = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  console.log(location.pathname);
-
   const { auth } = useContext(authContext);
   const logoTagLine = (auth.authenticated) ? auth.email : "archivealbums.com";
 
@@ -25,10 +23,11 @@ export const Navbar: React.FC<Props> = (props) => {
     
     const result = await logout();
 
-    if (result.status == 200) {
+    if (result && result.status == 200) {
       navigate("/");
     } else {
       // display message to user about how they weren't able to be logged out 
+      navigate("/");
       console.log(result);
     }
   }
@@ -42,7 +41,7 @@ export const Navbar: React.FC<Props> = (props) => {
           {
             (auth.authenticated) ?
               <div className='menu'>
-                <div className="emailName">archive@albums.com</div>
+                <div className="emailName">{auth.email}</div>
                 <div className="signOutText" onClick={handleLogout}>Sign Out</div>
               </div>
             : ""

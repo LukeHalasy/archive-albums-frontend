@@ -11,7 +11,6 @@ interface Props {
 
 export const RequireAuth = ({ children }: Props) => {
   const route = useLocation().pathname;
-  console.log(route);
 
   const { auth } = useContext(authContext);
 
@@ -19,11 +18,7 @@ export const RequireAuth = ({ children }: Props) => {
   const [loading, setLoading] = useState(true);
   const [hasCookie, setHasCookie] = useState(false);
 
-  console.log(children);
-
   useEffect(() => {
-    // TODO: Fix authed, it's not working rn
-    console.log("CALLLLED")
     if (auth.authenticated) {
       setLoading(false);
       return;
@@ -50,9 +45,13 @@ export const RequireAuth = ({ children }: Props) => {
         <Loading />
       </React.Fragment>
     )
-  } else if (auth.authenticated || hasCookie == true || route == "/") {
-    return (<div>{children}</div>)
+  } else if (auth.authenticated || hasCookie == true) {
+    if (route != "/albums") {
+      return (<Navigate to="/albums" replace />)
+    } else {
+      return (<div>{children}</div>)
+    }
   } else {
-    return (<Navigate to="/" replace />)
+    return (<div>{children}</div>)
   }
 }

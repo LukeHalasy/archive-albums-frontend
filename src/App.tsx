@@ -44,10 +44,8 @@ export const App: React.FC<{}> = () => {
     });
 
     
-    console.log("result");
-    console.log(result);
     if (result && result.status == 201) {
-      navigate("/");
+      navigate("/albums");
     } else if (result && result.data.message) {
       setServerMessage(result.data.message);
     } 

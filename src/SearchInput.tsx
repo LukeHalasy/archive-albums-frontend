@@ -63,7 +63,6 @@ export const SearchInput: React.FC<Props> = ({ addAlbum }) => {
     if (title) {
       setLoading(true);
       let response = await getAlbumResults(title);
-      console.log(response);
 
       setOptions(response);
       setLoading(false);

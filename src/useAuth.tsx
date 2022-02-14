@@ -108,22 +108,31 @@ export const useAuth = () => {
       }
     },
     async logout() {
-      const result = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/logout`, {
-        headers: {
-         'Content-Type': 'application/json'
-        },
-        withCredentials: true
-      }) 
+      console.log("Calling logout");
 
-      if (result.status == 200) {
+      try {
+        const result = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/logout`, {
+          headers: {
+           'Content-Type': 'application/json'
+          },
+          withCredentials: true
+        }) 
+
+        if (result.status == 200) {
+          setAuth({
+            authenticated: false,
+            email: ''
+          });
+        }
+
+        return result;
+      } catch (e) {
+        console.log(e);
         setAuth({
           authenticated: false,
           email: ''
         });
       }
-
-      console.log(result);
-      return result;
     }
   };
 };
