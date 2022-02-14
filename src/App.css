@@ -14,13 +14,12 @@
   width: 20rem; 
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   position: relative;
 }
 .mobileDemoView img {
-  width: 18rem;
-  margin-left: -2rem;
-  border: 0.1rem solid white;
+  width: 17rem;
+  margin-left: 3.5rem;
 }
 .content {
   position: relative;

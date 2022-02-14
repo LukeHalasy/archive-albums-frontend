@@ -52,6 +52,10 @@ export const RequireAuth = ({ children }: Props) => {
       return (<div>{children}</div>)
     }
   } else {
-    return (<div>{children}</div>)
+    if (route != "/") {
+      return (<Navigate to="/" replace />)
+    } else {
+      return (<div>{children}</div>)
+    }
   }
 }
