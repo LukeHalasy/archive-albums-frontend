@@ -13,7 +13,7 @@ export const Loading: React.FC<Props> = (props) => {
     <React.Fragment>
       <Navbar />
       <div className="loadContainer">
-        <img className="recordLoadIcon" src={ record } />
+        <img alt="loading record animation" className="recordLoadIcon" src={ record } />
       </div>
     </React.Fragment>
     

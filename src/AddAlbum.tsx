@@ -90,8 +90,8 @@ const AddAlbum: React.FC<Props> = (props) => {
         {searching  && <Suspense fallback={<Loading />}><SearchInput addAlbum={addAlbum}/></Suspense>}
         <div className="buttonRow">
           <div className="addAlbum" onClick={handleSearchStart}>
-            <img src={ add } style={(searching) ? {'transform': 'rotate(-45deg)'} : {}} className="add"/>
-            <img src={ record } className="record"/>
+            <img alt="Plus button part of add button" src={ add } style={(searching) ? {'transform': 'rotate(-45deg)'} : {}} className="add"/>
+            <img alt="Picture of a record, on add button" src={ record } className="record"/>
           </div>
         </div>  
 
@@ -99,7 +99,7 @@ const AddAlbum: React.FC<Props> = (props) => {
           {(albums.length > 0) ? albums.map((album, index) => (
             <div key={index} className='albumContainer'>
               <div className="album">
-                {(album.image) ? <img src={album.image} /> : <div className="imageNotFound"></div>}
+                {(album.image) ? <img alt="album image" src={album.image} /> : <div className="imageNotFound"></div>}
                 <div className="description">
                   <div className="albumName">{album.name}</div>
                   <div className="artistName">{album.artist}</div>
