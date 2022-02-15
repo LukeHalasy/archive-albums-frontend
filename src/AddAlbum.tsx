@@ -95,22 +95,24 @@ const AddAlbum: React.FC<Props> = (props) => {
           </div>
         </div>  
 
-        <div className={(searching) ? "shiftForSearch albumsContainer" : "regular albumsContainer"}>
-          {(albums.length > 0) ? albums.map((album, index) => (
-            <div key={index} className='albumContainer'>
-              <div className="album">
-                {(album.image) ? <img alt="album image" src={album.image} /> : <div className="imageNotFound"></div>}
-                <div className="description">
-                  <div className="albumName">{album.name}</div>
-                  <div className="artistName">{album.artist}</div>
+        <Suspense fallback={<Loading />}>
+          <div className={(searching) ? "shiftForSearch albumsContainer" : "regular albumsContainer"}>
+            {(albums.length > 0) ? albums.map((album, index) => (
+              <div key={index} className='albumContainer'>
+                <div className="album">
+                  {(album.image) ? <img alt="album image" src={album.image} /> : <div className="imageNotFound"></div>}
+                  <div className="description">
+                    <div className="albumName">{album.name}</div>
+                    <div className="artistName">{album.artist}</div>
+                  </div>
+                </div>
+                <div className='delete' onClick={() => {deleteAlbum(index, album._id)}}>
+                -
                 </div>
               </div>
-              <div className='delete' onClick={() => {deleteAlbum(index, album._id)}}>
-              -
-              </div>
-            </div>
-          )) : ""}
-        </div>
+            )) : ""}
+          </div>
+        </Suspense>
       </div>
     </React.Fragment>
   );

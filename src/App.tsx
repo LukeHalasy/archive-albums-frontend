@@ -63,7 +63,7 @@ const App: React.FC<{}> = () => {
             
             <div className="mobileDemoView">
               <p className="title">Demo</p>
-              <video autoPlay loop muted playsInline>
+              <video autoPlay loop muted playsInline preload='auto' >
               <source src={mobileDemo} type="video/mp4" />
               </video>
             </div>

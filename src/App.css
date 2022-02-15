@@ -129,6 +129,7 @@
   background-color: var(--album-box-bg);
   border-radius: 0.2rem;
   border: 0.2rem solid var(--album-box-bg);
+  color: var(--color-white-main);
   padding: 1rem;
   font-size: 0.7em;
   transition: 0.1s;
