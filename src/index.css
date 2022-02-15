@@ -1,11 +1,13 @@
 @font-face {
   font-family: 'Fira Mono Bold';
   src: local('Fira Mono Bold'),url(./fonts/Fira_Mono/FiraMono-Bold.ttf) format('truetype');
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Fira Mono';
   src: local('Fira Mono'),url(./fonts/Fira_Mono/FiraMono-Regular.ttf) format('truetype');
+  font-display: swap;
 }
 
 :root {
