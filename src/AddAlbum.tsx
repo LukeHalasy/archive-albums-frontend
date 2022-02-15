@@ -95,7 +95,7 @@ const AddAlbum: React.FC<Props> = (props) => {
           </div>
         </div>  
 
-        <Suspense fallback={<Loading />}>
+        <Suspense fallback={<div>Fetching albums...</div>}>
           <div className={(searching) ? "shiftForSearch albumsContainer" : "regular albumsContainer"}>
             {(albums.length > 0) ? albums.map((album, index) => (
               <div key={index} className='albumContainer'>

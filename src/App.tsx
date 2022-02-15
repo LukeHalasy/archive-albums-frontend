@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from './useAuth';
 
 import { Navbar } from './Navbar';
+import Video from './AutoPlaySilentVideo';
 import mobileDemo from './images/mobileDemo.mp4';
 
 import './App.css';
@@ -63,9 +64,7 @@ const App: React.FC<{}> = () => {
             
             <div className="mobileDemoView">
               <p className="title">Demo</p>
-              <video autoPlay loop muted playsInline preload='auto' >
-              <source src={mobileDemo} type="video/mp4" />
-              </video>
+              <Video video={mobileDemo}/>
             </div>
 
             <div className='buttonsContainer'>
