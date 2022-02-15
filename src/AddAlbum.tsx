@@ -4,12 +4,13 @@ import axios from 'axios';
 import { Navbar } from './Navbar';
 import { Loading } from './Loading';
 
-const SearchInput = lazy(() => import('./SearchInput'));
-
 import add from './images/add.svg'
 import record from './images/record.svg'
 
 import './AddAlbum.css';
+
+const SearchInput = lazy(() => import('./SearchInput'));
+
 
 interface Props {
 
