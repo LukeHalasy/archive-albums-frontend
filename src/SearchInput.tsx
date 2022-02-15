@@ -14,7 +14,7 @@ interface Album {
   image: string
 }
 
-export const SearchInput: React.FC<Props> = ({ addAlbum }) => {
+const SearchInput: React.FC<Props> = ({ addAlbum }) => {
   const [inputValue, setInputValue] = useState('');
   const [loading, setLoading] = useState(false);
   const [options, setOptions] = useState<Album[]>();
@@ -121,3 +121,5 @@ export const SearchInput: React.FC<Props> = ({ addAlbum }) => {
     </div>
   )
 }
+
+export default SearchInput;

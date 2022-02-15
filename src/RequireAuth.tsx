@@ -9,7 +9,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const RequireAuth = ({ children }: Props) => {
+export default ({ children }: Props) => {
   const route = useLocation().pathname;
 
   const { auth } = useContext(authContext);
@@ -40,10 +40,7 @@ export const RequireAuth = ({ children }: Props) => {
 
   if (loading) {
     return (
-      <React.Fragment>
-        <Navbar />
-        <Loading />
-      </React.Fragment>
+      <Loading />
     )
   } else if (auth.authenticated || hasCookie == true) {
     if (route != "/albums") {

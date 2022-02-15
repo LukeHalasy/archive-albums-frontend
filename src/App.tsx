@@ -1,15 +1,14 @@
-import React, { useState, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth, authContext } from './useAuth';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from './useAuth';
 
 import { Navbar } from './Navbar';
 import mobileDemo from './images/mobileDemo.mp4';
 
 import './App.css';
 
-export const App: React.FC<{}> = () => {
+const App: React.FC<{}> = () => {
   const navigate = useNavigate();
-  const { auth } = useContext(authContext);
   const { login, signup } = useAuth();
   const [ signingUp, setSigningUp ] = useState(false);
   const [ serverMessage, setServerMessage ] = useState("");
@@ -69,23 +68,17 @@ export const App: React.FC<{}> = () => {
               </video>
             </div>
 
-            {(auth.authenticated) ?
-              <div>
-                <Link to="/albums">albums</Link>
+            <div className='buttonsContainer'>
+              <div className='userContainer'>
+                <div className="title">{(signingUp) ? 'Sign Up' : 'Sign In'}</div>
+                <div className="accountDescription">{(signingUp) ? 'Enter a valid email and password': 'Enter your email and password'}</div>
+                <input className='formInput' type="email" placeholder='Email' onChange={e =>setEmail(e.target.value)}/>
+                <input className='formInput' type="password" placeholder='Password' onChange={e =>setPassword(e.target.value)}/>
+                <button className='submitButton' type="submit" onClick={(signingUp) ? handleSignup : handleLogin}>{(signingUp) ? "Sign Up" : "Sign In"}</button>
+                {(serverMessage == '') ? <div className='serverMessage' style={{ 'display': 'none' }}>{serverMessage}</div> : <div className='serverMessage'>{serverMessage}</div>}
+                <div className='reverseContainer'><div className='reverse'>{(signingUp) ? 'Already have an account?' : 'Don\'t have an account?'}</div> <div className="reverseText" onClick={() => {setSigningUp(!signingUp)}}>{(signingUp) ? "Sign In" : "Sign Up"}</div></div>
               </div>
-              :
-              <div className='buttonsContainer'>
-                <div className='userContainer'>
-                  <div className="title">{(signingUp) ? 'Sign Up' : 'Sign In'}</div>
-                  <div className="accountDescription">{(signingUp) ? 'Enter a valid email and password': 'Enter your email and password'}</div>
-                  <input className='formInput' type="email" placeholder='Email' onChange={e =>setEmail(e.target.value)}/>
-                  <input className='formInput' type="password" placeholder='Password' onChange={e =>setPassword(e.target.value)}/>
-                  <button className='submitButton' type="submit" onClick={(signingUp) ? handleSignup : handleLogin}>{(signingUp) ? "Sign Up" : "Sign In"}</button>
-                  {(serverMessage == '') ? <div className='serverMessage' style={{ 'display': 'none' }}>{serverMessage}</div> : <div className='serverMessage'>{serverMessage}</div>}
-                  <div className='reverseContainer'><div className='reverse'>{(signingUp) ? 'Already have an account?' : 'Don\'t have an account?'}</div> <div className="reverseText" onClick={() => {setSigningUp(!signingUp)}}>{(signingUp) ? "Sign In" : "Sign Up"}</div></div>
-                </div>
-              </div>
-            }
+            </div>
           </div>
           <div className='previewArea'>
           </div>
@@ -94,3 +87,5 @@ export const App: React.FC<{}> = () => {
     </React.Fragment>
   );
 };
+
+export default App;

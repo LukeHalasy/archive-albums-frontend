@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import axios from 'axios';
 
 import { Navbar } from './Navbar';
-import { SearchInput } from './SearchInput';
+import { Loading } from './Loading';
+
+const SearchInput = lazy(() => import('./SearchInput'));
 
 import add from './images/add.svg'
 import record from './images/record.svg'
@@ -20,7 +22,7 @@ interface AlbumDetails {
   _id: string
 }
 
-export const AddAlbum: React.FC<Props> = (props) => {
+const AddAlbum: React.FC<Props> = (props) => {
   const [searching, setSearching]= useState(false);
   const [albums, setAlbums] = useState<AlbumDetails[]>([]);
 
@@ -84,7 +86,7 @@ export const AddAlbum: React.FC<Props> = (props) => {
       <Navbar />
       
       <div className='albumsPageContainer'>
-        {searching  && <SearchInput addAlbum={addAlbum}/>}
+        {searching  && <Suspense fallback={<Loading />}><SearchInput addAlbum={addAlbum}/></Suspense>}
         <div className="buttonRow">
           <div className="addAlbum" onClick={handleSearchStart}>
             <img src={ add } style={(searching) ? {'transform': 'rotate(-45deg)'} : {}} className="add"/>
@@ -112,3 +114,5 @@ export const AddAlbum: React.FC<Props> = (props) => {
     </React.Fragment>
   );
 }
+
+export default AddAlbum;

@@ -1,22 +1,26 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { App } from './App';
-import { RequireAuth } from './RequireAuth';
+import RequireAuth  from './RequireAuth';
 import { AuthProvider } from './useAuth';
-import { AddAlbum } from './AddAlbum';
+import { Loading } from './Loading';
 
 import reportWebVitals from './reportWebVitals';
+
+const App = lazy(() => import('./App'))
+const AddAlbum = lazy(() => import('./AddAlbum'))
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<RequireAuth><App /></RequireAuth>} />
-          <Route path="/albums" element={<RequireAuth><AddAlbum /></RequireAuth>} />
-        </Routes>
+        <Suspense fallback={<Loading />}>
+          <Routes>
+            <Route path="/" element={<RequireAuth><App /></RequireAuth>} />
+            <Route path="/albums" element={<RequireAuth><AddAlbum /></RequireAuth>} />
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </AuthProvider>
   </React.StrictMode>,
