@@ -217,6 +217,12 @@
   }
 }
 
+@media only screen and (min-width: 650px) { 
+  .mobileDemoView {
+    display: none;
+  }
+}
+
 @media only screen and (min-width: 650px) and (max-width: 899px) { 
   .leftArea {
     width: 50%;

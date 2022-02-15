@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth, authContext } from './useAuth';
 
 import { Navbar } from './Navbar';
-import mobileDemo from './images/mobileDemo.gif';
+import mobileDemo from './images/mobileDemo.mp4';
 
 import './App.css';
 
@@ -64,7 +64,9 @@ export const App: React.FC<{}> = () => {
             
             <div className="mobileDemoView">
               <p className="title">Demo</p>
-              <img src={ mobileDemo } />
+              <video autoPlay loop muted playsInline>
+              <source src={mobileDemo} type="video/mp4" />
+              </video>
             </div>
 
             {(auth.authenticated) ?
