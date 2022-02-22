@@ -11,6 +11,8 @@ import './App.css';
 const App: React.FC<{}> = () => {
   const navigate = useNavigate();
   const { login, signup } = useAuth();
+  const [ loadingResponse, setLoadingResponse ] = useState(false);
+
   const [ signingUp, setSigningUp ] = useState(false);
   const [ serverMessage, setServerMessage ] = useState("");
   
@@ -20,11 +22,13 @@ const App: React.FC<{}> = () => {
   const handleLogin = async (e: React.MouseEvent) => {
     e.preventDefault();
     
+    setLoadingResponse(true);
     const result = await login({
       email,
       password
     });
 
+    setLoadingResponse(false);
     if (result && result.status == 200) {
       navigate("/albums");
     } else if (result && (result.status == 404 || (result.status == 400 && result.data.message == 'incorrect email or password'))) {

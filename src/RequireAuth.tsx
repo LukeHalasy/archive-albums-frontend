@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate, useLocation, Navigate } from 'react-router-dom'
 import { useAuth, authContext } from './useAuth'
 
-import { Loading } from './Loading'
+import { LoadingPage } from './LoadingPage'
 import { Navbar } from './Navbar'
 
 interface Props {
@@ -40,7 +40,7 @@ export default ({ children }: Props) => {
 
   if (loading) {
     return (
-      <Loading />
+      <LoadingPage />
     )
   } else if (auth.authenticated || hasCookie == true) {
     if (route != "/albums") {

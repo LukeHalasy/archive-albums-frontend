@@ -2,7 +2,7 @@ import React, { useState, useEffect, lazy, Suspense } from 'react';
 import axios from 'axios';
 
 import { Navbar } from './Navbar';
-import { Loading } from './Loading';
+import { LoadingPage } from './LoadingPage';
 
 import add from './images/add.svg'
 import record from './images/record.svg'
@@ -87,7 +87,7 @@ const AddAlbum: React.FC<Props> = (props) => {
       <Navbar />
       
       <div className='albumsPageContainer'>
-        {searching  && <Suspense fallback={<Loading />}><SearchInput addAlbum={addAlbum}/></Suspense>}
+        {searching  && <Suspense fallback={<LoadingPage />}><SearchInput addAlbum={addAlbum}/></Suspense>}
         <div className="buttonRow">
           <div className="addAlbum" onClick={handleSearchStart}>
             <img alt="Plus button part of add button" src={ add } style={(searching) ? {'transform': 'rotate(-45deg)'} : {}} className="add"/>

@@ -4,7 +4,7 @@ import './index.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import RequireAuth  from './RequireAuth';
 import { AuthProvider } from './useAuth';
-import { Loading } from './Loading';
+import { LoadingPage } from './LoadingPage';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -15,7 +15,7 @@ ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
       <BrowserRouter>
-        <Suspense fallback={<Loading />}>
+        <Suspense fallback={<LoadingPage />}>
           <Routes>
             <Route path="/" element={<RequireAuth><App /></RequireAuth>} />
             <Route path="/albums" element={<RequireAuth><AddAlbum /></RequireAuth>} />
