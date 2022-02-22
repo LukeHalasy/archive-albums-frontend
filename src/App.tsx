@@ -4,6 +4,7 @@ import { useAuth } from './useAuth';
 
 import { Navbar } from './Navbar';
 import Video from './AutoPlaySilentVideo';
+import { SpinningRecord } from './SpinningRecord';
 import mobileDemo from './images/mobileDemo.mp4';
 
 import './App.css';
@@ -42,12 +43,14 @@ const App: React.FC<{}> = () => {
   const handleSignup = async (e: React.MouseEvent) => {
     e.preventDefault();
     
+    setLoadingResponse(true);
     const result = await signup({
       email,
       password
     });
 
     
+    setLoadingResponse(false);
     if (result && result.status == 201) {
       navigate("/albums");
     } else if (result && result.data.message) {
@@ -73,7 +76,7 @@ const App: React.FC<{}> = () => {
 
             <div className='buttonsContainer'>
               <div className='userContainer'>
-                <div className="title">{(signingUp) ? 'Sign Up' : 'Sign In'}</div>
+                <div className="title">{(signingUp) ? 'Sign Up' : 'Sign In'}{(loadingResponse) ? <SpinningRecord style={{"width": "1.3em", "marginLeft": "0.5em"}} /> : ""}</div>
                 <div className="accountDescription">{(signingUp) ? 'Enter a valid email and password': 'Enter your email and password'}</div>
                 <input className='formInput' type="email" placeholder='Email' onChange={e =>setEmail(e.target.value)}/>
                 <input className='formInput' type="password" placeholder='Password' onChange={e =>setPassword(e.target.value)}/>
