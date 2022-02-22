@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  app:
+    build: 
+      context: .
+      target: prod-test
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 3000:8080

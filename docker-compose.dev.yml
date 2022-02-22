@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  app:
+    build: 
+      context: .
+      target: dev
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=development
+      - BACKEND_URL=http://localhost:4000
+      - CHOKIDAR_USEPOLLING=true
