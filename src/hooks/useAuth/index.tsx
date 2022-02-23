@@ -1,4 +1,5 @@
-import React, { useState, useContext, createContext } from 'react';
+import { useContext  } from 'react';
+import AuthContext from '@context/AuthContext'
 import axios from 'axios';
 
 interface Credentials {
@@ -6,16 +7,8 @@ interface Credentials {
   password: string;
 }
 
-export const authContext = createContext({
-  auth: {
-    authenticated: false,
-    email: ''
-  },
-  setAuth: (auth: {authenticated: boolean, email: string}) => {}
-});
-
-export const useAuth = () => {
-  const { setAuth } = useContext(authContext);
+const useAuth = () => {
+  const { setAuth } = useContext(AuthContext);
 
   return {
     async signup(credentials: Credentials) {
@@ -137,19 +130,4 @@ export const useAuth = () => {
   };
 };
 
-interface Props {
-  children: React.ReactNode;
-}
-
-export const AuthProvider = ({ children }: Props) => {
-  const [auth, setAuth] = useState({
-    authenticated: false,
-    email: ''
-  });
-
-  return (
-    <authContext.Provider value={{ auth, setAuth }}>
-      {children}
-    </authContext.Provider>
-  );
-}
+export default useAuth;

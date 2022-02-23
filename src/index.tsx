@@ -1,15 +1,15 @@
 import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import RequireAuth  from './RequireAuth';
-import { AuthProvider } from './useAuth';
-import { LoadingPage } from './LoadingPage';
 
-import reportWebVitals from './reportWebVitals';
+import AuthRouter  from '@routers/AuthRouter';
+import AuthProvider  from '@providers/AuthProvider';
+import LoadingPage from '@pages/LoadingPage';
 
-const App = lazy(() => import('./App'))
-const AddAlbum = lazy(() => import('./AddAlbum'))
+import './index.css';
+
+const Home = lazy(() => import('@pages/Home'))
+const Albums = lazy(() => import('@pages/Albums'))
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,8 +17,8 @@ ReactDOM.render(
       <BrowserRouter>
         <Suspense fallback={<LoadingPage />}>
           <Routes>
-            <Route path="/" element={<RequireAuth><App /></RequireAuth>} />
-            <Route path="/albums" element={<RequireAuth><AddAlbum /></RequireAuth>} />
+            <Route path="/" element={<AuthRouter><Home /></AuthRouter>} />
+            <Route path="/albums" element={<AuthRouter><Albums /></AuthRouter>} />
           </Routes>
         </Suspense>
       </BrowserRouter>
@@ -26,8 +26,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

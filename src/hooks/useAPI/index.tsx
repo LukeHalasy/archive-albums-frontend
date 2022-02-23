@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getAlbumResults = async (title: string) => {
+const getAlbumResults = async (title: string) => {
   try {
     const result = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/searchAlbums/${title}`,  {
       headers: {
@@ -19,5 +19,6 @@ export const getAlbumResults = async (title: string) => {
     console.log(error);
     return [];
   }
-  
 };
+
+export default getAlbumResults;

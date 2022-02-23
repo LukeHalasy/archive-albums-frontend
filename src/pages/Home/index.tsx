@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from './useAuth';
+import useAuth from '@hooks/useAuth';
 
-import { Navbar } from './Navbar';
-import Video from './AutoPlaySilentVideo';
-import { SpinningRecord } from './SpinningRecord';
-import mobileDemo from './images/mobileDemo.mp4';
+import Navbar from '@components/Navbar';
+import Video from '@/AutoPlaySilentVideo';
+import SpinningRecord from '@components/SpinningRecord';
+import mobileDemo from '@assets/images/mobileDemo.mp4';
 
-import './App.css';
+import './index.css';
 
-const App: React.FC<{}> = () => {
+interface Props {}
+
+const Home: React.FC<Props> = () => {
   const navigate = useNavigate();
   const { login, signup } = useAuth();
   const [ loadingResponse, setLoadingResponse ] = useState(false);
@@ -94,4 +96,4 @@ const App: React.FC<{}> = () => {
   );
 };
 
-export default App;
+export default Home;

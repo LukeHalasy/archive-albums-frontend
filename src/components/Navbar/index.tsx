@@ -1,18 +1,17 @@
-import React, { useState, useContext } from 'react';
+import React, {  useContext } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom'
-import { useAuth, authContext } from './useAuth'
-import logo from './images/logo.svg'
-import './Navbar.css';
+import useAuth from '@hooks/useAuth'
+import AuthContext from '@context/AuthContext'
+import logo from '@/assets/images/logo.svg'
+import './index.css';
 
-interface Props {
+interface Props {}
 
-}
-
-export const Navbar: React.FC<Props> = (props) => {
+const Navbar: React.FC<Props> = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { auth } = useContext(authContext);
+  const { auth } = useContext(AuthContext);
   const logoTagLine = (auth.authenticated) ? auth.email : "archivealbums.com";
 
 
@@ -37,7 +36,7 @@ export const Navbar: React.FC<Props> = (props) => {
       <div className='bar'>
         <div className='home'>
           <img src={ logo } onClick={() => navigate("/")}/>
-          <p className='tagLine'>archivealbums.com</p>
+          <p className='tagLine'>{logoTagLine}</p>
           {
             (auth.authenticated) ?
               <div className='menu'>
@@ -52,3 +51,5 @@ export const Navbar: React.FC<Props> = (props) => {
     </div>
   );
 }
+
+export default Navbar;

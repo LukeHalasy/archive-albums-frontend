@@ -19,6 +19,12 @@
             ],
             "@providers/*": [
                 "./src/providers/*"
+            ],
+            "@routers/*": [
+                "./src/routers/*"
+            ],
+            "@assets/*": [
+                "./src/assets/*"
             ]
         }
     }

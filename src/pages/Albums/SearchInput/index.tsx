@@ -1,8 +1,8 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import debounce from 'lodash.debounce';
-import { getAlbumResults } from './useAPI';
+import getAlbumResults from '@hooks/useAPI';
 
-import './SearchInput.css';
+import './index.css';
 
 interface Props {
   addAlbum: any

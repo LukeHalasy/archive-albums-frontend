@@ -1,20 +1,17 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import axios from 'axios';
 
-import { Navbar } from './Navbar';
-import { LoadingPage } from './LoadingPage';
+import Navbar from '@components/Navbar';
+import LoadingPage from '@pages/LoadingPage';
 
-import add from './images/add.svg'
-import record from './images/record.svg'
+import add from '@assets/images/add.svg'
+import record from '@assets/images/record.svg'
 
-import './AddAlbum.css';
+import './index.css';
 
 const SearchInput = lazy(() => import('./SearchInput'));
 
-
-interface Props {
-
-}
+interface Props {}
 
 interface AlbumDetails {
   name: string
@@ -23,7 +20,7 @@ interface AlbumDetails {
   _id: string
 }
 
-const AddAlbum: React.FC<Props> = (props) => {
+const Albums: React.FC<Props> = (props) => {
   const [searching, setSearching]= useState(false);
   const [albums, setAlbums] = useState<AlbumDetails[]>([]);
 
@@ -72,7 +69,7 @@ const AddAlbum: React.FC<Props> = (props) => {
 
 
   const deleteAlbum = async (index: number, _id: string) => {
-    const result = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/deleteAlbum/${_id}`, {
+    await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/deleteAlbum/${_id}`, {
       headers: {
        'Content-Type': 'application/json'
       },
@@ -118,4 +115,4 @@ const AddAlbum: React.FC<Props> = (props) => {
   );
 }
 
-export default AddAlbum;
+export default Albums;

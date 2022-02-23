@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate, useLocation, Navigate } from 'react-router-dom'
-import { useAuth, authContext } from './useAuth'
+import { useLocation, Navigate } from 'react-router-dom'
+import useAuth from '@hooks/useAuth'
+import AuthContext from '@context/AuthContext'
 
-import { LoadingPage } from './LoadingPage'
-import { Navbar } from './Navbar'
+import LoadingPage from '@pages/LoadingPage'
 
 interface Props {
   children: React.ReactNode;
@@ -12,7 +12,7 @@ interface Props {
 export default ({ children }: Props) => {
   const route = useLocation().pathname;
 
-  const { auth } = useContext(authContext);
+  const { auth } = useContext(AuthContext);
 
   const { currentUser } = useAuth();
   const [loading, setLoading] = useState(true);
