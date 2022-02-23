@@ -22,7 +22,7 @@ const Navbar: React.FC<Props> = () => {
     
     const result = await logout();
 
-    if (result && result.status == 200) {
+    if (result && result.status === 200) {
       navigate("/");
     } else {
       // display message to user about how they weren't able to be logged out 
@@ -32,10 +32,10 @@ const Navbar: React.FC<Props> = () => {
   }
 
   return (
-    <div className='barContainer' style={(location.pathname == "/") ? { 'position': 'absolute' } : {}}>
+    <div className='barContainer' style={(location.pathname === "/") ? { 'position': 'absolute' } : {}}>
       <div className='bar'>
         <div className='home'>
-          <img src={ logo } onClick={() => navigate("/")}/>
+          <img alt="logo, album folder" src={ logo } onClick={() => navigate("/")}/>
           <p className='tagLine'>{logoTagLine}</p>
           {
             (auth.authenticated) ?

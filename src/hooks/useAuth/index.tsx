@@ -24,7 +24,7 @@ const useAuth = () => {
 
         console.log(result);
 
-        if (result.status == 201) {
+        if (result.status === 201) {
           setAuth({
             authenticated: true,
             email: result.data.email
@@ -56,7 +56,7 @@ const useAuth = () => {
         })
         console.log(result);
 
-        if (result.status == 200) {
+        if (result.status === 200) {
           setAuth({
             authenticated: true,
             email: result.data.email
@@ -86,7 +86,7 @@ const useAuth = () => {
 
       console.log(userReq);
 
-      if (userReq.status == 200 && userReq.data.logged_in == true) {
+      if (userReq.status === 200 && userReq.data.logged_in === true) {
         setAuth({
           authenticated: true,
           email: userReq.data.email
@@ -111,7 +111,7 @@ const useAuth = () => {
           withCredentials: true
         }) 
 
-        if (result.status == 200) {
+        if (result.status === 200) {
           setAuth({
             authenticated: false,
             email: ''

@@ -35,7 +35,7 @@ const Albums: React.FC<Props> = (props) => {
       });  
 
 
-      if (result.status == 200) {
+      if (result.status === 200) {
         for (let i = 0; i < result.data.albums.length; i++) {
           setAlbums((albums) => [...albums, result.data.albums[i]] );
         }
@@ -88,7 +88,7 @@ const Albums: React.FC<Props> = (props) => {
         <div className="buttonRow">
           <div className="addAlbum" onClick={handleSearchStart}>
             <img alt="Plus button part of add button" src={ add } style={(searching) ? {'transform': 'rotate(-45deg)'} : {}} className="add"/>
-            <img alt="Picture of a record, on add button" src={ record } className="record"/>
+            <img alt="Record, on add button" src={ record } className="record"/>
           </div>
         </div>  
 
@@ -97,7 +97,7 @@ const Albums: React.FC<Props> = (props) => {
             {(albums.length > 0) ? albums.map((album, index) => (
               <div key={index} className='albumContainer'>
                 <div className="album">
-                  {(album.image) ? <img alt="album image" src={album.image} /> : <div className="imageNotFound"></div>}
+                  {(album.image) ? <img alt={`${album.name} - ${album.artist}`} src={album.image} /> : <div className="imageNotFound"></div>}
                   <div className="description">
                     <div className="albumName">{album.name}</div>
                     <div className="artistName">{album.artist}</div>

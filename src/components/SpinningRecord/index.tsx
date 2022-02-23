@@ -9,7 +9,7 @@ interface Props {
 
 const SpinningRecord: React.FC<Props> = ({ style }: Props) => {
   return (
-    <img style={style} className="recordLoadIcon" src={ record }></img> 
+    <img alt="load icon" style={style} className="recordLoadIcon" src={ record }></img> 
   );
 }
 

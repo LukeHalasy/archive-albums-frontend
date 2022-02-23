@@ -9,7 +9,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export default ({ children }: Props) => {
+const AuthRouter: React.FC<Props> = ({ children }: Props) => {
   const route = useLocation().pathname;
 
   const { auth } = useContext(AuthContext);
@@ -36,23 +36,25 @@ export default ({ children }: Props) => {
     }
 
     checkIfUserHasCookie();
-  }, [children])
+  }, [auth.authenticated, currentUser])
 
   if (loading) {
     return (
       <LoadingPage />
     )
-  } else if (auth.authenticated || hasCookie == true) {
-    if (route != "/albums") {
+  } else if (auth.authenticated || hasCookie === true) {
+    if (route !== "/albums") {
       return (<Navigate to="/albums" replace />)
     } else {
       return (<div>{children}</div>)
     }
   } else {
-    if (route != "/") {
+    if (route !== "/") {
       return (<Navigate to="/" replace />)
     } else {
       return (<div>{children}</div>)
     }
   }
 }
+
+export default AuthRouter;
