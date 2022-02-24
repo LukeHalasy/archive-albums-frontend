@@ -12,7 +12,7 @@ const Navbar: React.FC<Props> = () => {
   const location = useLocation();
 
   const { auth } = useContext(AuthContext);
-  const logoTagLine = (auth.authenticated) ? auth.email : "archivealbums.com";
+  const logoTagLine = (auth.authenticated) ? "" : "archivealbums.com";
 
 
   const { logout } = useAuth();
@@ -35,7 +35,7 @@ const Navbar: React.FC<Props> = () => {
     <div className='barContainer' style={(location.pathname === "/") ? { 'position': 'absolute' } : {}}>
       <div className='bar'>
         <div className='home'>
-          <img alt="logo, album folder" src={ logo } onClick={() => navigate("/")}/>
+          <img alt="logo, album folder" style={(auth.authenticated) ? {'alignSelf': 'center'} : {}} src={ logo } onClick={() => navigate("/")}/>
           <p className='tagLine'>{logoTagLine}</p>
           {
             (auth.authenticated) ?

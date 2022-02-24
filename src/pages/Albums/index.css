@@ -91,32 +91,19 @@
   width: 100%;
   font-size: 1em;
   display: flex;
+  flex-wrap: wrap;
   justify-self: start;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   gap: 0.7em;
-}
-
-
-  
-
-@media only screen and (max-width: 1199px) { 
-}
-
-@media only screen and (min-width: 1200px) { 
-  .albumsContainer {
-    width: 900px;
-  } 
-
-  .record {
-    display: "";
-  }
+  max-width: 1600px;
 }
 
 .albumsContainer .albumContainer {
   width: 20rem;
   max-width: 20rem;
+  min-width: 20rem;
   height: calc(75px + 0.2em);
   display: flex;
   flex-direction: row;
@@ -210,4 +197,25 @@
   color: #dddddd;
   flex-direction: column;
   justify-content: flex-start;
+}
+
+@media only screen and (min-width: 650px) { 
+  .albumsContainer {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 85%;
+  }
+
+  .buttonRow {
+    right: calc(15% / 2);
+  }
+} 
+
+@media only screen and (max-width: 1199px) { 
+}
+
+@media only screen and (min-width: 1200px) { 
+  .record {
+    display: "";
+  }
 }

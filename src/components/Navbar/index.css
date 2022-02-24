@@ -1,5 +1,6 @@
 .barContainer {
   position: fixed;
+  z-index: 3;  
   top: 0;
   width: 100%;
   height: var(--navbar-height);
@@ -60,6 +61,7 @@
   }
   .bar {
     width: 20rem;
+    min-width: 20rem;
   }   
   .home {
     align-self: center;
@@ -68,11 +70,6 @@
   .home img {
     align-self: center;
     margin-bottom: 0em;
-  }
-
-  .barContainer {
-    position: fixed;
-    z-index: 3;
   }
 }
 

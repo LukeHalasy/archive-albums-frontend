@@ -36,14 +36,11 @@ html, body, .vsc-initialized  {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-/*
 * {
   border: 1px solid red;
   opacity: 1;
   visibility: visible;
 }
-  */
 
 @media only screen and (max-width: 649px) { 
   html, body, .vsc-initialized  {

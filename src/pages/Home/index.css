@@ -115,7 +115,7 @@
   font-family: 'Fira Mono';
   font-size: 0.80em;
   margin-top: 0em;
-  margin-bottom: 2em;
+  margin-bottom: 2.5em;
 }
 
 .formInput {
@@ -187,6 +187,7 @@
 .serverMessage {
   font-size: 0.82em;
   font-family: 'Fira Mono Bold';
+  margin-bottom: 1em;
   color: #ff053f;
 }
 

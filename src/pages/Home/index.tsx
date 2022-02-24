@@ -31,7 +31,6 @@ const Home: React.FC<Props> = () => {
       password
     });
 
-    setLoadingResponse(false);
     if (result && result.status === 200) {
       navigate("/albums");
     } else if (result && (result.status === 404 || (result.status === 400 && result.data.message === 'incorrect email or password'))) {
@@ -52,7 +51,6 @@ const Home: React.FC<Props> = () => {
     });
 
     
-    setLoadingResponse(false);
     if (result && result.status === 201) {
       navigate("/albums");
     } else if (result && result.data.message) {
