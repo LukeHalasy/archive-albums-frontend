@@ -36,7 +36,7 @@ const AuthRouter: React.FC<Props> = ({ children }: Props) => {
     }
 
     checkIfUserHasCookie();
-  }, [auth.authenticated, currentUser])
+  }, [])
 
   if (loading) {
     return (
