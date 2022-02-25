@@ -113,6 +113,7 @@ const SearchInput: React.FC<Props> = ({ addAlbum }) => {
       </div>
       <input
         value={inputValue}
+        spellCheck="false"
         ref={inputRef}
         onKeyDown={handleKeyPress}
         placeholder="Search for album.."

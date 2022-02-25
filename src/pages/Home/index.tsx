@@ -80,8 +80,8 @@ const Home: React.FC<Props> = () => {
             <div className='buttonsContainer'>
               <div className="signTitle">{(signingUp) ? 'Sign Up' : 'Sign In'}{(loadingResponse) ? <SpinningRecord style={{"width": "1.3em", "marginLeft": "0.5em"}} /> : ""}</div>
               <div className="accountDescription">{(signingUp) ? 'Enter a valid email and password': 'Enter your email and password'}</div>
-              <input className='formInput' type="email" placeholder='Email' onChange={e =>setEmail(e.target.value)}/>
-              <input className='formInput' type="password" placeholder='Password' onChange={e =>setPassword(e.target.value)}/>
+              <input className='formInput' spellCheck="false" type="email" placeholder='Email' onChange={e =>setEmail(e.target.value)}/>
+              <input className='formInput' spellCheck="false" type="password" placeholder='Password' onChange={e =>setPassword(e.target.value)}/>
               <button className='submitButton' type="submit" onClick={(signingUp) ? handleSignup : handleLogin}>{(signingUp) ? "Sign Up" : "Sign In"}</button>
               {(serverMessage === '') ? <div className='serverMessage' style={{ 'display': 'none' }}>{serverMessage}</div> : <div className='serverMessage'>{serverMessage}</div>}
               <div className='reverseContainer'><div className='reverse'>{(signingUp) ? 'Already have an account?' : 'Don\'t have an account?'}</div> <div className="reverseText" onClick={() => {setSigningUp(!signingUp)}}>{(signingUp) ? "Sign In" : "Sign Up"}</div></div>
