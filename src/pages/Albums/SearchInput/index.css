@@ -12,6 +12,7 @@
   padding-bottom: 1.3em;
 }
 
+
 input {
   line-height: 0.7rem;
   width: calc(20rem - 0.2rem - 2rem);
@@ -78,10 +79,25 @@ ul li:hover {
   white-space: nowrap;
 }
 
+.keyedIn {
+  background-color: var(--color-white-main);
+  color: var(--album-box-bg);
+  overflow-x: scroll;
+}
+
 .searchResult::-webkit-scrollbar, body::-webkit-scrollbar, .vsc-initialized::-webkit-scrollbar {
   display: none;
 }
 
+.results:hover .keyedIn:hover {
+  color: var(--album-box-bg);
+  background-color: var(--color-white-main);
+}
+
+.results:hover .keyedIn {
+  background-color: var(--album-box-bg);
+  color: var(--color-white-main);
+}
 
 .searchResult:hover {
   cursor: pointer;

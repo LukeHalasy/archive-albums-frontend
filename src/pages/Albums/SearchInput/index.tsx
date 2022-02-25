@@ -106,7 +106,7 @@ const SearchInput: React.FC<Props> = ({ addAlbum }) => {
            !loading &&
             options?.map((value: Album, index: number) => (
               (index === indexKeySelected) ?
-                <div ref={(index === 0) ? keyRef : blankRef} key={`${index}`} style={{'backgroundColor': 'var(--color-white-main)', 'color': 'var(--album-box-bg)'}} className="searchResult" onClick={() => {handleAddAlbum(value)}}>{`${value.artist} - ${value.name}`}</div>
+                <div ref={(index === 0) ? keyRef : blankRef} key={`${index}`} className="keyedIn searchResult" onClick={() => {handleAddAlbum(value)}}>{`${value.artist} - ${value.name}`}</div>
               :
                 <div ref={(index === 0) ? keyRef : blankRef} key={`${index}`} className="searchResult" onClick={() => {handleAddAlbum(value)}}>{`${value.artist} - ${value.name}`}</div>
         ))}
