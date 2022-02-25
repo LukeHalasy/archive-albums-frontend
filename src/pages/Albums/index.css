@@ -33,7 +33,7 @@
 .shiftForSearch::after {
   content: '';
   position: fixed;
-  top: var(--navbar-height) + 21.5rem;
+  top: calc(var(--navbar-height) + 21.5rem);
   height: 1.3rem;
   width: 100%;
   background-color: var(--album-box-bg);
@@ -205,7 +205,7 @@
   }
 
   .buttonRow {
-    right: calc(15% / 2);
+    right: 7.5%;
     width: 10rem;
   }
 
