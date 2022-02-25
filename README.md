@@ -2,7 +2,6 @@
 Keep track of albums you want to listen to.
 
 ## Check it out
-The website is live!
 [archivealbums.com](https://archivealbums.com)
 
 ## Technology Stack (frontend)
