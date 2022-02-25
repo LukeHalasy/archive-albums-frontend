@@ -6,10 +6,10 @@ Keep track of albums you want to listen to.
 
 ## Technology Stack (frontend)
 
-* Node
-* React
-* TypeScript
-* Docker
+* [Node](https://github.com/nodejs/node)
+* [React](https://github.com/facebook/react)
+* [TypeScript](https://github.com/microsoft/TypeScript)
+* [Docker](https://github.com/docker)
 
 ## Quickstart Guide
 Make sure you have Docker installed and running.
