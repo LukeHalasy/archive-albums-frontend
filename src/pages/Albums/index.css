@@ -80,7 +80,6 @@
 }
 
 .buttonRow .addAlbum .record {
-  display: none;
   height: 70%;  
 }
 
@@ -101,9 +100,7 @@
 }
 
 .albumsContainer .albumContainer {
-  width: 20rem;
-  max-width: 20rem;
-  min-width: 20rem;
+  
   height: calc(75px + 0.2em);
   display: flex;
   flex-direction: row;
@@ -193,6 +190,7 @@
 .albumsContainer .artistName {
   display: flex;
   font-size: 0.7em;
+  margin-top: 0.2em;
   font-family: 'Fira Mono';
   color: #dddddd;
   flex-direction: column;
@@ -202,20 +200,66 @@
 @media only screen and (min-width: 650px) { 
   .albumsContainer {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 85%;
   }
 
   .buttonRow {
     right: calc(15% / 2);
+    width: 10rem;
+  }
+
+  .buttonRow .addAlbum {
+    width: 10rem;
+  }
+
+  .buttonRow .record {
+    width: 2.2em;
+    margin-left: 0.6em;
   }
 } 
 
-@media only screen and (max-width: 1199px) { 
+@media only screen and (min-width: 650px) and (max-width: 1000px) { 
+  .albumContainer {
+    flex: 0 0 49%; 
+  }
+
+  .albumContainer:nth-child(2n + 2) {
+    justify-content: flex-end;
+  }
+
+  .albumsContainer {
+    column-gap: 2%;
+  }
 }
 
-@media only screen and (min-width: 1200px) { 
+
+@media only screen and (min-width: 1000px) { 
+  .albumContainer {
+    flex: 0 0 32%; 
+  }
+
+  .albumContainer:nth-child(3n + 2) {
+    justify-content: center;
+  }
+
+  .albumContainer:nth-child(3n) {
+    justify-content: flex-end;
+  }
+  .albumsContainer {
+    column-gap: 2%;
+  }
+}
+
+
+@media only screen and (max-width: 649px) { 
+  .albumContainer {
+    width: 20rem;
+    max-width: 20rem;
+    min-width: 20rem;
+  }
+
   .record {
-    display: "";
+    display: none;  
   }
 }

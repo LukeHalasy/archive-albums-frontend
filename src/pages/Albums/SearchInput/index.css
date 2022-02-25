@@ -23,6 +23,7 @@ input {
   color: var(--color-white-main);
   font-family: 'Fira Mono';
   padding: 1rem;
+  max-width: 1600px;
   font-size: 0.7em;
   transition: 0.1s;
 }
@@ -36,6 +37,7 @@ input:focus {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  max-width: 1600px;
   margin-bottom: 1.4em;
   align-items: center;
   color: var(--color-white-main);
@@ -87,5 +89,14 @@ ul li:hover {
   color: var(--album-box-bg);
 }
 
+@media only screen and (min-width: 650px) { 
+  input {
+    width: 85%;
+  }
 
+  .results {
+    width: 85%;
+  }
+
+} 
 

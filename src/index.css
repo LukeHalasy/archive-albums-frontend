@@ -12,7 +12,7 @@
 
 :root {
   --bgcolor: #18181c;
-  --album-box-bg: #141417;
+  --album-box-bg: #101013;
   --color-white-main: #fefefe;
   --font-gray: #acacac;
   --color-white-brighter: #dcdbe9;
@@ -36,11 +36,13 @@ html, body, .vsc-initialized  {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/*
 * {
   border: 1px solid red;
   opacity: 1;
   visibility: visible;
 }
+  */
 
 @media only screen and (max-width: 649px) { 
   html, body, .vsc-initialized  {

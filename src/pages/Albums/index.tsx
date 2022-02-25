@@ -48,7 +48,7 @@ const Albums: React.FC<Props> = (props) => {
     }
 
     fetchUsersAlbums();
-  }, [props])
+  }, [])
 
   const handleSearchStart  = async (e: React.MouseEvent) => {
     e.preventDefault();

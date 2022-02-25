@@ -77,6 +77,7 @@ const useAuth = () => {
       }
     },
     async currentUser() {
+      console.log("CURRENT USER BEING CALLED");
       const userReq = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/currentUser`, {
         headers: {
          'Content-Type': 'application/json'
@@ -101,6 +102,7 @@ const useAuth = () => {
       }
     },
     async logout() {
+      console.log("LOGOUT USER BEING CALLED");
       console.log("Calling logout");
 
       try {

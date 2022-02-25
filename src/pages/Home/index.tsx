@@ -36,8 +36,10 @@ const Home: React.FC<Props> = () => {
     } else if (result && (result.status === 404 || (result.status === 400 && result.data.message === 'incorrect email or password'))) {
       // display failed login info
       setServerMessage("Incorrect email or password")
+      setLoadingResponse(false);
     } else {
       setServerMessage("Failed to login")
+      setLoadingResponse(false);
     }
   }
   
@@ -55,6 +57,7 @@ const Home: React.FC<Props> = () => {
       navigate("/albums");
     } else if (result && result.data.message) {
       setServerMessage(result.data.message);
+      setLoadingResponse(false);
     } 
   }
 
