@@ -5,6 +5,7 @@ Keep track of albums you want to listen to.
 [archivealbums.com](https://archivealbums.com)
 
 ## Technology Stack (frontend)
+This project was built using the following technologies
 
 * [Node](https://github.com/nodejs/node)
 * [React](https://github.com/facebook/react)
