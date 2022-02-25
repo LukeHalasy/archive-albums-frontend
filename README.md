@@ -1,5 +1,5 @@
 # Archive Albums
-A React webapp for keeping track of albums you want to listen to.
+Keep track of albums you want to listen to.
 
 [archivealbums.com](https://archivealbums.com)
 
