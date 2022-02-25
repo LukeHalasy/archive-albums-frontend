@@ -1,5 +1,10 @@
 # Archive Albums
-Simple and easy-to-use WebApp for keeping track of albums you have listened to/want to listen to.
+Keep track of albums you want to listen to.
+
+[archivealbums.com](https://archivealbums.com)
+
+
+
 
 ## Prereqs
 Make sure you have Docker installed and running.
@@ -7,12 +12,23 @@ Make sure you have Docker installed and running.
 ## To run locally
 
 ```bash
-docker-compose up --build
+make dev
 ```
 
-## To run production server
+## To stop
 
 ```bash
-docker build --rm . -t frontend:latest
-docker run --rm -it -p 3001:8080 frontend:latest
+make downdev
+```
+
+## To run production (like) server
+
+```bash
+make prod
+```
+
+## To stop
+
+```bash
+make downprod
 ```
