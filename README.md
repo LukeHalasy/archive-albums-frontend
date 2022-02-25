@@ -1,9 +1,7 @@
 # Archive Albums
-Keep track of albums you want to listen to.
+A React webapp for keeping track of albums you want to listen to.
 
 [archivealbums.com](https://archivealbums.com)
-
-
 
 
 ## Prereqs
