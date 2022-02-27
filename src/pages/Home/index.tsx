@@ -5,7 +5,7 @@ import useAuth from '@hooks/useAuth';
 import Navbar from '@components/Navbar';
 import Video from '@/AutoPlaySilentVideo';
 import SpinningRecord from '@components/SpinningRecord';
-import mobileDemo from '@assets/images/mobileDemo.mp4';
+import fullscreenDemo from '@assets/images/fullscreenDemo.mp4';
 
 import './index.css';
 
@@ -65,31 +65,27 @@ const Home: React.FC<Props> = () => {
     <React.Fragment>
       <Navbar />
       <div className="container">
-        <div className="content">
-          <div className="leftArea">
-            <div className="header">
-              <p className="title">Archive albums</p>
-              <p className='description'>Keep track of albums <br /> you want to listen to.</p>
-            </div>
-            
-            <div className="mobileDemoView">
-              <p className="title">Demo</p>
-              <Video video={mobileDemo}/>
-            </div>
-
-            <div className='buttonsContainer'>
-              <div className="signTitle">{(signingUp) ? 'Sign Up' : 'Sign In'}{(loadingResponse) ? <SpinningRecord style={{"width": "1.3em", "marginLeft": "0.5em"}} /> : ""}</div>
-              <div className="accountDescription">{(signingUp) ? 'Enter a valid email and password': 'Enter your email and password'}</div>
-              <input className='formInput' spellCheck="false" type="email" placeholder='Email' onChange={e =>setEmail(e.target.value)}/>
-              <input className='formInput' spellCheck="false" type="password" placeholder='Password' onChange={e =>setPassword(e.target.value)}/>
-              <button className='submitButton' type="submit" onClick={(signingUp) ? handleSignup : handleLogin}>{(signingUp) ? "Sign Up" : "Sign In"}</button>
-              {(serverMessage === '') ? <div className='serverMessage' style={{ 'display': 'none' }}>{serverMessage}</div> : <div className='serverMessage'>{serverMessage}</div>}
-              <div className='reverseContainer'><div className='reverse'>{(signingUp) ? 'Already have an account?' : 'Don\'t have an account?'}</div> <div className="reverseText" onClick={() => {setSigningUp(!signingUp)}}>{(signingUp) ? "Sign In" : "Sign Up"}</div></div>
-            </div>
-          </div>
-          <div className='previewArea'>
-          </div>
+        <div className="header">
+          <p className="title">Archive albums</p>
+          <p className='description'>Keep track of albums <br /> you want to listen to.</p>
         </div>
+        
+        <div className="mobileDemoView">
+          <p className="title">Demo</p>
+        </div>
+
+        <div className='buttonsContainer'>
+          <div className="signTitle">{(signingUp) ? 'Sign Up' : 'Sign In'}{(loadingResponse) ? <SpinningRecord style={{"width": "1.3em", "marginLeft": "0.5em"}} /> : ""}</div>
+          <div className="accountDescription">{(signingUp) ? 'Enter a valid email and password': 'Enter your email and password'}</div>
+          <input className='formInput' spellCheck="false" type="email" placeholder='Email' onChange={e =>setEmail(e.target.value)}/>
+          <input className='formInput' spellCheck="false" type="password" placeholder='Password' onChange={e =>setPassword(e.target.value)}/>
+          <button className='submitButton' type="submit" onClick={(signingUp) ? handleSignup : handleLogin}>{(signingUp) ? "Sign Up" : "Sign In"}</button>
+          {(serverMessage === '') ? <div className='serverMessage' style={{ 'display': 'none' }}>{serverMessage}</div> : <div className='serverMessage'>{serverMessage}</div>}
+          <div className='reverseContainer'><div className='reverse'>{(signingUp) ? 'Already have an account?' : 'Don\'t have an account?'}</div> <div className="reverseText" onClick={() => {setSigningUp(!signingUp)}}>{(signingUp) ? "Sign In" : "Sign Up"}</div></div>
+        </div>
+      </div>
+      <div className='previewArea'>
+        <video autoPlay muted style={{"width": "90%"}} preload="auto" loop src={fullscreenDemo} />
       </div>
     </React.Fragment>
   );
