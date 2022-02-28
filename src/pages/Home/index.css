@@ -40,10 +40,16 @@
   z-index: 4;
 }
 
-.previewArea img {
+.previewArea .previewImage {
   position: absolute;
+  background-image: url('../../assets/images/mobile_preview.png');
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  width: 16rem;
+  height: 35rem;
   top: calc(var(--navbar-height) + 6.5em);
 }
+
 
 .container .title {
   font-size: 1.7em; 
@@ -232,12 +238,22 @@
     left: 52%;
     display: "";
   }
+
+  .previewArea .previewImage {
+    background-image: url('../../assets/images/mobile_preview.png');
+  }
 }
 
 @media only screen and (min-width: 900px) and (max-width: 1299px) { 
   .container {
     width: 40%;
     font-size: 0.9em;
+  }
+
+  .previewArea .previewImage {
+    background-image: url('../../assets/images/medium_preview.png');
+    width: 32rem;
+    height: 40rem;
   }
 
   .previewArea {
@@ -258,6 +274,11 @@
     left: 32%;
     display: "";
   }
+
+  .previewArea .previewImage {
+    width: 92%;
+    background-image: url('../../assets/images/large_preview.png');
+  }
 }
 
 @media only screen and (min-width: 1800px) { 
@@ -268,6 +289,11 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+  }
+
+  .previewArea .previewImage {
+    background-image: url('../../assets/images/large_preview.png');
+    width: 1130px;
   }
 
   .pageContent {

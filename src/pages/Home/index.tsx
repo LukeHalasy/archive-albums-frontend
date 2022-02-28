@@ -83,7 +83,7 @@ const Home: React.FC<Props> = () => {
         </div>
       </div>
       <div className='previewArea'>
-        <img src={large_preview} style={{'width': '90%', 'objectFit': 'cover', 'objectPosition': 'top'}}/>
+        <div className="previewImage" />
       </div>
       </div>
       </div>
