@@ -1,15 +1,16 @@
 .container {
   position: absolute;
   top: var(--navbar-height);
-  width: 100%;
   min-width: 300px;
+  width: 100%;
   padding-bottom: 1.5em;
   
   color: #dddddd;
   display: flex;
   font-size: 1em;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  left: 7.5%;
   gap: 3rem;
 
 }
@@ -31,13 +32,17 @@
 .previewArea {
   background-color: var(--album-box-bg);
   position: absolute;
-  right: 0;
+  padding-bottom: 1.5em;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   z-index: 4;
+}
+
+.previewArea img {
+  position: absolute;
+  top: calc(var(--navbar-height) + 6.5em);
 }
 
 .container .title {
@@ -187,9 +192,8 @@
 @media only screen and (max-width: 649px) { 
   .container {
     width: 100%;
-    margin-top: 0.5rem; 
+    margin-top: 2.5rem; 
     left: calc((100% - 18rem) / 2);
-    align-items: center;
     font-size: 0.95em;
   }
 
@@ -208,8 +212,8 @@
 
 @media only screen and (min-width: 650px) { 
   .container {
-    top: calc(var(--navbar-height) + 4.5em);
-    height: calc(100% - var(--navbar-height))
+    top: calc(var(--navbar-height) + 6.5em);
+    height: calc(100% - var(--navbar-height));
   }
 
   .mobileDemoView {
@@ -219,47 +223,71 @@
 
 @media only screen and (min-width: 650px) and (max-width: 899px) { 
   .container {
-    width: 50%;
-    font-size: 0.85em;
+    width: 52%;
+    font-size: 0.80em;
   }
 
   .previewArea {
-    width: 50%;
+    width: 48%;
+    left: 52%;
     display: "";
   }
 }
 
 @media only screen and (min-width: 900px) and (max-width: 1299px) { 
   .container {
-    width: 28%;
+    width: 40%;
     font-size: 0.9em;
   }
 
   .previewArea {
-    width: 72%;
+    width: 60%;
+    left: 40%;
     display: "";
   }
 }
 
 @media only screen and (min-width: 1300px) and (max-width: 1799px) { 
   .container {
-    width: 30%;
+    width: 32%;
     font-size: 0.93em;
   }
 
   .previewArea {
-    width: 70%;
+    width: 68%;
+    left: 32%;
     display: "";
   }
 }
 
 @media only screen and (min-width: 1800px) { 
+  .homeContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .pageContent {
+    max-width: 1800px;
+    min-width: 1800;
+    width: 1800px;
+    display: flex;
+    flex-direction: row;
+  }
+
   .container {
-    width: calc(1800px * .30);
-  } 
+    width: calc(.32 * 1800px);
+    position: relative;
+    left: 7.5%;
+  }
 
   .previewArea {
-    width: calc(1800px * .70);
+    position: relative;
+    left: 0;
+    width: calc(.68 * 1800px);
   }
 }
 

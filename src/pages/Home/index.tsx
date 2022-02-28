@@ -5,7 +5,7 @@ import useAuth from '@hooks/useAuth';
 import Navbar from '@components/Navbar';
 import Video from '@/AutoPlaySilentVideo';
 import SpinningRecord from '@components/SpinningRecord';
-import fullscreenDemo from '@assets/images/fullscreenDemo.mp4';
+import large_preview from '@assets/images/large_preview.png';
 
 import './index.css';
 
@@ -64,16 +64,14 @@ const Home: React.FC<Props> = () => {
   return (
     <React.Fragment>
       <Navbar />
+      <div className='homeContainer'>
+      <div className="pageContent">
       <div className="container">
         <div className="header">
           <p className="title">Archive albums</p>
           <p className='description'>Keep track of albums <br /> you want to listen to.</p>
         </div>
         
-        <div className="mobileDemoView">
-          <p className="title">Demo</p>
-        </div>
-
         <div className='buttonsContainer'>
           <div className="signTitle">{(signingUp) ? 'Sign Up' : 'Sign In'}{(loadingResponse) ? <SpinningRecord style={{"width": "1.3em", "marginLeft": "0.5em"}} /> : ""}</div>
           <div className="accountDescription">{(signingUp) ? 'Enter a valid email and password': 'Enter your email and password'}</div>
@@ -85,7 +83,9 @@ const Home: React.FC<Props> = () => {
         </div>
       </div>
       <div className='previewArea'>
-        <video autoPlay muted style={{"width": "90%"}} preload="auto" loop src={fullscreenDemo} />
+        <img src={large_preview} style={{'width': '90%', 'objectFit': 'cover', 'objectPosition': 'top'}}/>
+      </div>
+      </div>
       </div>
     </React.Fragment>
   );
