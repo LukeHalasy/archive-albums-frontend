@@ -47,7 +47,7 @@
   background-repeat: no-repeat;
   width: 16rem;
   height: 35rem;
-  top: calc(var(--navbar-height) + 1.8em);
+  top: calc(var(--navbar-height) + 6.5em);
 }
 
 
@@ -222,6 +222,7 @@
     height: calc(100% - var(--navbar-height));
   }
 
+
   .mobileDemoView {
     display: none;
   }
@@ -241,6 +242,7 @@
 
   .previewArea .previewImage {
     background-image: url('../../assets/images/mobile_preview.webp');
+    top: calc(var(--navbar-height) + 1.8em);
   }
 }
 
