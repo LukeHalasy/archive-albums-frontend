@@ -21,15 +21,12 @@ const Navbar: React.FC<Props> = () => {
     e.preventDefault();
     
     const result = await logout();
-    console.log("logging out");
-    console.log(result);
 
     if (result && result.status === 200) {
       navigate("../");
     } else {
       // display message to user about how they weren't able to be logged out 
       navigate("../");
-      console.log(result);
     }
   }
 

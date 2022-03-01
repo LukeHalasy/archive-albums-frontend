@@ -9,14 +9,12 @@ const getAlbumResults = async (title: string) => {
       withCredentials: true
     }) 
 
-    console.log(result);
     if (result.data.albums) {
       return result.data.albums;
     } else {
       return [];
     }
   } catch (error) {
-    console.log(error);
     return [];
   }
 };

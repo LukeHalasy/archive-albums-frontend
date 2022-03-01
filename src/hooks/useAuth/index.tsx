@@ -12,7 +12,6 @@ const useAuth = () => {
 
   return {
     async signup(credentials: Credentials) {
-      console.log(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/signup`);
       try {
         const result = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/signup`, JSON.stringify(credentials), {
           headers: {
@@ -22,7 +21,6 @@ const useAuth = () => {
           withCredentials: true
         });
 
-        console.log(result);
 
         if (result.status === 201) {
           setAuth({
@@ -45,7 +43,6 @@ const useAuth = () => {
       }
     },
     async login(credentials: Credentials) {
-      console.log(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/login`);
       try {
         const result = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/login`, JSON.stringify(credentials), {
           headers: {
@@ -54,7 +51,6 @@ const useAuth = () => {
           validateStatus: () => true,
           withCredentials: true
         })
-        console.log(result);
 
         if (result.status === 200) {
           setAuth({
@@ -77,7 +73,6 @@ const useAuth = () => {
       }
     },
     async currentUser() {
-      console.log("CURRENT USER BEING CALLED");
       const userReq = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/currentUser`, {
         headers: {
          'Content-Type': 'application/json'
@@ -85,7 +80,6 @@ const useAuth = () => {
         withCredentials: true
       }) 
 
-      console.log(userReq);
 
       if (userReq.status === 200 && userReq.data.logged_in === true) {
         setAuth({
@@ -102,8 +96,6 @@ const useAuth = () => {
       }
     },
     async logout() {
-      console.log("LOGOUT USER BEING CALLED");
-      console.log("Calling logout");
 
       try {
         const result = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/logout`, {
@@ -122,7 +114,6 @@ const useAuth = () => {
 
         return result;
       } catch (e) {
-        console.log(e);
         setAuth({
           authenticated: false,
           email: ''

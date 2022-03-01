@@ -26,8 +26,6 @@ const AuthRouter: React.FC<Props> = ({ children }: Props) => {
 
     async function checkIfUserHasCookie() {
       const result = await currentUser();
-      console.log("CHECKING IF USER HAS COOKIE");
-      console.log(result);
 
       if (result && result.data.logged_in) {
         setHasCookie(true);
@@ -41,8 +39,6 @@ const AuthRouter: React.FC<Props> = ({ children }: Props) => {
     checkIfUserHasCookie();
   }, [auth.authenticated])
 
-  console.log("Authenticated, ", auth.authenticated)
-  console.log("Has Cookie, ", hasCookie)
 
   if (loading) {
     return (
@@ -50,7 +46,6 @@ const AuthRouter: React.FC<Props> = ({ children }: Props) => {
     )
   } else if (auth.authenticated || hasCookie === true) {
     if (route !== "/albums") {
-      console.log("HERE ABOUT TO NAVIGATE TO WRONG SPOT BECAUSE AUTHED")
       return (<Navigate to="/albums" replace />)
     } else {
       return (<div>{children}</div>)
@@ -59,7 +54,6 @@ const AuthRouter: React.FC<Props> = ({ children }: Props) => {
     if (route !== "/") {
       return (<Navigate to="/" replace />)
     } else {
-      console.log("HERE ABOUT TO NAVIGATE TO WRONG SPOT")
       return (<div>{children}</div>)
     }
   }
