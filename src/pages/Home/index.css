@@ -42,12 +42,12 @@
 
 .previewArea .previewImage {
   position: absolute;
-  background-image: url('../../assets/images/mobile_preview.png');
+  background-image: url('../../assets/images/mobile_preview.webp');
   background-size: 100% auto;
   background-repeat: no-repeat;
   width: 16rem;
   height: 35rem;
-  top: calc(var(--navbar-height) + 6.5em);
+  top: calc(var(--navbar-height) + 1.8em);
 }
 
 
@@ -240,7 +240,7 @@
   }
 
   .previewArea .previewImage {
-    background-image: url('../../assets/images/mobile_preview.png');
+    background-image: url('../../assets/images/mobile_preview.webp');
   }
 }
 
@@ -251,7 +251,7 @@
   }
 
   .previewArea .previewImage {
-    background-image: url('../../assets/images/medium_preview.png');
+    background-image: url('../../assets/images/medium_preview.webp');
     width: 32rem;
     height: 40rem;
   }
@@ -277,7 +277,7 @@
 
   .previewArea .previewImage {
     width: 92%;
-    background-image: url('../../assets/images/large_preview.png');
+    background-image: url('../../assets/images/large_preview.webp');
   }
 }
 
@@ -292,7 +292,7 @@
   }
 
   .previewArea .previewImage {
-    background-image: url('../../assets/images/large_preview.png');
+    background-image: url('../../assets/images/large_preview.webp');
     width: 1130px;
   }
 
