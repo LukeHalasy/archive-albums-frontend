@@ -1,3 +1,5 @@
+@import-normalize; /* bring in normalize.css styles */
+
 @font-face {
   font-family: 'Fira Mono Bold';
   src: local('Fira Mono Bold'),url(./assets/fonts/Fira_Mono/FiraMono-Bold.ttf) format('truetype');
