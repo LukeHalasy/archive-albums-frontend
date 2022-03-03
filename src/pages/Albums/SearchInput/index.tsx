@@ -24,9 +24,9 @@ const SearchInput: React.FC<Props> = ({ addAlbum }) => {
   const keyRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const blankRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
-  const debouncedSave = useCallback(
+  const debouncedSave = useCallback( // eslint-disable-line react-hooks/exhaustive-deps
     debounce((newValue) => getSuggestions(newValue), 380),
-    []
+    []  
   );
 
   const updateValue = async (newValue: string) => {

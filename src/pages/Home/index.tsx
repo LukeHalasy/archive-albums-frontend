@@ -3,9 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import useAuth from '@hooks/useAuth';
 
 import Navbar from '@components/Navbar';
-import Video from '@/AutoPlaySilentVideo';
 import SpinningRecord from '@components/SpinningRecord';
-import large_preview from '@assets/images/large_preview.png';
 
 import './index.css';
 
