@@ -37,7 +37,8 @@ const AuthRouter: React.FC<Props> = ({ children }: Props) => {
     }
 
     checkIfUserHasCookie();
-  }, [currentUser, auth.authenticated])
+  }, [auth.authenticated]) // eslint-disable-line react-hooks/exhaustive-deps
+
 
 
   if (loading) {
