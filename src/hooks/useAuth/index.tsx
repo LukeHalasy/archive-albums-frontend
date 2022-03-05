@@ -80,30 +80,37 @@ const useAuth = () => {
       }
     },
     async currentUser() {
-      const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/currentUser`, {
-        method: 'get',
-        headers: {
-         'Content-Type': 'application/json'
-        },
-        // @ts-ignore
-        credentials: 'include' 
-      });  
+      try {
+        const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/currentUser`, {
+          method: 'get',
+          headers: {
+           'Content-Type': 'application/json'
+          },
+          // @ts-ignore
+          credentials: 'include' 
+        });  
 
-      const data: any = await res.json();
+        const data: any = await res.json();
 
 
-      if (data.logged_in === true) {
-        setAuth({
-          authenticated: true,
-          email: data.email
-        })
-        return data;
-      } else {
+        if (data.logged_in === true) {
+          setAuth({
+            authenticated: true,
+            email: data.email
+          })
+          return data;
+        } else {
+          setAuth({
+            authenticated: false,
+            email: ''
+          })
+          return data;
+        }
+      } catch(error) {
         setAuth({
           authenticated: false,
           email: ''
-        })
-        return data;
+        });
       }
     },
     async logout() {
