@@ -91,7 +91,8 @@ const useAuth = () => {
 
       const data: any = await res.json();
 
-      if (data.status === 200 && data.logged_in === true) {
+
+      if (data.logged_in === true) {
         setAuth({
           authenticated: true,
           email: data.email
