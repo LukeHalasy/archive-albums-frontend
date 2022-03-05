@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "export NODE_OPTIONS=--max_old_space_size=4096 && craco start",
-    "build": "craco build && echo '/api/* https://server.archivealbums.com/:splat  200' | cat >build/_redirects ",
+    "build": "craco build && node postBuild.js && echo '/api/* https://server.archivealbums.com/:splat  200' | cat >build/_redirects ",
     "test": "craco test",
     "eject": "craco eject"
   },
@@ -39,16 +39,19 @@
     ]
   },
   "devDependencies": {
-    "@types/lodash.debounce": "^4.0.6",
-    "@types/node-fetch": "^2.6.1",
-    "unique-names-generator": "^4.6.0",
-    "typescript": "^4.6.2",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.4.0",
+    "@types/lodash.debounce": "^4.0.6",
     "@types/node": "^16.11.21",
+    "@types/node-fetch": "^2.6.1",
     "@types/react": "^17.0.38",
-    "@types/react-dom": "^17.0.11"
+    "@types/react-dom": "^17.0.11",
+    "fs": "^0.0.1-security",
+    "glob": "^7.2.0",
+    "path": "^0.12.7",
+    "typescript": "^4.6.2",
+    "unique-names-generator": "^4.6.0"
   }
 }
