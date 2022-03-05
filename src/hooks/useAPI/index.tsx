@@ -1,16 +1,20 @@
-import axios from 'axios';
+import fetch from 'node-fetch';
 
 const getAlbumResults = async (title: string) => {
   try {
-    const result = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/searchAlbums/${title}`,  {
-      headers: {
-       'Content-Type': 'application/json'
-      },
-      withCredentials: true
-    }) 
+    const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/searchAlbums/${title}`, {
+        method: 'get',
+        headers: {
+         'Content-Type': 'application/json'
+        },
+        // @ts-ignore
+        credentials: 'include' 
+      });  
 
-    if (result.data.albums) {
-      return result.data.albums;
+    const data: any = await res.json();
+
+    if (data.albums) {
+      return data.albums;
     } else {
       return [];
     }

@@ -1,6 +1,6 @@
 import { useContext  } from 'react';
 import AuthContext from '@context/AuthContext'
-import axios from 'axios';
+import fetch from 'node-fetch'
 
 interface Credentials {
   email: string;
@@ -13,19 +13,22 @@ const useAuth = () => {
   return {
     async signup(credentials: Credentials) {
       try {
-        const result = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/signup`, JSON.stringify(credentials), {
+        const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/signup`, {
+          method: 'post',
           headers: {
            'Content-Type': 'application/json'
           },
-          validateStatus: () => true,
-          withCredentials: true
-        });
+          body:  JSON.stringify(credentials),
+          // @ts-ignore
+          credentials: 'include' 
+        });  
 
+        const data: any = await res.json();
 
-        if (result.status === 201) {
+        if (data.status === 'success') {
           setAuth({
             authenticated: true,
-            email: result.data.email
+            email: data.email
           });
         } else {
           setAuth({
@@ -34,7 +37,7 @@ const useAuth = () => {
           });
         }
 
-        return result;
+        return data;
       } catch(e) {
         setAuth({
           authenticated: false,
@@ -44,18 +47,22 @@ const useAuth = () => {
     },
     async login(credentials: Credentials) {
       try {
-        const result = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/login`, JSON.stringify(credentials), {
+        const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/login`, {
+          method: 'post',
           headers: {
            'Content-Type': 'application/json'
           },
-          validateStatus: () => true,
-          withCredentials: true
-        })
+          body:  JSON.stringify(credentials),
+          // @ts-ignore
+          credentials: 'include' 
+        });  
 
-        if (result.status === 200) {
+        const data: any = await res.json();
+
+        if (data.status === 'success') {
           setAuth({
             authenticated: true,
-            email: result.data.email
+            email: data.email
           });
         } else {
           setAuth({
@@ -64,7 +71,7 @@ const useAuth = () => {
           });
         }
 
-        return result;
+        return data;
       } catch(error) {
         setAuth({
           authenticated: false,
@@ -73,46 +80,53 @@ const useAuth = () => {
       }
     },
     async currentUser() {
-      const userReq = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/currentUser`, {
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/currentUser`, {
+        method: 'get',
         headers: {
          'Content-Type': 'application/json'
         },
-        withCredentials: true
-      }) 
+        // @ts-ignore
+        credentials: 'include' 
+      });  
 
+      const data: any = await res.json();
 
-      if (userReq.status === 200 && userReq.data.logged_in === true) {
+      if (data.status === 200 && data.logged_in === true) {
         setAuth({
           authenticated: true,
-          email: userReq.data.email
+          email: data.email
         })
-        return userReq;
+        return data;
       } else {
         setAuth({
           authenticated: false,
           email: ''
         })
-        return userReq;
+        return data;
       }
     },
     async logout() {
 
       try {
-        const result = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/logout`, {
+        const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/logout`, {
+          method: 'delete',
           headers: {
            'Content-Type': 'application/json'
           },
-          withCredentials: true
-        }) 
+          // @ts-ignore
+          credentials: 'include' 
+        });  
 
-        if (result.status === 200) {
+        const data: any = await res.json();
+
+        if (data.status === 'success') {
           setAuth({
             authenticated: false,
             email: ''
           });
         }
 
-        return result;
+        return data;
       } catch (e) {
         setAuth({
           authenticated: false,

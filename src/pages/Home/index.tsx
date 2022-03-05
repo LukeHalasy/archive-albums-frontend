@@ -29,9 +29,9 @@ const Home: React.FC<Props> = () => {
       password
     });
 
-    if (result && result.status === 200) {
+    if (result && result.status === 'success') {
       navigate("/albums");
-    } else if (result && (result.status === 404 || (result.status === 400 && result.data.message === 'incorrect email or password'))) {
+    } else if (result && (result.status === 'fail' || result.data.message === 'incorrect email or password')) {
       // display failed login info
       setServerMessage("Incorrect email or password")
       setLoadingResponse(false);
@@ -51,7 +51,7 @@ const Home: React.FC<Props> = () => {
     });
 
     
-    if (result && result.status === 201) {
+    if (result && result.status === 'success') {
       navigate("/albums");
     } else if (result && result.data.message) {
       setServerMessage(result.data.message);

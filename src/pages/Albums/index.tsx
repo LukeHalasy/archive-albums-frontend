@@ -1,5 +1,5 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
-import axios from 'axios';
+import fetch from 'node-fetch';
 
 import Navbar from '@components/Navbar';
 import LoadingPage from '@pages/LoadingPage';
@@ -27,23 +27,24 @@ const Albums: React.FC<Props> = (props) => {
   useEffect(() => {
 
     async function fetchUsersAlbums() {
-      const result = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/getAlbums`, {
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/getAlbums`, {
+        method: 'get',
         headers: {
          'Content-Type': 'application/json'
         },
-        withCredentials: true
+        // @ts-ignore
+        credentials: 'include' 
       });  
 
+      const data: any = await res.json();
 
-      if (result.status === 200) {
-        for (let i = 0; i < result.data.albums.length; i++) {
-          setAlbums((albums) => [...albums, result.data.albums[i]] );
+      if (data.status === 'success') {
+        for (let i = 0; i < data.albums.length; i++) {
+          setAlbums((albums) => [...albums, data.albums[i]] );
         }
       } else {
         // TODO handle
       }
-
-      // setAlbums((albums) => [...albums, albumDetails] );
     }
 
     fetchUsersAlbums();
@@ -56,24 +57,30 @@ const Albums: React.FC<Props> = (props) => {
   }
   
   const addAlbum = async (albumDetails: AlbumDetails) => {
-    const result = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/addAlbum`, JSON.stringify(albumDetails), {
+    const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/addAlbum`, {
+      method: 'post',
       headers: {
        'Content-Type': 'application/json'
       },
-      withCredentials: true
-    });
+      body: JSON.stringify(albumDetails),
+      // @ts-ignore
+      credentials: 'include' 
+    });  
 
-    setAlbums((albums) => [result.data.album, ...albums ] );
+    const data: any = await res.json();
+    setAlbums((albums) => [data.album, ...albums ] );
   }
 
 
   const deleteAlbum = async (index: number, _id: string) => {
-    await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/deleteAlbum/${_id}`, {
+    await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/albums/deleteAlbum/${_id}`, {
+      method: 'delete',
       headers: {
        'Content-Type': 'application/json'
       },
-      withCredentials: true
-    });
+      // @ts-ignore
+      credentials: 'include' 
+    });  
 
     setAlbums([...albums.slice(0, index), ...albums.slice(index + 1)] );
   }

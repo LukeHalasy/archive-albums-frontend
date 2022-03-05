@@ -27,7 +27,7 @@ const AuthRouter: React.FC<Props> = ({ children }: Props) => {
     async function checkIfUserHasCookie() {
       const result = await currentUser();
 
-      if (result && result.data.logged_in) {
+      if (result && result.logged_in) {
         setHasCookie(true);
       } else {
         setHasCookie(false);
