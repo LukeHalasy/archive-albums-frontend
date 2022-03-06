@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useLocation, Navigate } from 'react-router-dom'
 import useAuth from '@hooks/useAuth'
 import AuthContext from '@context/AuthContext'
+import LoadingPage from '@/pages/LoadingPage';
 
 interface Props {
   children: React.ReactNode;
@@ -41,7 +42,7 @@ const AuthRouter: React.FC<Props> = ({ children }: Props) => {
 
   if (loading) {
     return (
-      <p></p>
+      <LoadingPage />
     )
   } else if (auth.authenticated || hasCookie === true) {
     if (route !== "/albums") {
