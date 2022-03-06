@@ -32,18 +32,19 @@ const fileWithPreload = [
 ];
 
 for (const link of assets) {
-  fileWithPreload.push(`<link rel="preload" href="./${link}" as="font" crossOrigin="anonymous">`);
+  fileWithPreload.push(`<link rel="preload" href="./${link}" as="font" crossOrigin="anonymous" importance="high">`);
 }
 
 for (const link of svgs) {
-  if (link.includes("record") || link.includes("logo")) {
-    fileWithPreload.push(`<link rel="preload" href="./${link}" as="image" type="image/svg+xml">`);
+  if (link.includes("logo")) {
+    fileWithPreload.push(`<link rel="preload" href="./${link}" as="image" type="image/svg+xml" importance="high">`);
   }
 }
 
 for (const link of webps) {
-  if (link.includes("large"))
-  fileWithPreload.push(`<link rel="preload" href="./${link}" as="image" type="image/webp">`);
+  if (link.includes("large")) {
+    fileWithPreload.push(`<link rel="preload" href="./${link}" as="image" type="image/webp" importance="high">`);
+  }
 }
 
 fileWithPreload.push(parts[1]);

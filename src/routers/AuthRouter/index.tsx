@@ -43,7 +43,7 @@ const AuthRouter: React.FC<Props> = ({ children }: Props) => {
 
   if (loading) {
     return (
-      <LoadingPage />
+      <p></p>
     )
   } else if (auth.authenticated || hasCookie === true) {
     if (route !== "/albums") {
