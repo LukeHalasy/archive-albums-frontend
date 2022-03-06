@@ -42,6 +42,7 @@ for (const link of svgs) {
 }
 
 for (const link of webps) {
+  if (link.includes("large"))
   fileWithPreload.push(`<link rel="preload" href="./${link}" as="image" type="image/webp">`);
 }
 
