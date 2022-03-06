@@ -3,8 +3,6 @@ import { useLocation, Navigate } from 'react-router-dom'
 import useAuth from '@hooks/useAuth'
 import AuthContext from '@context/AuthContext'
 
-import LoadingPage from '@pages/LoadingPage'
-
 interface Props {
   children: React.ReactNode;
 }
