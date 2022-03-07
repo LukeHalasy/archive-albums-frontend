@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "export NODE_OPTIONS=--max_old_space_size=4096 && craco start",
-    "build": "craco build && node postBuild.js && echo '/api/* https://server.archivealbums.com/:splat  200' | cat >build/_redirects ",
+    "build": "craco build && node postBuild.js && echo '/api/* https://server.archivealbums.com/:splat  200\n/* /index.html 200' | cat >build/_redirects",
     "test": "craco test",
     "eject": "craco eject"
   },
